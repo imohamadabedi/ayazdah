@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>آژانس خلاقیت یازده</title>
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --bg-color: #011627; /* سرمه‌ای تیره */
+        --text-color: #ffffff;
+        --accent-color: #8892b0; /* رنگ طوسی/آبی روشن برای متون فرعی */
+        --border-color: #1d3557;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+
+      /* ابزارهای عمومی */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0px;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+        padding-top: 20px;
+      }
+
+      .section-title::before {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 1px;
+        background: var(--accent-color);
+        margin: 0 auto 10px auto;
+      }
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 1px;
+        background: var(--accent-color);
+        margin: 10px auto 0 auto;
+      }
+
+      .section-title h2 {
+        font-size: 1.5rem;
+        font-weight: 300;
+      }
+
+      .btn-outline {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 30px;
+        color: white;
+        transition: 0.3s;
+        display: inline-block;
+        margin-top: 20px;
+      }
+
+      .btn-outline:hover {
+        background: white;
+        color: var(--bg-color);
+      }
+
+      /* --- Header (Image 1) --- */
+      header {
+        display: flex;
+        justify-content: flex-end; /* تغییر به flex-end */
+        align-items: center;
+        padding: 20px 40px;
+      }
+
+      .header-icons img {
+        width: 24px; /* یا هر اندازه مناسب دیگر */
+        height: 24px;
+        margin: 20px 10px;
+        cursor: pointer;
+      }
+      .header-right-icons {
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-logo-section {
+        /* background: url("assets/taypo.png") no-repeat center center; */
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 1px solid rgba(255, 255, 255, 0.1); /* کادر تزئینی دور لوگو */
+        max-width: 400px;
+        margin: 20px auto;
+        /* position: relative; */
+      }
+
+      /* شبیه‌سازی پترن لوزی دور لوگو */
+      .hero-logo-section::before,
+      .hero-logo-section::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 1px dashed rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+        pointer-events: none;
+      }
+
+      .main-logo-text {
+        font-size: 4rem;
+        font-weight: bold;
+        /* فونت خاص لوگو باید ایمپورت شود، اینجا شبیه سازی شده */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1;
+      }
+      .main-logo-text img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* --- Intro/Special (Image 2) --- */
+      .intro-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 60px 40px; /* افزایش padding */
+        margin: 40px auto; /* اضافه کردن margin */
+        flex-wrap: wrap;
+      }
+
+      .intro-image {
+        position: relative;
+        min-height: 400px; /* حداقل ارتفاع برای جایگیری تصاویر لایه بندی شده */
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+      }
+      .intro-image img {
+        position: absolute;
+        width: 100%; /* تغییر به 100% */
+        max-width: 350px; /* برای جلوگیری از بزرگ شدن بیش از حد تصویر */
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* سایه برای عمق */
+      }
+      .intro-image .intro-img-1 {
+        top: 20px;
+        left: 20px;
+        z-index: 2; /* جلوی تصویر دوم */
+      }
+      .intro-image .intro-img-2 {
+        top: 70px;
+        left: 70px;
+        z-index: 1; /* پشت تصویر اول */
+      }
+
+      .intro-content {
+        flex: 1;
+        padding: 0 40px;
+        min-width: 300px;
+      }
+
+      .intro-content h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .intro-content p {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+      }
+
+      /* --- Services (Image 6) --- */
+      .services-section {
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .services-grid {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-top: 50px;
+      }
+
+      .service-item {
+        flex: 1;
+        min-width: 250px;
+        margin: 20px;
+      }
+
+      .service-item i {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      /* --- Portfolio Carousel (Image 3 & 4) --- */
+      .portfolio-section {
+        padding: 60px 0;
+        background-color: rgba(255, 255, 255, 0.02); /* کمی روشن تر */
+      }
+      .portfolio-layout {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+      .main-portfolio-display {
+        flex: 2;
+        min-width: 350px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        padding: 20px;
+        position: relative;
+      }
+      .main-portfolio-display img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+      .main-portfolio-display .portfolio-text {
+        text-align: right;
+        padding: 0 20px;
+      }
+      .small-portfolio-items {
+        flex: 1;
+        min-width: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .carousel-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .portfolio-card {
+        width: 150px;
+        height: 150px;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .portfolio-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .carousel-navigation-custom {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 20px;
+      }
+      .carousel-navigation-custom i {
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: var(--text-color);
+      }
+      .carousel-navigation-custom .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--accent-color);
+        opacity: 0.5;
+        cursor: pointer;
+      }
+      .carousel-navigation-custom .dot.active {
+        opacity: 1;
+        background-color: var(--text-color);
+      }
+
+      /* --- Video Section (Image 5) --- */
+      .video-section {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 60px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 40px auto;
+        max-width: 1100px;
+      }
+
+      .video-text {
+        flex: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: right;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .video-player {
+        flex: 1.5;
+        position: relative;
+        min-height: 300px;
+        background: #333; /* Placeholder video */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .play-btn {
+        font-size: 4rem;
+        color: rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+      }
+
+      /* --- Team Section (Image 7) --- */
+      .team-section {
+        text-align: center;
+        padding: 60px 0;
+      }
+
+      .team-avatars {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 40px 0;
+        flex-wrap: wrap;
+      }
+
+      .avatar {
+        width: 100px;
+        height: 100px;
+        background-color: #ddd; /* Placeholder */
+        border-radius: 50%;
+      }
+
+      /* --- Testimonials (Image 8) --- */
+      .testimonials {
+        padding: 60px 0;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .quote-box {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .quote-nav {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* --- About Large Text (Image 9) --- */
+      .about-large {
+        padding: 80px 20px;
+        text-align: center;
+      }
+
+      .about-large h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .about-large p {
+        max-width: 800px;
+        margin: 0 auto;
+        color: var(--accent-color);
+        line-height: 2;
+      }
+
+      /* --- Footer (Image 10) --- */
+      footer {
+        background-image: url("pattern-placeholder.png"); /* پترن پس زمینه */
+        background-color: #0b1e33;
+        padding: 60px 0;
+        text-align: center;
+        position: relative;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-logo {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .footer-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 0;
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      .footer-info i {
+        font-size: 1.5rem;
+      }
+
+      .date {
+        margin-top: 20px;
+        font-size: 0.8rem;
+        color: var(--accent-color);
+      }
+
+      /* Responsive Mobile */
+      @media (max-width: 768px) {
+        .video-section,
+        .intro-section,
+        .portfolio-details {
+          flex-direction: column;
+        }
+        .video-text {
+          border-left: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .main-logo-text {
+          width: 350px;
+        }
+        .portfolio-layout {
+          flex-direction: column;
+        }
+        .main-portfolio-display,
+        .small-portfolio-items {
+          min-width: unset;
+          width: 100%;
+        }
+        .carousel-grid {
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+          width: 100%;
+        }
+        .portfolio-card {
+          width: 100%;
+          height: 120px;
+        }
+        .main-portfolio-display .portfolio-text {
+          padding: 0 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-right-icons">
+        <div class="header-icons">
+          <img src="assets/icons/menu.png" alt="منو" />
+        </div>
+        <div class="header-icons">
+          <img src="assets/icons/telephone 1.png" alt="تلفن" />
+        </div>
+      </div>
+    </header>
+
+    <section class="container">
+      <div class="hero-logo-section">
+        <div class="main-logo-text">
+          <img src="assets/icons/taypo.png" alt="لوگو" style="width: 350px" />
+        </div>
+      </div>
+    </section>
+
+    <section class="container intro-section">
+      git init
+
+      <div class="intro-content">
+        <div class="intro-image">
+          <img
+            src="assets/images/img-test-logo1-visual-identitiy.png"
+            alt="لوگو ۱"
+            class="intro-img-1"
+          />
+          <img
+            src="assets/images/img-test-logo2-visual-identitiy.png"
+            alt="لوگو ۲"
+            class="intro-img-2"
+          />
+        </div>
+        <div class="section-title">
+          <h2>خاص ترین ما</h2>
+        </div>
+        <h3>متن تست توضیحات لوگو</h3>
+        <p>توضیحات مختصر در مورد ویژگی‌های بصری لوگو</p>
+        <p>از چه ریشه‌هایی این لوگو گرفته شده</p>
+        <p>چه پیامی رو به مخاطب منتقل میکنه</p>
+        <p>خالق این اثر چه کسی بوده و...</p>
+        <a href="#" class="btn-outline">بیشتر بخوانید</a>
+      </div>
+    </section>
+
+    <section class="services-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>خدمات یازده</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-item">
+            <i class="fas fa-paint-brush"></i>
+            <h4>پروژه طراحی</h4>
+          </div>
+          <div class="service-item">
+            <i class="fas fa-film"></i>
+            <h4>تدوین ها</h4>
+          </div>
+          <div class="service-item">
+            <i class="fas fa-photo-video"></i>
+            <h4>پروژه موشن گرافی</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>ایده هایی که به دست ما خلق شدن</h2>
+        </div>
+        <div class="portfolio-layout">
+          <div class="main-portfolio-display">
+            <img src="assets/images/logo-zarin.jpg" alt="لوگوی زرین" />
+            <div class="portfolio-text">
+              <h3>نام لوگو</h3>
+              <p>متن توضیحات در مورد لوگویی که در کادر قرار گرفته</p>
+              <p>چه تیمی این لوگو رو ساخته</p>
+              <p>از چه چیزهایی ایده گرفته شده</p>
+              <p>و پیام این لوگو ی ما چیه</p>
+            </div>
+          </div>
+          <div class="small-portfolio-items">
+            <div class="carousel-grid">
+              <div class="portfolio-card" data-logo="logo-zarin">
+                <img src="assets/portfolio-image-1.png" alt="پورتفولیو ۱" />
+              </div>
+              <div class="portfolio-card" data-logo="logo-monyadak">
+                <img src="assets/portfolio-image-2.png" alt="پورتفولیو ۲" />
+              </div>
+              <div class="portfolio-card" data-logo="logo-sadaf">
+                <img src="assets/portfolio-image-3.png" alt="پورتفولیو ۳" />
+              </div>
+              <div class="portfolio-card" data-logo="logo-tajhiz">
+                <img src="assets/portfolio-image-4.png" alt="پورتفولیو ۴" />
+              </div>
+            </div>
+            <div class="carousel-navigation-custom">
+              <i class="fas fa-angle-right"></i>
+              <div class="dot active"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <i class="fas fa-angle-left"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-section" style="background: transparent">
+      <div class="container">
+        <div class="section-title">
+          <h2>موشن های خلق شده ی ما</h2>
+        </div>
+        <div class="carousel-container">
+          <div class="portfolio-card">
+            <div style="width: 300px; height: 200px; background: darkred">
+              [Porsche Img]
+            </div>
+          </div>
+          <div class="portfolio-card">
+            <div style="width: 300px; height: 200px; background: blue">
+              [Porsche Vector]
+            </div>
+          </div>
+          <div class="portfolio-card">
+            <div style="width: 300px; height: 200px; background: grey">
+              [Car Back]
+            </div>
+          </div>
+        </div>
+        <div style="text-align: left; margin-top: 10px">
+          <a href="#">ادامه توضیحات <i class="fas fa-angle-left"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-title">
+        <h2>پروژه ی منتخب</h2>
+      </div>
+      <div class="video-section">
+        <div class="video-text">
+          <h3>توضیحات ویدیو ادیت</h3>
+          <p>
+            در کادر زیر هر متنی را که دوست دارید تایپ کنید تا ما آن را برایتان
+            نگه داریم...
+          </p>
+          <p>و همیشه در دسترس شما قرار دهیم...</p>
+        </div>
+        <div class="video-player">
+          <div
+            style="
+              position: absolute;
+              bottom: 20px;
+              left: 20px;
+              right: 20px;
+              height: 5px;
+              background: white;
+            "
+          ></div>
+          <i class="fas fa-play play-btn"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-large">
+      <div class="container">
+        <h1>آژانس خلاقیت یازده، جایی که ایده ها جان میگیرن</h1>
+        <p>
+          افتخار آشنایی با تیم قوی و خلاق رو داشتم. افتخار آشنایی با تیمی که
+          نظم، دیسیپلین و حرفه‌ای بودن رو برای من دوباره به تصویر کشیدن...
+        </p>
+        <div style="margin-top: 30px">
+          <span>نمایش بیشتر</span> <br />
+          <i class="fas fa-angle-down"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>با تیم خلاق یازده آشنا شو</h2>
+        </div>
+        <div class="team-avatars">
+          <div class="avatar"></div>
+          <div class="avatar"></div>
+          <div class="avatar"></div>
+          <div class="avatar"></div>
+          <div class="avatar"></div>
+          <div class="avatar"></div>
+          <div class="avatar"></div>
+        </div>
+        <a href="#" class="btn-outline">درباره ما</a>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-title">
+          <h2>نظرات مشتریان یازده</h2>
+        </div>
+        <div class="quote-box">
+          <h3 style="text-align: right; margin-bottom: 15px">
+            محمد کریم آبادی
+          </h3>
+          <p style="text-align: right; color: var(--accent-color)">
+            افتخار آشنایی با تیم قوی و خلاق رو داشتم که نظم، دیسیپلین و حرفه ای
+            بودن رو برای من دوباره به تصویر کشیدن
+          </p>
+          <div class="quote-nav">
+            <i class="fas fa-angle-right"></i>
+            <i class="far fa-circle"></i>
+            <i class="fas fa-angle-left"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-logo">یـــــــازده</div>
+        <div class="footer-info">
+          <span>۰۹۱۵۷۷۳۰۷۶۷</span>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-telegram-plane"></i>
+          <span>درباره ی ما</span>
+        </div>
+        <div class="date">۱۴۰۴/۰۹/۱۵</div>
+      </div>
+    </footer>
+  </body>
+</html>
