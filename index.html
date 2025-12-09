@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
   <head>
@@ -13,6 +14,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr/dist/plyr.css" />
+     <script src="https://cdn.jsdelivr.net/npm/plyr/dist/plyr.min.js"></script>
+
 
     <style>
       @font-face {
@@ -24,40 +28,49 @@
         font-style: normal;
       }
       /* --- تعریف متغیرهای رنگی (Color Variables) --- */
-      /* این کار باعث می‌شود اگر بخواهید رنگ‌ها را تغییر دهید، فقط کافیست این متغیرها را ویرایش کنید */
       :root {
-        --bg-color: #011627; /* رنگ پس‌زمینه اصلی: سرمه‌ای تیره */
-        --text-color: #ffffff; /* رنگ متن پیش‌فرض: سفید */
-        --accent-color: #8892b0; /* رنگ تاکیدی/فرعی: طوسی/آبی روشن برای متن‌های کم‌رنگ‌تر و خطوط */
-        --border-color: #1d3557; /* رنگ مرزها و جداکننده‌ها */
+        --bg-color: #002246; 
+        --text-color: #ffffff; 
+        --accent-color: #8892b0; 
+        --border-color: #1d3557; 
       }
+      /* تنظیمات پلیر */
+      :root {
+        --plyr-color-main: #ff6600;
+        
+      }
+      .play{
+        height: 100%;
+        width: 100%;
+      }
+
 
       /* --- تنظیمات اولیه (Reset/Normalize) --- */
       * {
-        box-sizing: border-box; /* این خط را از کامنت درآورید تا ابعاد دقیق بمانند */
+        box-sizing: border-box; 
         margin: 0;
         padding: 0;
         outline: none;
       }
 
       body {
-        font-family: "Vazirmatn", sans-serif; /* اعمال فونت بر روی کل صفحه */
-        background-color: var(--bg-color); /* اعمال رنگ پس‌زمینه سرمه‌ای */
-        color: var(--text-color); /* اعمال رنگ متن سفید */
-        overflow-x: hidden; /* جلوگیری از اسکرول افقی اضافی در صفحه */
-        line-height: 1.8; /* فاصله خطوط بیشتر برای خوانایی بهتر */
+        font-family: "Vazirmatn", sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-color); 
+        overflow-x: hidden; 
+        line-height: 1.8; 
       }
 
       a {
-        text-decoration: none; /* حذف خط زیر لینک‌ها */
-        color: inherit; /* ارث بری رنگ از والد (سفید) */
+        text-decoration: none; 
+        color: inherit; 
       }
       ul {
-        list-style: none; /* حذف علامت‌های کنار لیست‌ها (مانند دایره) */
+        list-style: none; 
       }
       img {
-        max-width: 100%; /* تصاویر از عرض والدشان بزرگ‌تر نشوند */
-        display: block; /* حذف فضای خالی پایین تصاویر (اثر inline بودن) */
+        max-width: 100%; 
+        display: block; 
       }
       .text-titel-font-pixel {
         font-family: "pixel_font";
@@ -65,32 +78,30 @@
 
       /* --- ابزارهای عمومی --- */
       .container {
-        max-width: 1200px; /* حداکثر عرض محتوا در صفحه (مثل یک ستون مرکزی) */
-        margin: 0 auto; /* تنظیم margin بالا و پایین صفر، چپ و راست اتوماتیک (برای وسط چین شدن محتوا) */
-        padding: 0 20px; /* فاصله از کناره‌های صفحه برای موبایل */
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px; 
       }
       .intro-container {
         display: flex;
         justify-content: space-between;
       }
 
-      /* استایل عمومی تیترهای بخش‌ها (مثلاً: خدمات یازده، موشن‌های خلق شده ما) */
       .section-title {
-        text-align: center; /* متن وسط چین شود */
-        margin-bottom: 50px; /* فاصله از محتوای زیرین */
+        text-align: center; 
+        margin-bottom: 50px; 
         position: relative;
         padding-top: 20px;
       }
 
-      /* استایل خطوط بالا و پایین تیترها (برای ایجاد حالت خط دار) */
       .section-title::before,
       .section-title::after {
         content: "";
         display: block;
         width: 50px;
         height: 2px;
-        background: var(--accent-color); /* رنگ خط */
-        margin: 15px auto; /* وسط چین شدن خطوط */
+        background: var(--accent-color); 
+        margin: 15px auto; 
       }
 
       .section-title h2 {
@@ -99,37 +110,34 @@
         margin: 0;
       }
 
-      /* --- استایل مخصوص تیتر "خاص ترین ما" (برای راست‌چین کردن متن و خطوط) --- */
-      /* نکته: اگر این کلاس را به یک .section-title اضافه کنید، باعث می‌شود متن و خطوط آن تایتل به راست منتقل شوند */
+      
       .section-title.right-align {
-        text-align: right; /* متن به راست منتقل شود */
+        text-align: right; 
       }
       .section-title.right-align::before,
       .section-title.right-align::after {
-        /* در حالت راست‌چین، margin auto را حذف می‌کنیم تا خطوط به راست بچسبند */
+        
         margin: 15px 0;
       }
 
-      /* --- استایل دکمه‌های حاشیه‌دار (Outline Button) --- */
       .btn-outline {
-        border: 1px solid rgba(255, 255, 255, 0.3); /* حاشیه سفید کم رنگ */
+        border: 1px solid rgba(255, 255, 255, 0.3); 
         padding: 10px 30px;
         color: white;
-        transition: 0.3s; /* برای انیمیشن آرام در هاور */
+        transition: 0.3s; 
         display: inline-block;
         margin-top: 20px;
         font-size: 0.9rem;
       }
 
       .btn-outline:hover {
-        background: white; /* در هنگام قرارگیری موس، پس‌زمینه سفید شود */
-        color: var(--bg-color); /* رنگ متن به سرمه‌ای تغییر کند */
+        background: white; 
+        color: var(--bg-color); 
       }
 
-      /* --- Header (Image 1) --- */
       header {
         display: flex;
-        justify-content: flex-end; /* آیتم‌ها (آیکون‌ها) به سمت راست بروند */
+        justify-content: flex-end; 
         align-items: center;
         padding: 30px 40px;
       }
@@ -137,18 +145,18 @@
       .header-right-icons {
         display: flex;
         align-items: center;
-        gap: 25px; /* فاصله بین آیکون‌ها */
+        gap: 25px; 
       }
 
       .header-icons img {
         width: 40px;
         cursor: pointer;
-        filter: invert(0); /* عکس‌های سیاه را سفید می‌کند */
+        filter: invert(0); 
       }
 
-      /* 1. تنظیم کادر اصلی */
+      
       .hero-logo-section {
-        height: 75vh; /* ارتفاع ثابت */
+        height: 75vh; 
         display: flex;
         justify-content: center;
         align-items: center;
@@ -157,11 +165,11 @@
         margin: 0 auto 0 auto;
         position: relative;
         padding: 40px;
-        /* اضافه کردن overflow برای اطمینان بیشتر */
+        
         overflow: hidden;
       }
 
-      /* خط چین دور باکس لوگو */
+      
       .hero-logo-section::before {
         content: "";
         position: absolute;
@@ -173,27 +181,25 @@
         pointer-events: none;
       }
 
-      /* 2. تنظیم کادر دربرگیرنده عکس */
       .main-logo-text {
         width: 100%;
-        height: 100%; /* حتما باید ارتفاع ۱۰۰٪ باشد تا فضای والد را بشناسد */
+        height: 100%; 
         display: flex;
         justify-content: center;
         align-items: center;
       }
 
-      /* 3. اصلاح استایل خود عکس (مهم‌ترین بخش) */
       .main-logo-text img {
-        width: auto; /* عرض را اتوماتیک بگذارید */
-        height: auto; /* ارتفاع را اتوماتیک بگذارید */
-        max-width: 100%; /* عرض از کادر بیشتر نشود */
-        max-height: 100%; /* ارتفاع از کادر بیشتر نشود (این خط مشکل را حل می‌کند) */
-        object-fit: contain; /* عکس را درون کادر فیت می‌کند بدون دفرمه شدن */
+        width: auto; 
+        height: auto; 
+        max-width: 100%; 
+        max-height: 100%; 
+        object-fit: contain; 
       }
 
-      /* کانتینر عکس‌ها (سمت چپ) */
+      
       .intro-image {
-        flex: 1; /* این عنصر نصف فضای موجود را اشغال کند */
+        flex: 1; 
         position: relative;
         height: 500px;
         display: flex;
@@ -201,35 +207,33 @@
         align-items: center;
       }
 
-      /* استایل عمومی برای تصاویر روی هم افتاده */
+      
       .intro-image img {
-        position: absolute; /* برای قرار گرفتن تصاویر روی هم */
+        position: absolute; 
         width: 50%;
         border-radius: 0px;
-        /* box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.5); */
+        
         transition: 0.3s;
       }
 
-      /* عکس پشتی (سایه دار و کم رنگ) */
       .intro-img-back {
         top: 0;
-        right: 10%; /* موقعیت دهی نسبت به والد (intro-image) */
-        z-index: 2; /* ترتیب قرارگیری (زیر عکس جلو) */
+        right: 10%; 
+        z-index: 2; 
         opacity: 0.6;
         transform: scale(0.9);
       }
 
-      /* عکس جلویی (اصلی) */
+      
       .intro-img-front {
         top: 50px;
-        right: 30%; /* موقعیت دهی نسبت به والد (intro-image) */
-        z-index: 1; /* ترتیب قرارگیری (بالای عکس پشت) */
-        /* border: 1px solid rgba(255, 255, 255, 0.1); */
+        right: 30%; 
+        z-index: 1; 
+        
       }
 
-      /* کانتینر متن (سمت راست) */
       .intro-content {
-        flex: 1; /* این عنصر نصف فضای موجود را اشغال کند */
+        flex: 1; 
         text-align: right;
       }
 
@@ -240,12 +244,11 @@
       }
 
       .intro-content p {
-        color: var(--accent-color); /* استفاده از رنگ طوسی روشن */
+        color: var(--accent-color); 
         font-size: 0.95rem;
         margin-bottom: 12px;
       }
 
-      /* --- Services (Image 6 - بخش خدمات) --- */
       .services-section {
         padding: 50px 0;
         text-align: center;
@@ -254,10 +257,10 @@
       .services-grid {
         display: flex;
         justify-content: center;
-        gap: 75px; /* فاصله بین آیتم‌های خدمات */
+        gap: 75px; 
         margin-top: 100px;
-        /* flex-wrap: wrap; */
-        /* برای رفتن آیتم‌ها به خط بعدی در موبایل */
+        
+        
       }
 
       .service-item {
@@ -265,7 +268,7 @@
       }
 
       .service-item i {
-        font-size: 3.5rem; /* اندازه آیکون */
+        font-size: 3.5rem; 
         margin-bottom: 25px;
         color: white;
       }
@@ -275,7 +278,7 @@
         font-size: 1.1rem;
       }
 
-      /* --- Portfolio 1: Logos (Image 3 - بخش گالری لوگو) --- */
+      
       .portfolio-section {
         padding: 80px 0;
       }
@@ -285,9 +288,77 @@
         gap: 40px;
         align-items: flex-start;
       }
+      
+      .portfolio-nav-linear {
+       display: flex;
+       align-items: center;
+       justify-content: flex-start; 
+       gap: 20px;
+       margin-top: 30px;
+       margin-bottom: 20px;
+       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+       padding-bottom: 20px;
+       position: relative;
+      } 
+
+      .nav-btn {
+       background: transparent;
+       border: 1px solid rgba(255, 255, 255, 0.2);
+       color: #fff;
+       width: 40px;
+       height: 40px;
+       border-radius: 50%;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       cursor: pointer;
+       transition: all 0.3s ease;
+      }
+
+      .nav-btn:hover {
+       background-color: #fff;
+       color: var(--bg-color);
+       border-color: #fff;
+      }
+
+      .progress-container {
+       display: flex;
+       align-items: center;
+       gap: 15px;
+       flex-grow: 1; 
+       max-width: 200px; 
+      }
+
+      .current-num, .total-num {
+       font-family: "pixel_font", sans-serif; 
+       font-size: 1.1rem;
+      }
+
+      .total-num {
+       color: var(--accent-color);
+       font-size: 0.9rem;
+      }
+
+      
+      .progress-bar {
+       flex-grow: 1;
+       height: 2px;
+       background-color: rgba(255, 255, 255, 0.1);
+       position: relative;
+      }
+
+      .progress-fill {
+       position: absolute;
+       top: 0;
+       right: 0; 
+       height: 100%;
+       background-color: #fff;
+       width: 0%; 
+       transition: width 0.4s ease;
+      }
 
       .portfolio-left-col {
-        flex: 1.2; /* ستون چپ کمی بزرگتر باشد (حدود 55%) */
+        flex: 1.2; 
       }
       .large-preview-img {
         width: 100%;
@@ -296,12 +367,11 @@
       }
 
       .portfolio-right-col {
-        flex: 1; /* ستون راست کمی کوچکتر باشد (حدود 45%) */
+        flex: 1; 
         display: flex;
         flex-direction: column;
       }
 
-      /* ردیف تصاویر بندانگشتی (Thumbnail) */
       .thumbnails-row {
         display: flex;
         gap: 15px;
@@ -309,18 +379,18 @@
       }
 
       .thumb-card {
-        flex: 1; /* هر تصویر بندانگشتی به طور مساوی فضا اشغال کند */
-        aspect-ratio: 1/1; /* مربع بودن تصاویر (عرض و ارتفاع یکسان) */
+        flex: 1; 
+        aspect-ratio: 1/1; 
         background: #333;
         border-radius: 10px;
         overflow: hidden;
         cursor: pointer;
-        opacity: 0.6; /* کم رنگ بودن حالت عادی */
+        opacity: 0.6; 
         transition: 0.3s;
       }
       .thumb-card.active,
       .thumb-card:hover {
-        opacity: 1; /* پررنگ شدن در حالت فعال یا هاور */
+        opacity: 1; 
         border: 2px solid var(--accent-color);
       }
       .thumb-card img {
@@ -329,15 +399,7 @@
         object-fit: cover;
       }
 
-      /* کنترل دایره‌ای (نقطه) اسلایدشو */
-      /* .portfolio-nav-dots {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        margin-bottom: 30px;
-        color: white;
-      } */
+      
 
       .portfolio-text-content {
         text-align: right;
@@ -354,10 +416,9 @@
         margin-bottom: 8px;
       }
 
-      /* --- Portfolio 2: Motion (Image 4 - بخش موشن گرافی) --- */
       .motion-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* سه ستون مساوی */
+        grid-template-columns: repeat(3, 1fr); 
         gap: 20px;
         margin-top: 40px;
       }
@@ -372,17 +433,10 @@
       }
 
       .motion-description {
-        margin-top: 20px;
+        margin-top: 50px;
         text-align: right;
       }
-      .motion-description h4 {
-        font-size: 1.2rem;
-        margin-bottom: 10px;
-      }
-      .motion-description p {
-        font-size: 0.8rem;
-        color: var(--accent-color);
-      }
+      
       .read-more-link {
         display: inline-flex;
         align-items: center;
@@ -393,7 +447,6 @@
         padding-bottom: 5px;
       }
 
-      /* --- Video Section (Image 5 - بخش پخش ویدیو) --- */
       .video-wrapper {
         border: 1px solid rgba(255, 255, 255, 0.1);
         display: flex;
@@ -401,34 +454,45 @@
         margin: 60px 0;
       }
 
-      /* ستون متن توضیحات ویدیو (راست) */
+      
       .video-text-col {
-        flex: 1; /* یک بخش از فضا */
+        flex: 1; 
         padding: 40px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        border-left: 1px solid rgba(255, 255, 255, 0.1); /* جداکننده عمودی */
+        border-left: 1px solid rgba(255, 255, 255, 0.1); 
       }
 
-      /* ستون پخش کننده ویدیو (چپ) */
-      .video-player-col {
-        flex: 1.15; /* ۱.۵ بخش از فضا (بزرگ‌تر از ستون متن) */
-        position: relative;
+      
+      /* --- ویرایش بخش ویدیو پلیر --- */
+     .video-player-col {
+        flex: 1.15;
+        position: relative; /* برای اینکه فرزند ابسولوت نسبت به این تنظیم شود */
         background: #222;
         min-height: 350px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        /* display flex و align-items را حذف کردیم تا ویدیو آزادانه فضا را پر کند */
         overflow: hidden;
       }
-      .video-player-col img {
+      /* این کلاس توسط Plyr ساخته می‌شود. ما آن را مجبور می‌کنیم کل فضا را بگیرد */
+      .video-player-col .plyr {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+      }
+      /* تنظیم خود تگ ویدیو برای اینکه فیت شود و دفرمه نشود */
+      .video-player-col video {
+        object-fit: cover; /* ویدیو کراپ می‌شود تا فضا را پر کند */
         width: 100%;
         height: 100%;
-        object-fit: cover;
-        opacity: 0.6;
       }
-      /* آیکون پخش (Play) */
+      /* اطمینان از اینکه کاور ویدیو هم فیت می‌شود */
+      .plyr__poster {
+        background-size: cover !important;
+      }
+      
       .play-icon {
         position: absolute;
         font-size: 4rem;
@@ -440,10 +504,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-left: 5px; /* کمی شیفت برای وسط چین شدن مثلث */
+        padding-left: 5px; 
       }
 
-      /* --- Team & About (Images 7 & 9 - درباره ما) --- */
       .about-large {
         padding: 80px 20px;
         text-align: center;
@@ -459,7 +522,7 @@
         color: var(--accent-color);
       }
 
-      /* دایره‌های آواتار تیم */
+      
       .team-avatars {
         display: flex;
         justify-content: center;
@@ -472,58 +535,107 @@
         background: #ccc;
         border-radius: 50%;
       }
+      .team-imges ul {
+       display: flex;
+       flex-wrap: wrap;   /* آیتم‌ها در خط بعدی ادامه پیدا کنند */
+       gap: 10px;
+       list-style: none;
+       padding: 0;
+       margin: 0;
+       justify-content: center;
+      }
 
-      /* --- Footer (Image 10 - بخش پایانی) --- */
+      .team-imges li {
+       display: flex;              /* فعال کردن Flexbox روی هر li */
+       justify-content: center;    /* وسط‌چین افقی */
+       align-items: center;        /* وسط‌چین عمودی */
+       width: 120px;               /* عرض ثابت برای هر آیتم */
+       height: 120px;              /* ارتفاع ثابت برای هر آیتم */
+       background: #f5f5f5;        /* رنگ پس‌زمینه برای تست */
+       border-radius: 8px;
+      }
+
+      .team-imges img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       border-radius: 8px;
+     }
+
+
+
+      
       footer {
-        background: #020d18; /* پس‌زمینه کمی تیره‌تر از بدنه */
+        position: relative; /* برای اینکه لایه عکس نسبت به فوتر تنظیم شود */
+        background-color: #002246; /* رنگ پس‌زمینه اصلی (زیر عکس) */
         padding: 60px 0;
         text-align: center;
         margin-top: 80px;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
+        overflow: hidden; /* جلوگیری از بیرون زدن عکس */
       }
 
-      .footer-nav {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        padding: 20px 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        width: fit-content; /* عرض را به اندازه محتوا تنظیم می‌کند */
-        margin: 20px auto;
+      /* --- تنظیمات کاور و اوپاسیتی --- */
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        
+        /* آدرس عکس کاور خود را اینجا قرار دهید */
+        background-image: url('assets/images/cover-fotter/cover-fotter.png'); 
+        
+        background-size: cover;
+        background-position: center;
+        
+        /* میزان شفافیت عکس (بین 0 تا 1) */
+        opacity: 0.80; 
+        
+        /* (اختیاری) سیاه و سفید کردن عکس برای هماهنگی با تم */
+        filter: grayscale(100%); 
+        
+        z-index: 0; /* عکس برود زیر متن */
       }
 
-      /* --- ریسپانسیو (Responsive Design) - استایل‌های مخصوص موبایل و تبلت --- */
+      /* --- تنظیم متن‌ها برای اینکه روی عکس قرار بگیرند --- */
+      footer .container {
+        position: relative;
+        z-index: 1; /* متن بیاید روی عکس */
+      }
+
+      
       @media (max-width: 768px) {
-        /* وقتی عرض صفحه کمتر از 768 پیکسل باشد (موبایل و تبلت)، استایل‌های زیر اعمال می‌شوند */
+        
 
-        /* تغییر جهت نمایش بخش معرفی (عکس و متن) */
+        
         .intro-section {
-          flex-direction: column-reverse; /* جهت ستون‌ها را برعکس می‌کند: عکس بالا، متن پایین */
+          flex-direction: column-reverse; 
           text-align: center;
         }
         .intro-content {
           text-align: center;
         }
-        /* وسط چین کردن تیتر "خاص ترین ما" در موبایل */
+        
         .section-title.right-align {
           text-align: center;
         }
         .section-title.right-align::before,
         .section-title.right-align::after {
-          margin: 15px auto; /* خطوط دوباره وسط چین شوند */
+          margin: 15px auto; 
         }
 
         .intro-image {
           flex: 1;
           position: relative;
-          /* ارتفاع را از عدد ثابت خارج کنید یا min-height بدهید */
+          
           min-height: 500px;
           height: 350px;
           width: 100%;
           margin-bottom: 30px;
         }
-        /* تنظیم موقعیت تصاویر روی هم در موبایل */
+        
         .intro-img-back {
           right: 5%;
         }
@@ -531,28 +643,28 @@
           right: 15%;
         }
 
-        /* ستون‌بندی دو ستونی در موبایل به تک ستون تغییر کند */
+        
         .portfolio-layout-v1,
         .video-wrapper {
           flex-direction: column;
         }
         .video-text-col {
-          border-left: none; /* حذف جداکننده عمودی در موبایل */
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* افزودن جداکننده افقی */
+          border-left: none; 
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
         }
 
         .motion-grid {
-          grid-template-columns: 1fr; /* گرید ۳ ستونه به ۱ ستون تغییر کند */
+          grid-template-columns: 1fr; 
         }
         .header-icons img {
           width: 20px;
         }
-        /* اضافه کردن فاصله از طرفین در موبایل */
+        
         .container {
           padding: 0 15px;
         }
 
-        /* تنظیم سایز فونت تیترها در موبایل */
+        
         .section-title h2 {
           font-size: 1.3rem;
         }
@@ -561,13 +673,13 @@
           font-size: 1.5rem;
         }
 
-        /* جلوگیری از اسکرول افقی ناخواسته */
+        
         body {
           width: 100%;
           overflow-x: hidden;
         }
 
-        /* اصلاح ارتفاع هدر لوگو در موبایل */
+        
         .hero-logo-section {
           height: 60vh;
           padding: 20px;
@@ -685,21 +797,22 @@
               </div>
             </div>
 
-            <div class="portfolio-nav-dots">
-              <div class="b2c-2025-activation__footer b2c-2025-activation__footer--show">
-                   <div class="swiper-button-prev b2c-2025-activation__footer__nav swiper-button-disabled" 
-                    tabindex="-1" role="button" aria-label="Previous slide">
-                <span class="icon icon-explora-arrow"></span>
-                  </div>
-    
-               <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
-               </div>
-    
-               <div class="swiper-button-next b2c-2025-activation__footer__nav" 
-                 tabindex="0" role="button" aria-label="Next slide">
-                <span class="icon icon-explora-arrow"></span>
-               </div>
-             </div>
+            <div class="portfolio-nav-linear">
+              <button class="nav-btn" id="prevBtn">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            
+              <div class="progress-container">
+                <span class="current-num" id="currentSlideNum">01</span>
+                <div class="progress-bar">
+                  <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="total-num" id="totalSlideNum">04</span>
+              </div>
+            
+              <button class="nav-btn" id="nextBtn">
+                <i class="fas fa-chevron-left"></i>
+              </button>
             </div>
 
             <div class="portfolio-text-content">
@@ -721,20 +834,10 @@
         </div>
 
         <div class="motion-grid">
-          <div class="motion-item">
-            <div
-              style="
-                background: #333;
-                height: 450px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #fff;
-              "
-            >
-              [Car Detail]
+          <div  class="motion-item">
+            <div class="motion-cover1">
+              <img  src="assets/icons/poster-motien2.jpg" alt="poster-motion1">
             </div>
-
             <div class="motion-description">
               <h4>موشن پورش</h4>
               <p>توضیحات بسیار مختصر در مورد موشن</p>
@@ -744,33 +847,32 @@
               </a>
             </div>
           </div>
-          <div class="motion-item">
-            <div
-              style="
-                background: #550000;
-                height: 350px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #fff;
-              "
-            >
-              [Porsche Img 1]
+          <div class="motion-item" >
+            <div class="motion-cover"2>
+              <img src="assets/images/poter-motien.jpg" alt="poster-motion2">
+            </div>
+            <div class="motion-description">
+              <h4>موشن پورش</h4>
+              <p>توضیحات بسیار مختصر در مورد موشن</p>
+              <p>از چه تکنولوژی هایی در آن استفاده شده</p>
+              <a href="#" class="read-more-link">
+                ادامه توضیحات <i class="fas fa-angle-left"></i>
+              </a>
             </div>
           </div>
-          <div class="motion-item">
-            <div
-              style="
-                background: #003366;
-                height: 250px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #fff;
-              "
-            >
-              [Porsche Vector]
+          <div class="motion-item" >
+            <div class="motion-cover"3>
+              <img src="assets/icons/poster-motien3.jpg" alt="poster-motion3">
             </div>
+            <div class="motion-description">
+              <h4>موشن پورش</h4>
+              <p>توضیحات بسیار مختصر در مورد موشن</p>
+              <p>از چه تکنولوژی هایی در آن استفاده شده</p>
+              <a href="#" class="read-more-link">
+                ادامه توضیحات <i class="fas fa-angle-left"></i>
+              </a>
+            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -790,40 +892,26 @@
           <p>و همیشه در دسترس شما قرار دهیم...</p>
         </div>
         <div class="video-player-col">
-          <img
-            src="assets/images/car-video-cover.jpg"
-            alt="video cover"
-            onerror="this.style.display='none'"
-          />
-          <div class="play-icon">
-            <i class="fas fa-play"></i>
+            <video class="play" id="player" playsinline controls data-poster="assets/images/logo-mofidyadak.jpg">
+              <source src="assets/videos/tamrin1.mp4" type="video/mp4" />
+            </video>
           </div>
-          <div
-            style="
-              position: absolute;
-              bottom: 20px;
-              left: 20px;
-              right: 20px;
-              height: 3px;
-              background: rgba(255, 255, 255, 0.5);
-            "
-          >
-            <div style="width: 40%; height: 100%; background: #fff"></div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <section class="about-large">
+   <section class="about-large">
       <div class="container">
         <h1>آژانس خلاقیت یازده، جایی که ایده ها جان میگیرن</h1>
         <p>
           افتخار آشنایی با تیم قوی و خلاق رو داشتم. افتخار آشنایی با تیمی که
           نظم، دیسیپلین و حرفه‌ای بودن رو برای من دوباره به تصویر کشیدن...
+          <span id="more-text" style="display: none;">
+            این ادامه متنی است که قرار است نمایش داده شود. ما در یازده تلاش می‌کنیم تا بهترین کیفیت را ارائه دهیم. خلاقیت مرز ندارد و ما در کنار شما هستیم تا ایده‌هایتان را به واقعیت تبدیل کنیم.
+          </span>
         </p>
-        <div style="margin-top: 30px; opacity: 0.7">
-          نمایش بیشتر <br />
-          <i class="fas fa-angle-down"></i>
+        <div id="read-more-btn" style="margin-top: 30px; opacity: 0.7; cursor: pointer;">
+          <span id="btn-text">نمایش بیشتر</span> <br />
+          <i id="btn-icon" class="fas fa-angle-down"></i>
         </div>
       </div>
     </section>
@@ -831,17 +919,52 @@
     <section class="team-section" style="text-align: center; padding: 60px 0">
       <div class="container">
         <div class="section-title">
-          <h2 class="text-titel-font-pixel">با تیم خلاق یازده آشنا شو</h2>
+          <h2  class="text-titel-font-pixel">با تیم خلاق یازده آشنا شو</h2>
         </div>
-        <div class="team-avatars">
-          <div class="avatar-circle"></div>
-          <div class="avatar-circle"></div>
-          <div class="avatar-circle"></div>
-          <div class="avatar-circle"></div>
-          <div class="avatar-circle"></div>
-          <div class="avatar-circle"></div>
-          <div class="avatar-circle"></div>
-        </div>
+       
+          <div class="team-imges" >
+            
+            <ul>
+              <li>
+               <img src="assets/images/Team/1.jpg" alt="">
+              </li>
+              <li>
+               <img src="assets/images/Team/2.jpg" alt="">
+              </li>
+              <li>
+               <img src="assets/images/Team/3.jpg" alt="">
+              </li>
+              <li>
+               <img src="assets/images/Team/4.jpg" alt="">
+              </li>
+              <li>
+               <img src="assets/images/Team/5.jpg" alt="">
+              </li>
+              <li>
+               <img src="assets/images/Team/6.jpg" alt="">
+              </li>
+              <li>
+               <img src="assets/images/Team/7.jpg" alt="">
+              </li>
+              <li>
+               <img src="assets/images/Team/8.jpg" alt="">
+              </li>
+              <li>
+               <img src="assets/images/Team/9.jpg" alt="">
+              </li>
+              <li>
+               <img src="assets/images/Team/10.jpg" alt="">
+              </li>
+              <li>
+               <img src="assets/images/Team/11.jpg" alt="">
+              </li>
+              
+           
+            </ul>
+            
+          </div>
+          
+        
         <a href="#" class="btn-outline">درباره ما</a>
       </div>
     </section>
@@ -851,34 +974,39 @@
         <div class="section-title">
           <h2 style="font-family: pixel_font">نظرات مشتریان یازده</h2>
         </div>
-        <div
-          style="
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: right;
-          "
-        >
-          <h3>محمد کریم آبادی</h3>
-          <p style="color: var(--accent-color); margin-top: 10px">
-            افتخار آشنایی با تیم قوی و خلاق رو داشتم که نظم، دیسیپلین و حرفه ای
-            بودن رو برای من دوباره به تصویر کشیدن
-          </p>
-          <div
-            style="
-              display: flex;
-              justify-content: center;
-              gap: 20px;
-              margin-top: 30px;
-              font-size: 1.5rem;
-            "
-          >
-            <i class="fas fa-angle-right" style="cursor: pointer"></i>
-            <i class="far fa-circle" style="font-size: 1rem"></i>
-            <i class="fas fa-angle-left" style="cursor: pointer"></i>
-          </div>
-        </div>
+        <div class="Customer-reviews"
+  style="
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: right;
+  ">
+  
+  <h3 id="review-name">محمد کریم آبادی</h3>
+  
+  <p id="review-text" style="color: var(--accent-color); margin-top: 10px; min-height: 80px;">
+    افتخار آشنایی با تیم قوی و خلاق رو داشتم که نظم، دیسیپلین و حرفه ای
+    بودن رو برای من دوباره به تصویر کشیدن
+  </p>
+
+  <div
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+      font-size: 1.5rem;
+    "
+  >
+    <i id="review-prev" class="fas fa-angle-right" style="cursor: pointer"></i>
+    
+    <i class="far fa-circle" style="font-size: 1rem; opacity: 0.5;"></i>
+    
+    <i id="review-next" class="fas fa-angle-left" style="cursor: pointer"></i>
+  </div>
+</div>
       </div>
     </section>
 
@@ -907,6 +1035,4 @@
     </footer>
     <script src="js/script.js"></script>
 </body>
-</html>
-  </body>
 </html>

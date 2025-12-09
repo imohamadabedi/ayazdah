@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>آژانس خلاقیت یازده</title>
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --bg-color: #011627; /* سرمه‌ای تیره */
+        --text-color: #ffffff;
+        --accent-color: #8892b0; /* طوسی/آبی روشن */
+        --border-color: #1d3557;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        overflow-x: hidden;
+        line-height: 1.8;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* --- ابزارهای عمومی --- */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* استایل عمومی تیترها (وسط چین) */
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        position: relative;
+        padding-top: 20px;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 2px;
+        background: var(--accent-color); /* رنگ خط روشن‌تر شد */
+        margin: 15px auto; /* در حالت پیشفرض وسط باشد */
+      }
+
+      .section-title h2 {
+        font-size: 1.6rem;
+        font-weight: 400;
+        margin: 0;
+      }
+
+      /* استایل مخصوص تیترهای راست‌چین (مثل "خاص ترین ما") */
+      .section-title {
+        text-align: center;
+      }
+      .section-title.right-align::before,
+      .section-title.right-align::after {
+        text-align: center;
+        margin: 15px 0; /* حذف margin auto برای راست‌چین شدن خط‌ها */
+      }
+
+      .btn-outline {
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 10px 30px;
+        color: white;
+        transition: 0.3s;
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 0.9rem;
+      }
+
+      .btn-outline:hover {
+        background: white;
+        color: var(--bg-color);
+      }
+
+      /* --- Header (Image 1) --- */
+      header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 30px 40px;
+      }
+
+      .header-right-icons {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .header-icons img {
+        width: 24px;
+        cursor: pointer;
+      }
+
+      /* Hamburger Menu Styles */
+      #menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(1, 22, 39, 0.7); /* پس زمینه تیره شفاف */
+        backdrop-filter: blur(10px); /* افکت شیشه‌ای */
+        z-index: 1000;
+        display: none; /* پیش‌فرض مخفی */
+        justify-content: center;
+        align-items: center;
+      }
+
+      .menu-content {
+        background-color: rgba(1, 22, 39, 0.8);
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+        text-align: center;
+      }
+
+      .menu-content ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .menu-content li {
+        margin-bottom: 20px;
+      }
+
+      .menu-content a {
+        color: var(--text-color);
+        font-size: 1.8rem;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .menu-content a:hover {
+        color: var(--accent-color);
+      }
+
+      /* --- Hero Logo Section --- */
+      .hero-logo-section {
+        height: 75vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 450px;
+        margin: 0 auto 60px auto;
+        position: relative;
+        padding: 40px;
+      }
+
+      .hero-logo-section::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        bottom: -5px;
+        left: -5px;
+        right: -5px;
+        border: 1px dashed rgba(255, 255, 255, 0.15);
+        pointer-events: none;
+      }
+
+      .main-logo-text img {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      /* --- Intro/Special (Image 2) --- */
+      .intro-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 80px 20px;
+        gap: 50px;
+        /* در حالت RTL، آیتم اول سمت راست قرار می‌گیرد */
+      }
+
+      .intro-image {
+        flex: 1;
+        position: relative;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .intro-image img {
+        position: absolute;
+        width: 60%;
+        border-radius: 20px;
+        box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.5);
+        transition: 0.3s;
+      }
+
+      .intro-img-back {
+        top: 0;
+        right: 10%;
+        z-index: 1;
+        opacity: 0.6;
+        transform: scale(0.9);
+      }
+
+      .intro-img-front {
+        top: 50px;
+        right: 30%;
+        z-index: 2;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .intro-content {
+        flex: 1;
+        text-align: right;
+      }
+
+      .intro-content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+        font-weight: 300;
+      }
+
+      .intro-content p {
+        color: var(--accent-color);
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+      }
+
+      /* --- Services (Image 6) --- */
+      .services-section {
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .services-grid {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        margin-top: 60px;
+        flex-wrap: wrap;
+      }
+
+      .service-item {
+        width: 200px;
+      }
+
+      .service-item i {
+        font-size: 3.5rem;
+        margin-bottom: 25px;
+        color: white;
+      }
+
+      .service-item h4 {
+        font-weight: 300;
+        font-size: 1.1rem;
+      }
+
+      /* --- Portfolio 1: Logos (Image 3) --- */
+      .portfolio-section {
+        padding: 80px 0;
+      }
+
+      .portfolio-layout-v1 {
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+      }
+
+      .portfolio-left-col {
+        flex: 1.2;
+      }
+      .large-preview-img {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .portfolio-right-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .thumbnails-row {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .thumb-card {
+        flex: 1;
+        aspect-ratio: 1/1;
+        background: #333;
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: 0.3s;
+      }
+      .thumb-card.active,
+      .thumb-card:hover {
+        opacity: 1;
+        border: 2px solid var(--accent-color);
+      }
+      .thumb-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .portfolio-nav-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 30px;
+        color: white;
+      }
+
+      .portfolio-text-content {
+        text-align: right;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+      }
+      .portfolio-text-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+      .portfolio-text-content p {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+
+      /* --- Portfolio 2: Motion (Image 4) --- */
+      .motion-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 40px;
+      }
+
+      .motion-item {
+        position: relative;
+      }
+
+      .motion-item img {
+        width: 100%;
+        border-radius: 0;
+      }
+
+      .motion-description {
+        margin-top: 20px;
+        text-align: right;
+      }
+      .motion-description h4 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+      .motion-description p {
+        font-size: 0.8rem;
+        color: var(--accent-color);
+      }
+      .read-more-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 15px;
+        font-size: 0.9rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 5px;
+      }
+
+      /* --- Video Section (Image 5) --- */
+      .video-wrapper {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        padding: 0;
+        margin: 60px 0;
+      }
+
+      .video-text-col {
+        flex: 1;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .video-player-col {
+        flex: 1.5;
+        position: relative;
+        background: #222;
+        min-height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .video-player-col img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.6;
+      }
+      .play-icon {
+        position: absolute;
+        font-size: 4rem;
+        color: rgba(255, 255, 255, 0.8);
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 5px;
+      }
+
+      /* --- Team & About (Images 7 & 9) --- */
+      .about-large {
+        padding: 80px 20px;
+        text-align: center;
+      }
+      .about-large h1 {
+        font-size: 2.2rem;
+        margin-bottom: 30px;
+        font-weight: 300;
+      }
+      .about-large p {
+        max-width: 800px;
+        margin: 0 auto;
+        color: var(--accent-color);
+      }
+
+      .team-avatars {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        margin: 50px 0;
+      }
+      .avatar-circle {
+        width: 80px;
+        height: 80px;
+        background: #ccc;
+        border-radius: 50%;
+      }
+
+      /* --- Footer (Image 10) --- */
+      footer {
+        background: #020d18;
+        padding: 60px 0;
+        text-align: center;
+        margin-top: 80px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .footer-nav {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding: 20px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        width: fit-content;
+        margin: 20px auto;
+      }
+
+      /* --- ریسپانسیو --- */
+      @media (max-width: 768px) {
+        /* در موبایل ترتیب برعکس می‌شود تا عکس بالا بیاید */
+        .intro-section {
+          flex-direction: column-reverse;
+          text-align: center;
+        }
+        .intro-content {
+          text-align: center;
+        }
+        /* .section-title.right-align {
+          text-align: center;
+        }
+        .section-title.right-align::before,
+        .section-title.right-align::after {
+          margin: 15px auto;
+        } */
+
+        .intro-image {
+          height: 350px;
+          width: 100%;
+          margin-bottom: 30px;
+        }
+        .intro-img-back {
+          right: 5%;
+        }
+        .intro-img-front {
+          right: 15%;
+        }
+
+        .portfolio-layout-v1,
+        .video-wrapper {
+          flex-direction: column;
+        }
+        .video-text-col {
+          border-left: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .motion-grid {
+          grid-template-columns: 1fr;
+        }
+        .header-icons img {
+          width: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-right-icons">
+        <div class="header-icons">
+          <img src="assets/icons/menu.png" alt="menu" />
+        </div>
+        <div class="header-icons">
+          <img src="assets/icons/telephone 1.png" alt="phone" />
+        </div>
+      </div>
+    </header>
+
+    <!-- Hamburger Menu Overlay -->
+    <div id="menu-overlay">
+      <nav class="menu-content">
+        <ul>
+          <li><a href="#hero-logo-section">خانه</a></li>
+          <li><a href="#intro-section">درباره ما</a></li>
+          <li><a href="#services-section">خدمات</a></li>
+          <li><a href="#portfolio-section">نمونه کارها</a></li>
+          <li><a href="#contact-section">تماس با ما</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <section class="container">
+      <div class="hero-logo-section">
+        <div class="main-logo-text">
+          <img src="assets/icons/taypo.png" alt="یازده" />
+        </div>
+      </div>
+    </section>
+
+    <section class="container intro-section">
+      <div class="intro-content">
+        <div class="section-title">
+          <h2>خاص ترین ما</h2>
+        </div>
+        <h3>متن تست توضیحات لوگو</h3>
+        <p>توضیحات مختصر در مورد ویژگی‌های بصری لوگو</p>
+        <p>از چه ریشه‌هایی این لوگو گرفته شده</p>
+        <p>چه پیامی رو به مخاطب منتقل میکنه</p>
+        <p>خالق این اثر چه کسی بوده و...</p>
+        <a href="#" class="btn-outline">بیشتر بخوانید</a>
+      </div>
+
+      <div class="intro-image">
+        <img
+          src="assets/images/img-test-logo2-visual-identitiy.png"
+          class="intro-img-back"
+          alt="back"
+        />
+        <img
+          src="assets/images/img-test-logo1-visual-identitiy.png"
+          class="intro-img-front"
+          alt="front"
+        />
+      </div>
+    </section>
+
+    <section class="services-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>خدمات یازده</h2>
+        </div>
+        <div class="services-grid">
+          <div class="service-item">
+            <i class="fas fa-paint-brush"></i>
+            <h4>پروژه طراحی</h4>
+          </div>
+          <div class="service-item">
+            <i class="fas fa-film"></i>
+            <h4>تدوین ها</h4>
+          </div>
+          <div class="service-item">
+            <i class="fas fa-photo-video"></i>
+            <h4>پروژه موشن گرافی</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>ایده هایی که به دست ما خلق شدن</h2>
+        </div>
+
+        <div class="portfolio-layout-v1">
+          <div class="portfolio-left-col">
+            <img
+              src="assets/images/logo-zarin.jpg"
+              alt="زرین"
+              class="large-preview-img"
+            />
+          </div>
+
+          <div class="portfolio-right-col">
+            <div class="thumbnails-row">
+              <div class="thumb-card active">
+                <img src="assets/portfolio-image-1.png" />
+              </div>
+              <div class="thumb-card">
+                <img src="assets/portfolio-image-2.png" />
+              </div>
+              <div class="thumb-card">
+                <img src="assets/portfolio-image-3.png" />
+              </div>
+              <div class="thumb-card">
+                <img src="assets/portfolio-image-4.png" />
+              </div>
+            </div>
+
+            <div class="portfolio-nav-dots">
+              <i class="fas fa-angle-right"></i>
+              <i
+                class="far fa-circle"
+                style="font-size: 0.5rem; background: white; border-radius: 50%"
+              ></i>
+              <i class="fas fa-circle" style="font-size: 0.8rem"></i>
+              <i
+                class="far fa-circle"
+                style="font-size: 0.5rem; background: white; border-radius: 50%"
+              ></i>
+              <i class="fas fa-angle-left"></i>
+            </div>
+
+            <div class="portfolio-text-content">
+              <h3>نام لوگو</h3>
+              <p>متن توضیحات در مورد لوگویی که در کادر قرار گرفته</p>
+              <p>چه تیمی این لوگو رو ساخته</p>
+              <p>از چه چیزهایی ایده گرفته شده</p>
+              <p>و پیام این لوگو ی ما چیه</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>موشن های خلق شده ی ما</h2>
+        </div>
+
+        <div class="motion-grid">
+          <div class="motion-item">
+            <div
+              style="
+                background: #550000;
+                height: 250px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+              "
+            >
+              [Porsche Img 1]
+            </div>
+          </div>
+          <div class="motion-item">
+            <div
+              style="
+                background: #003366;
+                height: 250px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+              "
+            >
+              [Porsche Vector]
+            </div>
+          </div>
+          <div class="motion-item">
+            <div
+              style="
+                background: #333;
+                height: 250px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+              "
+            >
+              [Car Detail]
+            </div>
+
+            <div class="motion-description">
+              <h4>موشن پورش</h4>
+              <p>توضیحات بسیار مختصر در مورد موشن</p>
+              <p>از چه تکنولوژی هایی در آن استفاده شده</p>
+              <a href="#" class="read-more-link">
+                ادامه توضیحات <i class="fas fa-angle-left"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="section-title">
+        <h2>پروژه ی منتخب</h2>
+      </div>
+      <div class="video-wrapper">
+        <div class="video-text-col">
+          <h3>توضیحات ویدیو ادیت</h3>
+          <p>
+            در کادر زیر هر متنی را که دوست دارید تایپ کنید تا ما آن را برایتان
+            نگه داریم...
+          </p>
+          <p>و همیشه در دسترس شما قرار دهیم...</p>
+        </div>
+        <div class="video-player-col">
+          <img
+            src="assets/images/car-video-cover.jpg"
+            alt="video cover"
+            onerror="this.style.display='none'"
+          />
+          <div class="play-icon">
+            <i class="fas fa-play"></i>
+          </div>
+          <div
+            style="
+              position: absolute;
+              bottom: 20px;
+              left: 20px;
+              right: 20px;
+              height: 3px;
+              background: rgba(255, 255, 255, 0.5);
+            "
+          >
+            <div style="width: 40%; height: 100%; background: #fff"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-large">
+      <div class="container">
+        <h1>آژانس خلاقیت یازده، جایی که ایده ها جان میگیرن</h1>
+        <p>
+          افتخار آشنایی با تیم قوی و خلاق رو داشتم. افتخار آشنایی با تیمی که
+          نظم، دیسیپلین و حرفه‌ای بودن رو برای من دوباره به تصویر کشیدن...
+        </p>
+        <div style="margin-top: 30px; opacity: 0.7">
+          نمایش بیشتر <br />
+          <i class="fas fa-angle-down"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section" style="text-align: center; padding: 60px 0">
+      <div class="container">
+        <div class="section-title">
+          <h2>با تیم خلاق یازده آشنا شو</h2>
+        </div>
+        <div class="team-avatars">
+          <div class="avatar-circle"></div>
+          <div class="avatar-circle"></div>
+          <div class="avatar-circle"></div>
+          <div class="avatar-circle"></div>
+          <div class="avatar-circle"></div>
+          <div class="avatar-circle"></div>
+          <div class="avatar-circle"></div>
+        </div>
+        <a href="#" class="btn-outline">درباره ما</a>
+      </div>
+    </section>
+
+    <section style="padding: 60px 0; text-align: center">
+      <div class="container">
+        <div class="section-title"><h2>نظرات مشتریان یازده</h2></div>
+        <div
+          style="
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: right;
+          "
+        >
+          <h3>محمد کریم آبادی</h3>
+          <p style="color: var(--accent-color); margin-top: 10px">
+            افتخار آشنایی با تیم قوی و خلاق رو داشتم که نظم، دیسیپلین و حرفه ای
+            بودن رو برای من دوباره به تصویر کشیدن
+          </p>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              gap: 20px;
+              margin-top: 30px;
+              font-size: 1.5rem;
+            "
+          >
+            <i class="fas fa-angle-right" style="cursor: pointer"></i>
+            <i class="far fa-circle" style="font-size: 1rem"></i>
+            <i class="fas fa-angle-left" style="cursor: pointer"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div style="font-size: 3rem; font-weight: bold; margin-bottom: 20px">
+          یـــــــازده
+        </div>
+        <div class="footer-nav">
+          <span>۰۹۱۵۷۷۳۰۷۶۷</span>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-telegram-plane"></i>
+          <span>درباره ی ما</span>
+        </div>
+        <div style="color: var(--accent-color); font-size: 0.8rem">
+          ۱۴۰۴/۰۹/۱۵
+        </div>
+      </div>
+    </footer>
+    <script>
+      const menuIcon = document.querySelector('.header-icons img[alt="menu"]');
+      const menuOverlay = document.getElementById("menu-overlay");
+
+      menuIcon.addEventListener("mouseenter", () => {
+        menuOverlay.style.display = "flex";
+      });
+
+      menuOverlay.addEventListener("mouseleave", () => {
+        menuOverlay.style.display = "none";
+      });
+    </script>
+  </body>
+</html>

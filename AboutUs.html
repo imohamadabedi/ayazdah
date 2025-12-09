@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>متن تست</title>
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/plyr/dist/plyr.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/plyr/dist/plyr.min.js"></script>
+
+    <style>
+      @font-face {
+        font-family: "pixel_font";
+        src: url("assets/fonts/unixel-Regular.woff2") format("woff2"),
+          url("./fonts/MyCustomFont.woff") format("woff"),
+          url("./fonts/MyCustomFont.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+      /* --- تعریف متغیرهای رنگی (Color Variables) --- */
+      :root {
+        --bg-color: #002146;
+        --text-color: #ffffff;
+        --accent-color: #8892b0;
+        --border-color: #1d3557;
+      }
+      /* --- تنظیمات اولیه (Reset/Normalize) --- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        outline: none;
+      }
+
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        overflow-x: hidden;
+        line-height: 1.8;
+      }
+      h1 {
+        /* تنظیمات اصلی متن h1 */
+        text-align: center;
+        position: relative; /* بسیار مهم: برای موقعیت‌دهی مطلق شبه‌عناصر */
+        display: inline-block; /* برای اینکه عرض h1 فقط به اندازه محتوایش باشد */
+        padding: 0 20px; /* فضای داخلی برای اینکه خطوط به متن نچسبند */
+      }
+      /* --- ابزارهای عمومی --- */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .intro-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+        position: relative;
+        padding-top: 20px;
+      }
+
+      .about-yazdah {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20vh;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      header {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 30px 40px;
+      }
+
+      .header-right-icons {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+      }
+
+      .header-icons img {
+        width: 40px;
+        cursor: pointer;
+        filter: invert(0);
+      }
+      .introducing-members {
+        border: 1px solid rgba(251, 251, 251, 0.342);
+        display: flex;
+        padding: 0;
+        margin: 60px 0;
+      }
+      .member-text {
+        flex: 1;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .member-images {
+        flex: 1.15;
+        position: relative; /* برای اینکه فرزند ابسولوت نسبت به این تنظیم شود */
+        background: #002146;
+        min-height: 350px;
+        display: flex;
+        /* display flex و align-items را حذف کردیم تا ویدیو آزادانه فضا را پر کند */
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+      }
+      .member-image {
+        width: 80%;
+        height: 80%;
+        max-width: 530px;
+        max-height: 322.5px;
+      }
+      @media (max-width: 768px) {
+        .intro-section {
+          flex-direction: column-reverse;
+          text-align: center;
+        }
+        .intro-content {
+          text-align: center;
+        }
+
+        .section-title.right-align {
+          text-align: center;
+        }
+        .section-title.right-align::before,
+        .section-title.right-align::after {
+          margin: 15px auto;
+        }
+
+        .intro-image {
+          flex: 1;
+          position: relative;
+
+          min-height: 500px;
+          height: 350px;
+          width: 100%;
+          margin-bottom: 30px;
+        }
+
+        .intro-img-back {
+          right: 5%;
+        }
+        .intro-img-front {
+          right: 15%;
+        }
+
+        .portfolio-layout-v1,
+        .introducing-members {
+          flex-direction: column;
+        }
+        .member-images {
+          border-left: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .motion-grid {
+          grid-template-columns: 1fr;
+        }
+        .header-icons img {
+          width: 20px;
+        }
+
+        .container {
+          padding: 0 15px;
+        }
+
+        .section-title h2 {
+          font-size: 1.3rem;
+        }
+
+        .about-large h1 {
+          font-size: 1.5rem;
+        }
+
+        body {
+          width: 100%;
+          overflow-x: hidden;
+        }
+
+        .hero-logo-section {
+          height: 60vh;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-right-icons">
+        <div class="header-icons">
+          <img src="assets/icons/menu.png" alt="menu" />
+        </div>
+        <div class="header-icons">
+          <img src="assets/icons/phone.png" alt="phone" />
+        </div>
+      </div>
+    </header>
+    <section class="container">
+      <div class="about-yazdah">
+        <h1>تیم خلاقیت یازده</h1>
+      </div>
+      <div class="introducing-members">
+        <div class="member-text">
+          <h3>حسام حسنی</h3>
+          <p>
+            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
+            است
+          </p>
+        </div>
+        <div class="member-images">
+          <img class="member-image" src="assets/images/Team/1.jpg" alt="" />
+        </div>
+      </div>
+      <div class="introducing-members">
+        <div class="member-text">
+          <h3>حسام حسنی</h3>
+          <p>
+            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
+            است
+          </p>
+        </div>
+        <div class="member-images">
+          <img class="member-image" src="assets/images/Team/2.jpg" alt="" />
+        </div>
+      </div>
+      <div class="introducing-members">
+        <div class="member-text">
+          <h3>حسام حسنی</h3>
+          <p>
+            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
+            است
+          </p>
+        </div>
+        <div class="member-images">
+          <img class="member-image" src="assets/images/Team/3.jpg" alt="" />
+        </div>
+      </div>
+      <div class="introducing-members">
+        <div class="member-text">
+          <h3>حسام حسنی</h3>
+          <p>
+            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
+            است
+          </p>
+        </div>
+        <div class="member-images">
+          <img class="member-image" src="assets/images/Team/4.jpg" alt="" />
+        </div>
+      </div>
+      <div class="introducing-members">
+        <div class="member-text">
+          <h3>حسام حسنی</h3>
+          <p>
+            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
+            است
+          </p>
+        </div>
+        <div class="member-images">
+          <img class="member-image" src="assets/images/Team/5.jpg" alt="" />
+        </div>
+      </div>
+      <div class="introducing-members">
+        <div class="member-text">
+          <h3>حسام حسنی</h3>
+          <p>
+            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
+            است
+          </p>
+        </div>
+        <div class="member-images">
+          <img class="member-image" src="assets/images/Team/6.jpg" alt="" />
+        </div>
+      </div>
+      <div class="introducing-members">
+        <div class="member-text">
+          <h3>حسام حسنی</h3>
+          <p>
+            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
+            است
+          </p>
+        </div>
+        <div class="member-images">
+          <img class="member-image" src="assets/images/Team/7.jpg" alt="" />
+        </div>
+      </div>
+      <div class="introducing-members">
+        <div class="member-text">
+          <h3>حسام حسنی</h3>
+          <p>
+            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
+            است
+          </p>
+        </div>
+        <div class="member-images">
+          <img class="member-image" src="assets/images/Team/8.jpg" alt="" />
+        </div>
+      </div>
+      <div class="introducing-members">
+        <div class="member-text">
+          <h3>حسام حسنی</h3>
+          <p>
+            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
+            است
+          </p>
+        </div>
+        <div class="member-images">
+          <img class="member-image" src="assets/images/Team/9.jpg" alt="" />
+        </div>
+      </div>
+      <div class="introducing-members">
+        <div class="member-text">
+          <h3>حسام حسنی</h3>
+          <p>
+            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
+            است
+          </p>
+        </div>
+        <div class="member-images">
+          <img class="member-image" src="assets/images/Team/10.jpg" alt="" />
+        </div>
+      </div>
+      <div class="introducing-members">
+        <div class="member-text">
+          <h3>حسام حسنی</h3>
+          <p>
+            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
+            است
+          </p>
+        </div>
+        <div class="member-images">
+          <img class="member-image" src="assets/images/Team/11.jpg" alt="" />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
