@@ -1,14 +1,29 @@
 
-// --- ۱. منوی همبرگری موبایل (Mobile Menu Toggle) ---
+// --- ۱. منوی همبرگری شیشه‌ای (Glass Mobile Menu) ---
 function setupMobileMenu() {
     const menuIcon = document.querySelector('img[alt="menu"]');
-    const header = document.querySelector('header');
+    const overlay = document.getElementById('glassOverlay');
+    const closeBtn = document.getElementById('closeMenuBtn');
+    // لینک‌های داخل منو (برای اینکه وقتی کلیک شد منو بسته شود)
+    const menuLinks = document.querySelectorAll('.glass-menu-content a');
 
-    if (!menuIcon || !header) return;
+    if (!menuIcon || !overlay || !closeBtn) return;
 
+    // باز کردن منو
     menuIcon.addEventListener('click', () => {
-        header.classList.toggle('menu-open');
-        console.log("Menu Toggled"); 
+        overlay.classList.add('open');
+    });
+
+    // بستن منو با دکمه ضربدر
+    closeBtn.addEventListener('click', () => {
+        overlay.classList.remove('open');
+    });
+
+    // بستن منو وقتی روی یکی از لینک‌ها کلیک شد
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            overlay.classList.remove('open');
+        });
     });
 }
 
@@ -120,16 +135,16 @@ function setupReadMore() {
     });
 }
 
-// این تابع را هم به لیست توابع DOMContentLoaded اضافه کنید
-document.addEventListener('DOMContentLoaded', () => {
-    // ... سایر توابع ...
-    setupReadMore();
-});
+
 // --- ۴. اجرای تمام توابع پس از لود شدن کامل صفحه ---
 document.addEventListener('DOMContentLoaded', () => {
     setupMobileMenu();
     setupPortfolioSlider();
     setupVideoPlayer();
+    setupReadMore();
+    setupReviews();
+    setupContactModal();
+    setupSpecialModal();
 });
 // --- ۶. اسلایدر نظرات مشتریان (Customer Reviews) ---
 function setupReviews() {
@@ -208,7 +223,196 @@ function setupReviews() {
     }
 
 // اضافه کردن تابع به لیست اجرا
-document.addEventListener('DOMContentLoaded', () => {
-    // ... سایر توابع شما ...
-    setupReviews();
-});
+
+// --- ۷. مودال تماس با ما ---
+function setupContactModal() {
+    const contactTriggers = document.querySelectorAll('.contact-trigger');
+    const contactModal = document.getElementById('contactModal');
+    const closeModalBtn = document.querySelector('.contact-modal-close');
+    const overlay = document.querySelector('.contact-modal-overlay');
+
+    // اگر عناصر وجود ندارند، ادامه نده
+    if (!contactTriggers.length || !contactModal || !closeModalBtn || !overlay) {
+        console.log('عناصر مودال تماس پیدا نشدند');
+        return;
+    }
+
+    // باز کردن مودال
+    contactTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+            openContactModal();
+        });
+    });
+
+    // بستن مودال
+    closeModalBtn.addEventListener('click', closeContactModal);
+    overlay.addEventListener('click', closeContactModal);
+
+    // کلید ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && contactModal.style.display === 'block') {
+            closeContactModal();
+        }
+    });
+
+    // جلوگیری از بستن با کلیک روی مودال
+    contactModal.addEventListener('click', function(e) {
+        if (e.target === contactModal) {
+            closeContactModal();
+        }
+    });
+
+    // توابع
+    function openContactModal() {
+        contactModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        // بستن منو در موبایل (اگر باز است)
+        const mobileMenu = document.querySelector('.glass-menu-overlay.open');
+        if (mobileMenu) {
+            mobileMenu.classList.remove('open');
+        }
+    }
+
+    function closeContactModal() {
+        contactModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // کپی شماره تلفن
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const number = this.getAttribute('data-number');
+            navigator.clipboard.writeText(number).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> کپی شد!';
+                this.style.background = 'rgba(76, 175, 80, 0.2)';
+                this.style.borderColor = 'rgba(76, 175, 80, 0.5)';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.background = '';
+                    this.style.borderColor = '';
+                }, 2000);
+            });
+        });
+    });
+
+    // کپی لینک
+    const copyLinkBtn = document.querySelector('.copy-link');
+    if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+            const url = window.location.href;
+            navigator.clipboard.writeText(url).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> لینک کپی شد';
+                this.style.background = 'rgba(76, 175, 80, 0.2)';
+                this.style.borderColor = 'rgba(76, 175, 80, 0.5)';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.background = '';
+                    this.style.borderColor = '';
+                }, 2000);
+            });
+        });
+    }
+
+    // اشتراک در واتساپ
+    const whatsappShareBtn = document.querySelector('.whatsapp-share');
+    if (whatsappShareBtn) {
+        whatsappShareBtn.addEventListener('click', function() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent('به سایت ما سر بزنید!');
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        });
+    }
+}
+// --- مودال خاص ترین ما ---
+function setupSpecialModal() {
+    const specialModal = document.getElementById('specialModal');
+    const closeSpecialModal = document.getElementById('closeSpecialModal');
+    const specialImages = document.querySelectorAll('[data-special-image]');
+    
+    // المنت‌های مودال
+    const modalImg = document.getElementById('specialModalImg');
+    const designerName = document.getElementById('designerName');
+    const designerRole = document.getElementById('designerRole');
+    const projectDescription = document.getElementById('projectDescription');
+    const projectStyle = document.getElementById('projectStyle');
+    const projectTime = document.getElementById('projectTime');
+    
+    if (!specialModal || !closeSpecialModal || specialImages.length === 0) {
+        console.log('عناصر مودال خاص ترین پیدا نشدند');
+        return;
+    }
+    
+    // باز کردن مودال با کلیک روی عکس
+    specialImages.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // دریافت اطلاعات از data attributes
+            const src = this.getAttribute('src');
+            const name = this.getAttribute('data-designer-name');
+            const role = this.getAttribute('data-designer-role');
+            const desc = this.getAttribute('data-project-desc');
+            const style = this.getAttribute('data-project-style');
+            const time = this.getAttribute('data-project-time');
+            
+            // پر کردن اطلاعات مودال
+            modalImg.src = src;
+            designerName.textContent = name || 'طراح';
+            designerRole.textContent = role || 'طراح گرافیک';
+            projectDescription.textContent = desc || 'توضیحات ین طرح با الهام از معماری مدرن و خطوط هندسی طراحی شده است. تمرکز اصلی بر سادگی و خوانایی در عین حفظ هویت بصری قوی بوده است. رنگ‌های استفاده شده بیانگر ثبات و اعتماد هستندطرح';
+            projectStyle.textContent = style || 'مینیمال';
+            projectTime.textContent = time || '۲ هفته';
+            
+            // نمایش مودال
+            openSpecialModal();
+        });
+    });
+    
+    // بستن مودال
+    closeSpecialModal.addEventListener('click', closeSpecialModalFunc);
+    
+    // بستن با کلیک روی overlay
+    specialModal.addEventListener('click', function(e) {
+        if (e.target === specialModal) {
+            closeSpecialModalFunc();
+        }
+    });
+    
+    // بستن با کلید ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && specialModal.style.display === 'flex') {
+            closeSpecialModalFunc();
+        }
+    });
+    
+    // توابع باز و بسته کردن
+    function openSpecialModal() {
+        specialModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        // انیمیشن ورود
+        setTimeout(() => {
+            specialModal.style.opacity = '1';
+        }, 10);
+    }
+    
+    function closeSpecialModalFunc() {
+        specialModal.style.opacity = '0';
+        setTimeout(() => {
+            specialModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }, 300);
+    }
+    
+    // برای استفاده در اسکریپت
+    window.openSpecialModal = openSpecialModal;
+    window.closeSpecialModalFunc = closeSpecialModalFunc;
+}
+

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>متن تست</title>
+    <title>درباره آژانس خلاقیت یازده</title>
     <link
       href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
       rel="stylesheet"
@@ -13,29 +13,25 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/plyr/dist/plyr.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/plyr/dist/plyr.min.js"></script>
 
     <style>
+      /* --- تعریف فونت و متغیرها (مشابه صفحه اصلی) --- */
       @font-face {
         font-family: "pixel_font";
-        src: url("assets/fonts/unixel-Regular.woff2") format("woff2"),
-          url("./fonts/MyCustomFont.woff") format("woff"),
-          url("./fonts/MyCustomFont.ttf") format("truetype");
+        src: url("assets/fonts/unixel-Regular.woff2") format("woff2"); /* آدرس فونت خود را چک کنید */
         font-weight: normal;
         font-style: normal;
       }
-      /* --- تعریف متغیرهای رنگی (Color Variables) --- */
+
       :root {
-        --bg-color: #002146;
+        --bg-color: #002246;
         --text-color: #ffffff;
         --accent-color: #8892b0;
-        --border-color: #1d3557;
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --card-border: rgba(255, 255, 255, 0.1);
+        --card-hover: rgba(255, 255, 255, 0.1);
       }
-      /* --- تنظیمات اولیه (Reset/Normalize) --- */
+
       * {
         box-sizing: border-box;
         margin: 0;
@@ -47,312 +43,352 @@
         font-family: "Vazirmatn", sans-serif;
         background-color: var(--bg-color);
         color: var(--text-color);
-        overflow-x: hidden;
         line-height: 1.8;
+        overflow-x: hidden;
       }
-      h1 {
-        /* تنظیمات اصلی متن h1 */
-        text-align: center;
-        position: relative; /* بسیار مهم: برای موقعیت‌دهی مطلق شبه‌عناصر */
-        display: inline-block; /* برای اینکه عرض h1 فقط به اندازه محتوایش باشد */
-        padding: 0 20px; /* فضای داخلی برای اینکه خطوط به متن نچسبند */
+
+      a {
+        text-decoration: none;
+        color: inherit;
       }
-      /* --- ابزارهای عمومی --- */
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
+      ul {
+        list-style: none;
       }
-      .intro-container {
+
+      /* --- هدر ساده با دکمه بازگشت --- */
+      header {
+        padding: 30px 40px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
       }
 
-      .section-title {
+      .back-btn {
+        font-family: "pixel_font";
+        border: 1px solid var(--card-border);
+        padding: 8px 20px;
+        border-radius: 5px;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .back-btn:hover {
+        background: white;
+        color: var(--bg-color);
+      }
+
+      /* --- بخش معرفی شرکت (Hero) --- */
+      .about-hero {
         text-align: center;
-        margin-bottom: 50px;
+        padding: 60px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .about-hero h1 {
+        font-family: "pixel_font";
+        font-size: 2.5rem;
+        margin-bottom: 30px;
         position: relative;
-        padding-top: 20px;
+        display: inline-block;
       }
 
-      .about-yazdah {
-        display: flex;
+      .about-hero h1::after {
+        content: "";
+        display: block;
+        width: 60%;
+        height: 3px;
+        background: var(--accent-color);
+        margin: 10px auto 0;
+      }
+
+      .about-hero p {
+        font-size: 1.1rem;
+        color: var(--accent-color);
+        text-align: justify;
+        text-align-last: center;
+      }
+
+      /* --- گرید تیم (Team Grid) --- */
+      .team-section {
+        padding: 50px 40px 100px 40px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-header h2 {
+        font-family: "vazirmatn", sans-serif;
+        font-size: 1.8rem;
+        opacity: 0.9;
+      }
+
+      .team-grid {
+        display: grid;
+        /* چیدمان ریسپانسیو خودکار */
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
         justify-content: center;
-        align-items: center;
-        height: 20vh;
-        font-size: 2rem;
-        font-weight: bold;
-      }
-      header {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        padding: 30px 40px;
       }
 
-      .header-right-icons {
-        display: flex;
-        align-items: center;
-        gap: 25px;
-      }
-
-      .header-icons img {
-        width: 40px;
-        cursor: pointer;
-        filter: invert(0);
-      }
-      .introducing-members {
-        border: 1px solid rgba(251, 251, 251, 0.342);
-        display: flex;
-        padding: 0;
-        margin: 60px 0;
-      }
-      .member-text {
-        flex: 1;
-        padding: 40px;
+      /* --- استایل کارت پرسنلی (Glassmorphism) --- */
+      .team-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        border-left: 1px solid rgba(255, 255, 255, 0.1);
-      }
-      .member-images {
-        flex: 1.15;
-        position: relative; /* برای اینکه فرزند ابسولوت نسبت به این تنظیم شود */
-        background: #002146;
-        min-height: 350px;
-        display: flex;
-        /* display flex و align-items را حذف کردیم تا ویدیو آزادانه فضا را پر کند */
-        overflow: hidden;
         align-items: center;
-        justify-content: center;
       }
-      .member-image {
-        width: 80%;
-        height: 80%;
-        max-width: 530px;
-        max-height: 322.5px;
+
+      .team-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(255, 255, 255, 0.4);
+        background: var(--card-hover);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
       }
+
+      /* عکس پرسنل */
+      .member-img-box {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+        border-radius: 50%; /* دایره‌ای */
+        overflow: hidden;
+        border: 3px solid transparent;
+        transition: 0.4s;
+        position: relative;
+      }
+
+      .member-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%); /* سیاه سفید پیش فرض */
+        transition: 0.4s;
+      }
+
+      /* افکت رنگی شدن عکس در هاور */
+      .team-card:hover .member-img-box img {
+        filter: grayscale(0%);
+        transform: scale(1.1);
+      }
+
+      .team-card:hover .member-img-box {
+        border-color: var(--accent-color);
+      }
+
+      .member-name {
+        font-family: "pixel_font";
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        color: #fff;
+      }
+
+      .member-role {
+        font-size: 0.85rem;
+        color: var(--accent-color);
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+        width: 100%;
+      }
+
+      .member-bio {
+        font-size: 0.85rem;
+        color: #ccc;
+        line-height: 1.6;
+        opacity: 0.8;
+      }
+
+      /* --- فوتر ساده --- */
+      footer {
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid var(--card-border);
+        color: var(--accent-color);
+        font-size: 0.8rem;
+      }
+
+      /* ریسپانسیو */
       @media (max-width: 768px) {
-        .intro-section {
-          flex-direction: column-reverse;
-          text-align: center;
+        .about-hero h1 {
+          font-size: 1.8rem;
         }
-        .intro-content {
-          text-align: center;
-        }
-
-        .section-title.right-align {
-          text-align: center;
-        }
-        .section-title.right-align::before,
-        .section-title.right-align::after {
-          margin: 15px auto;
-        }
-
-        .intro-image {
-          flex: 1;
-          position: relative;
-
-          min-height: 500px;
-          height: 350px;
-          width: 100%;
-          margin-bottom: 30px;
-        }
-
-        .intro-img-back {
-          right: 5%;
-        }
-        .intro-img-front {
-          right: 15%;
-        }
-
-        .portfolio-layout-v1,
-        .introducing-members {
-          flex-direction: column;
-        }
-        .member-images {
-          border-left: none;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .motion-grid {
-          grid-template-columns: 1fr;
-        }
-        .header-icons img {
-          width: 20px;
-        }
-
-        .container {
-          padding: 0 15px;
-        }
-
-        .section-title h2 {
-          font-size: 1.3rem;
-        }
-
-        .about-large h1 {
-          font-size: 1.5rem;
-        }
-
-        body {
-          width: 100%;
-          overflow-x: hidden;
-        }
-
-        .hero-logo-section {
-          height: 60vh;
-          padding: 20px;
+        .team-grid {
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         }
       }
     </style>
   </head>
   <body>
     <header>
-      <div class="header-right-icons">
-        <div class="header-icons">
-          <img src="assets/icons/menu.png" alt="menu" />
-        </div>
-        <div class="header-icons">
-          <img src="assets/icons/phone.png" alt="phone" />
-        </div>
+      <div class="logo">
+        <img src="assets/icons/taypo.png" alt="Eleven" style="width: 150px" />
       </div>
+      <a href="index.html" class="back-btn">
+        بازگشت به خانه <i class="fas fa-arrow-left"></i>
+      </a>
     </header>
-    <section class="container">
-      <div class="about-yazdah">
-        <h1>تیم خلاقیت یازده</h1>
+
+    <section class="about-hero">
+      <h1>ما "یازده" هستیم</h1>
+      <p>
+        آژانس خلاقیت یازده، ترکیبی از هنر، تکنولوژی و استراتژی است. ما اینجا
+        هستیم تا داستان برند شما را با زبانی نو و تصاویری ماندگار روایت کنیم.
+        باور ما بر این است که خلاقیت حد و مرزی ندارد و هر پروژه، فرصتی برای خلق
+        یک اثر هنری است. نظم، تعهد و نوآوری، سه ضلع مثلثی هستند که هویت یازده را
+        شکل می‌دهند.
+      </p>
+    </section>
+
+    <section class="team-section">
+      <div class="section-header">
+        <h2>خالقین یازده</h2>
       </div>
-      <div class="introducing-members">
-        <div class="member-text">
-          <h3>حسام حسنی</h3>
-          <p>
-            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
-            است
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/1.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">فائزه گوهری پور</h3>
+          <span class="member-role">سناریو نویس وبازیگر</span>
+          <p class="member-bio">
+            عاشق مینیمالیسم و وسواس در جزئیات. رهبری تیم طراحی با نگاهی متفاوت.
           </p>
         </div>
-        <div class="member-images">
-          <img class="member-image" src="assets/images/Team/1.jpg" alt="" />
-        </div>
-      </div>
-      <div class="introducing-members">
-        <div class="member-text">
-          <h3>حسام حسنی</h3>
-          <p>
-            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
-            است
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/3.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">دانیال برآبادی</h3>
+          <span class="member-role">سناریو نویس</span>
+          <p class="member-bio">
+            جادوگر تایم‌لاین‌ها. کسی که به تصاویر بی جان، ریتم و احساس می‌دهد.
           </p>
         </div>
-        <div class="member-images">
-          <img class="member-image" src="assets/images/Team/2.jpg" alt="" />
-        </div>
-      </div>
-      <div class="introducing-members">
-        <div class="member-text">
-          <h3>حسام حسنی</h3>
-          <p>
-            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
-            است
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/2.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">محترم کریم آبادی</h3>
+          <span class="member-role">موشن دیزاینر</span>
+          <p class="member-bio">
+            خالق حرکت‌های نرم و روان. علی فیزیک را در افتر افکت نقض می‌کند.
           </p>
         </div>
-        <div class="member-images">
-          <img class="member-image" src="assets/images/Team/3.jpg" alt="" />
-        </div>
-      </div>
-      <div class="introducing-members">
-        <div class="member-text">
-          <h3>حسام حسنی</h3>
-          <p>
-            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
-            است
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/4.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">امیرحسام حسنی</h3>
+          <span class="member-role">گرافیست</span>
+          <p class="member-bio">
+            متخصص ترکیب رنگ‌ها و چیدمان. طراحی‌های او همیشه چشم‌نواز است.
           </p>
         </div>
-        <div class="member-images">
-          <img class="member-image" src="assets/images/Team/4.jpg" alt="" />
-        </div>
-      </div>
-      <div class="introducing-members">
-        <div class="member-text">
-          <h3>حسام حسنی</h3>
-          <p>
-            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
-            است
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/5.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">عرفان کریم آبادی</h3>
+          <span class="member-role">توسعه دهنده وب</span>
+          <p class="member-bio">
+            کدنویسی که دیزاین را می‌فهمد. پلی میان گرافیک و دنیای وب.
           </p>
         </div>
-        <div class="member-images">
-          <img class="member-image" src="assets/images/Team/5.jpg" alt="" />
-        </div>
-      </div>
-      <div class="introducing-members">
-        <div class="member-text">
-          <h3>حسام حسنی</h3>
-          <p>
-            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
-            است
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/6.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">حمیدرضا پور حامدی</h3>
+          <span class="member-role">کپی رایتر</span>
+          <p class="member-bio">
+            کلمات در دستان او موم هستند. نویسنده سناریوهای خلاقانه.
           </p>
         </div>
-        <div class="member-images">
-          <img class="member-image" src="assets/images/Team/6.jpg" alt="" />
-        </div>
-      </div>
-      <div class="introducing-members">
-        <div class="member-text">
-          <h3>حسام حسنی</h3>
-          <p>
-            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
-            است
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/7.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">محمد متوسلیان</h3>
+          <span class="member-role">مدیر پروژه</span>
+          <p class="member-bio">
+            نظم دهنده به آشوب خلاقیت. کسی که ددلاین‌ها را مقدس می‌داند.
           </p>
         </div>
-        <div class="member-images">
-          <img class="member-image" src="assets/images/Team/7.jpg" alt="" />
-        </div>
-      </div>
-      <div class="introducing-members">
-        <div class="member-text">
-          <h3>حسام حسنی</h3>
-          <p>
-            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
-            است
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/8.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">مینا کریم آبادی</h3>
+          <span class="member-role">تصویرساز</span>
+          <p class="member-bio">
+            دنیای خیالی او پر از رنگ و کاراکترهای عجیب است که برندها را زنده
+            می‌کند.
           </p>
         </div>
-        <div class="member-images">
-          <img class="member-image" src="assets/images/Team/8.jpg" alt="" />
-        </div>
-      </div>
-      <div class="introducing-members">
-        <div class="member-text">
-          <h3>حسام حسنی</h3>
-          <p>
-            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
-            است
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/9.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">محمد عابدی</h3>
+          <span class="member-role">فیلمبردار</span>
+          <p class="member-bio">
+            شکارچی لحظه‌ها. نگاه سینمایی او به پروژه‌های تبلیغاتی عمق می‌دهد.
           </p>
         </div>
-        <div class="member-images">
-          <img class="member-image" src="assets/images/Team/9.jpg" alt="" />
-        </div>
-      </div>
-      <div class="introducing-members">
-        <div class="member-text">
-          <h3>حسام حسنی</h3>
-          <p>
-            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
-            است
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/10.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">مهدی مصیبی</h3>
+          <span class="member-role">ادمین سوشال</span>
+          <p class="member-bio">
+            صدای برند در شبکه‌های اجتماعی. همیشه آنلاین و پاسخگو.
           </p>
         </div>
-        <div class="member-images">
-          <img class="member-image" src="assets/images/Team/10.jpg" alt="" />
-        </div>
-      </div>
-      <div class="introducing-members">
-        <div class="member-text">
-          <h3>حسام حسنی</h3>
-          <p>
-            یک عضو یازده تدوینگر و موشن گرافیست پر تلاش و کوشا این یک متن تست
-            است
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/11.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">حامد پورحامدی</h3>
+          <span class="member-role">استراتژیست</span>
+          <p class="member-bio">
+            مغز متفکر کمپین‌ها. او مسیر رسیدن به هدف را ترسیم می‌کند.
           </p>
-        </div>
-        <div class="member-images">
-          <img class="member-image" src="assets/images/Team/11.jpg" alt="" />
         </div>
       </div>
     </section>
+
+    <footer>
+      <p>تمامی حقوق برای آژانس خلاقیت یازده محفوظ است &copy; ۲۰۲۴</p>
+    </footer>
   </body>
 </html>
