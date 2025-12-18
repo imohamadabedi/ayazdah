@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <title>تیم خلاقیت یازده</title>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta
+      name="description"
+      content="با تیم خلاق آژانس یازده آشنا شوید. ما گروهی از هنرمندان و استراتژیست‌ها هستیم که متعهد به خلق داستان‌های بصری ماندگار برای برند شما هستیم."
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link
+      rel="canonical"
+      href="https://creativity-eleven.com/design-portfolio.html"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>درباره آژانس خلاقیت یازده</title>
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <style>
+      /* --- تعریف فونت و متغیرها (مشابه صفحه اصلی) --- */
+      @font-face {
+        font-family: "pixel_font";
+        src: url("assets/fonts/unixel-Regular.woff2") format("woff2"); /* آدرس فونت خود را چک کنید */
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      :root {
+        --bg-color: #002246;
+        --text-color: #ffffff;
+        --accent-color: #8892b0;
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --card-border: rgba(255, 255, 255, 0.1);
+        --card-hover: rgba(255, 255, 255, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        outline: none;
+      }
+
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        line-height: 1.8;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+      }
+
+      /* --- هدر ساده با دکمه بازگشت --- */
+      header {
+        padding: 30px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .back-btn {
+        font-family: "pixel_font";
+        border: 1px solid var(--card-border);
+        padding: 8px 20px;
+        border-radius: 5px;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .back-btn:hover {
+        background: white;
+        color: var(--bg-color);
+      }
+
+      /* --- بخش معرفی شرکت (Hero) --- */
+      .about-hero {
+        text-align: center;
+        padding: 60px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .about-hero h1 {
+        font-family: "pixel_font";
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .about-hero h1::after {
+        content: "";
+        display: block;
+        width: 60%;
+        height: 3px;
+        background: var(--accent-color);
+        margin: 10px auto 0;
+      }
+
+      .about-hero p {
+        font-size: 1.1rem;
+        color: var(--accent-color);
+        text-align: justify;
+        text-align-last: center;
+      }
+
+      /* --- گرید تیم (Team Grid) --- */
+      .team-section {
+        padding: 50px 40px 100px 40px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-header h2 {
+        font-family: "vazirmatn", sans-serif;
+        font-size: 1.8rem;
+        opacity: 0.9;
+      }
+
+      .team-grid {
+        display: grid;
+        /* چیدمان ریسپانسیو خودکار */
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+        justify-content: center;
+      }
+
+      /* --- استایل کارت پرسنلی (Glassmorphism) --- */
+      .team-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .team-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(255, 255, 255, 0.4);
+        background: var(--card-hover);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      /* عکس پرسنل */
+      .member-img-box {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+        border-radius: 50%; /* دایره‌ای */
+        overflow: hidden;
+        border: 3px solid transparent;
+        transition: 0.4s;
+        position: relative;
+      }
+
+      .member-img-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%); /* سیاه سفید پیش فرض */
+        transition: 0.4s;
+      }
+
+      /* افکت رنگی شدن عکس در هاور */
+      .team-card:hover .member-img-box img {
+        filter: grayscale(0%);
+        transform: scale(1.1);
+      }
+
+      .team-card:hover .member-img-box {
+        border-color: var(--accent-color);
+      }
+
+      .member-name {
+        font-family: "pixel_font";
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        color: #fff;
+      }
+
+      .member-role {
+        font-size: 0.85rem;
+        color: var(--accent-color);
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 10px;
+        width: 100%;
+      }
+
+      .member-bio {
+        font-size: 0.85rem;
+        color: #ccc;
+        line-height: 1.6;
+        opacity: 0.8;
+      }
+
+      /* --- فوتر ساده --- */
+      footer {
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid var(--card-border);
+        color: var(--accent-color);
+        font-size: 0.8rem;
+      }
+
+      /* ریسپانسیو */
+      @media (max-width: 768px) {
+        .about-hero h1 {
+          font-size: 1.8rem;
+        }
+        .team-grid {
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="assets/icons/taypo.png" alt="Eleven" style="width: 150px" />
+      </div>
+      <a href="index.html" class="back-btn">
+        بازگشت به خانه <i class="fas fa-arrow-left"></i>
+      </a>
+    </header>
+
+    <section class="about-hero">
+      <h1>ما "یازده" هستیم</h1>
+      <p>
+        آژانس خلاقیت یازده، ترکیبی از هنر، تکنولوژی و استراتژی است. ما اینجا
+        هستیم تا داستان برند شما را با زبانی نو و تصاویری ماندگار روایت کنیم.
+        باور ما بر این است که خلاقیت حد و مرزی ندارد و هر پروژه، فرصتی برای خلق
+        یک اثر هنری است. نظم، تعهد و نوآوری، سه ضلع مثلثی هستند که هویت یازده را
+        شکل می‌دهند.
+      </p>
+    </section>
+
+    <section class="team-section">
+      <div class="section-header">
+        <h2>خالقین یازده</h2>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/faezeh gohari.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">فائزه گوهری پور</h3>
+          <span class="member-role">سناریو نویس وبازیگر</span>
+          <p class="member-bio">
+            عاشق مینیمالیسم و وسواس در جزئیات. رهبری تیم طراحی با نگاهی متفاوت.
+          </p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img
+              src="assets/images/Team/daniyal borabadi.jpg"
+              alt="Member Name"
+            />
+          </div>
+          <h3 class="member-name">دانیال برآبادی</h3>
+          <span class="member-role">سناریو نویس</span>
+          <p class="member-bio">
+            جادوگر تایم‌لاین‌ها. کسی که به تصاویر بی جان، ریتم و احساس می‌دهد.
+          </p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img
+              src="assets/images/Team/mohtaram karimabadi.jpg"
+              alt="Member Name"
+            />
+          </div>
+          <h3 class="member-name">محترم کریم آبادی</h3>
+          <span class="member-role">موشن دیزاینر</span>
+          <p class="member-bio">
+            خالق حرکت‌های نرم و روان. علی فیزیک را در افتر افکت نقض می‌کند.
+          </p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img src="assets/images/Team/hesam hasani.jpg" alt="Member Name" />
+          </div>
+          <h3 class="member-name">امیرحسام حسنی</h3>
+          <span class="member-role">گرافیست</span>
+          <p class="member-bio">
+            متخصص ترکیب رنگ‌ها و چیدمان. طراحی‌های او همیشه چشم‌نواز است.
+          </p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img
+              src="assets/images/Team/erfan karimabadi.jpg"
+              alt="Member Name"
+            />
+          </div>
+          <h3 class="member-name">عرفان کریم آبادی</h3>
+          <span class="member-role">توسعه دهنده وب</span>
+          <p class="member-bio">
+            کدنویسی که دیزاین را می‌فهمد. پلی میان گرافیک و دنیای وب.
+          </p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img
+              src="assets/images/Team/hamidreza porhamedi.jpg"
+              alt="Member Name"
+            />
+          </div>
+          <h3 class="member-name">حمیدرضا پور حامدی</h3>
+          <span class="member-role">کپی رایتر</span>
+          <p class="member-bio">
+            کلمات در دستان او موم هستند. نویسنده سناریوهای خلاقانه.
+          </p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img
+              src="assets/images/Team/mohammad motavaseliyan.jpg"
+              alt="Member Name"
+            />
+          </div>
+          <h3 class="member-name">محمد متوسلیان</h3>
+          <span class="member-role">مدیر پروژه</span>
+          <p class="member-bio">
+            نظم دهنده به آشوب خلاقیت. کسی که ددلاین‌ها را مقدس می‌داند.
+          </p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img
+              src="assets/images/Team/mina karimabadi.jpg"
+              alt="Member Name"
+            />
+          </div>
+          <h3 class="member-name">مینا کریم آبادی</h3>
+          <span class="member-role">تصویرساز</span>
+          <p class="member-bio">
+            دنیای خیالی او پر از رنگ و کاراکترهای عجیب است که برندها را زنده
+            می‌کند.
+          </p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img
+              src="assets/images/Team/mohammad abedi.jpg"
+              alt="Member Name"
+            />
+          </div>
+          <h3 class="member-name">محمد عابدی</h3>
+          <span class="member-role">فیلمبردار</span>
+          <p class="member-bio">
+            شکارچی لحظه‌ها. نگاه سینمایی او به پروژه‌های تبلیغاتی عمق می‌دهد.
+          </p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img
+              src="assets/images/Team/mehdi mosayedi.jpg"
+              alt="Member Name"
+            />
+          </div>
+          <h3 class="member-name">مهدی مصیبی</h3>
+          <span class="member-role">ادمین سوشال</span>
+          <p class="member-bio">
+            صدای برند در شبکه‌های اجتماعی. همیشه آنلاین و پاسخگو.
+          </p>
+        </div>
+
+        <div class="team-card">
+          <div class="member-img-box">
+            <img
+              src="assets/images/Team/hamed porhamedi.jpg"
+              alt="Member Name"
+            />
+          </div>
+          <h3 class="member-name">حامد پورحامدی</h3>
+          <span class="member-role">استراتژیست</span>
+          <p class="member-bio">
+            مغز متفکر کمپین‌ها. او مسیر رسیدن به هدف را ترسیم می‌کند.
+          </p>
+        </div>
+        <div class="team-card">
+          <div class="member-img-box">
+            <img
+              src="assets/images/Team/shima hoseynpor.jpg"
+              alt="Member Name"
+            />
+          </div>
+          <h3 class="member-name">شیما حسینی پور</h3>
+          <span class="member-role">استراتژیست</span>
+          <p class="member-bio">
+            مغز متفکر کمپین‌ها. او مسیر رسیدن به هدف را ترسیم می‌کند.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>تمامی حقوق برای آژانس خلاقیت یازده محفوظ است &copy; ۲۰۲۴</p>
+    </footer>
+  </body>
+</html>

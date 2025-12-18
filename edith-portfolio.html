@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <title>تیم خلاقیت یازده</title>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta
+      name="description"
+      content="خدمات تخصصی تدوین و ویرایش ویدیو در تیم یازده. مشاهده نمونه کارهای تدوین موزیک ویدیو، تیزر تبلیغاتی، اصلاح رنگ و جلوه‌های ویژه سینمایی."
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link
+      rel="canonical"
+      href="https://creativity-eleven.com/design-portfolio.html"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ادیت‌های ویدیویی ما | یازده</title>
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/plyr/dist/plyr.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/plyr/dist/plyr.min.js"></script>
+
+    <style>
+      /* --- تنظیمات فونت و متغیرها --- */
+      @font-face {
+        font-family: "pixel_font";
+        src: url("../assets/fonts/unixel-Regular.woff2") format("woff2");
+        font-weight: normal;
+      }
+
+      :root {
+        --bg-color: #050a14;
+        --card-bg: #0f172a;
+        --text-color: #ffffff;
+        --accent-color: #262db9;
+        --secondary-text: #94a3b8;
+        --border-color: rgba(255, 255, 255, 0.08);
+        --modal-bg: #0b1121;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        cursor: none;
+      }
+
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      /* --- موس کاستوم --- */
+      .cursor-dot,
+      .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 9999;
+        pointer-events: none;
+      }
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: white;
+      }
+      .cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transition: 0.15s ease-out;
+      }
+      body.hovering .cursor-outline {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(2px);
+        border-color: transparent;
+      }
+
+      /* --- هدر --- */
+      header {
+        padding: 40px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        background: linear-gradient(
+          to bottom,
+          rgba(5, 10, 20, 0.95),
+          rgba(5, 10, 20, 0)
+        );
+      }
+      .logo h2 {
+        font-family: "pixel_font";
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+        background: linear-gradient(45deg, #fff, var(--accent-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .back-btn {
+        font-family: "pixel_font";
+        font-size: 0.9rem;
+        color: white;
+        text-decoration: none;
+        position: relative;
+        padding-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+      }
+      .back-btn::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--accent-color);
+        transition: 0.3s;
+      }
+      .back-btn:hover::after {
+        width: 100%;
+      }
+      .back-btn:hover {
+        color: #fff;
+        transform: translateX(-5px);
+      }
+
+      /* --- محتوای اصلی --- */
+      .page-title {
+        margin-top: 160px;
+        padding: 0 60px;
+        margin-bottom: 60px;
+      }
+      .page-title h1 {
+        font-family: "pixel_font";
+        font-size: 4rem;
+        line-height: 1.1;
+        background: linear-gradient(45deg, #fff, #94a3b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+      }
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--secondary-text);
+        max-width: 800px;
+        line-height: 1.6;
+      }
+
+      .filter-container {
+        padding: 0 60px;
+        margin-bottom: 50px;
+        display: flex;
+        gap: 20px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 20px;
+        overflow-x: auto;
+      }
+      .filter-btn {
+        background: transparent;
+        border: 1px solid transparent;
+        color: var(--secondary-text);
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-family: "Vazirmatn";
+        font-size: 1rem;
+        transition: 0.3s;
+        white-space: nowrap;
+      }
+      .filter-btn:hover {
+        color: white;
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .filter-btn.active {
+        color: var(--bg-color);
+        background: white;
+        font-weight: bold;
+      }
+
+      /* --- گرید ادیت‌ها --- */
+      .motion-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        padding: 0 60px 100px 60px;
+      }
+      .motion-item {
+        position: relative;
+        background-color: var(--card-bg);
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+      }
+      .motion-item.large {
+        grid-column: span 2;
+        aspect-ratio: 2 / 1;
+      }
+
+      .video-thumbnail {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+        opacity: 0.8;
+        filter: brightness(0.8);
+      }
+      .motion-item:hover .video-thumbnail {
+        transform: scale(1.1);
+        opacity: 1;
+        filter: brightness(1);
+      }
+
+      .play-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .motion-item:hover .play-overlay {
+        opacity: 1;
+      }
+      .play-icon {
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--bg-color);
+        font-size: 28px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      }
+      .motion-item:hover .play-icon {
+        background: var(--accent-color);
+        transform: scale(1.1);
+        color: #fff;
+      }
+
+      .item-info-preview {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 30px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        transform: translateY(20px);
+        opacity: 0;
+        transition: 0.4s ease;
+        z-index: 2;
+        text-align: right;
+        pointer-events: none;
+      }
+      .motion-item:hover .item-info-preview {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .preview-cat {
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 5px;
+      }
+      .preview-title {
+        font-family: "pixel_font";
+        font-size: 1.5rem;
+        color: white;
+        margin-bottom: 5px;
+      }
+      .preview-duration {
+        font-size: 0.9rem;
+        color: var(--secondary-text);
+      }
+
+      .motion-item.hide {
+        display: none;
+      }
+      .motion-item.show {
+        animation: fadeIn 0.5s ease forwards;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* --- مودال نمایش ویدئو --- */
+      .video-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 5, 15, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s ease;
+      }
+      .video-modal.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .video-modal-card {
+        background: var(--modal-bg);
+        width: 85%;
+        max-width: 1200px;
+        height: 80vh;
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        transform: scale(0.9) translateY(30px);
+        transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+      }
+      .video-modal.active .video-modal-card {
+        transform: scale(1) translateY(0);
+      }
+
+      /* بخش ویدئو در مودال */
+      .video-player-col {
+        flex: 1.8;
+        background: #000;
+        position: relative;
+        overflow: hidden;
+      }
+      #modalVideoPlayer {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* بخش اطلاعات در مودال */
+      .video-info-col {
+        flex: 1;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-right: 1px solid var(--border-color);
+        overflow-y: auto;
+      }
+
+      .video-modal-cat {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .video-modal-title {
+        font-family: "pixel_font";
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 25px;
+      }
+      .video-modal-desc {
+        color: var(--secondary-text);
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 30px;
+        text-align: justify;
+      }
+
+      .video-stats {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+      .stat-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+      }
+      .stat-item i {
+        color: var(--accent-color);
+      }
+      .stat-item span {
+        font-size: 0.9rem;
+        color: #fff;
+      }
+
+      .video-meta {
+        display: flex;
+        gap: 40px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 25px;
+      }
+      .meta-item h4 {
+        font-size: 0.8rem;
+        color: #fff;
+        margin-bottom: 5px;
+      }
+      .meta-item span {
+        font-size: 0.9rem;
+        color: var(--secondary-text);
+        font-family: "pixel_font";
+      }
+
+      .close-video-modal {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 2rem;
+        color: #fff;
+        cursor: pointer;
+        z-index: 10;
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+      }
+      .close-video-modal:hover {
+        background: var(--accent-color);
+        transform: rotate(90deg);
+      }
+
+      /* استایل Plyr */
+      .plyr--video {
+        width: 100%;
+        height: 100%;
+      }
+      .plyr__video-wrapper {
+        height: 100%;
+      }
+      .plyr__poster {
+        background-size: cover;
+      }
+
+      /* آمار کلی */
+      .stats-section {
+        padding: 0 60px 40px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-bottom: 20px;
+      }
+      .stat-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-color);
+        border-radius: 15px;
+        padding: 30px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      .stat-card:hover {
+        border-color: var(--accent-color);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 217, 255, 0.1);
+      }
+      .stat-number {
+        font-family: "pixel_font";
+        font-size: 2.5rem;
+        color: var(--accent-color);
+        margin-bottom: 10px;
+        display: block;
+      }
+      .stat-label {
+        color: var(--secondary-text);
+        font-size: 1rem;
+      }
+
+      /* ریسپانسیو */
+      @media (max-width: 1200px) {
+        .stats-section {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .video-modal-card {
+          flex-direction: column;
+          height: 90vh;
+          overflow-y: auto;
+        }
+        .video-player-col {
+          flex: 1;
+          height: 300px;
+          min-height: 300px;
+        }
+        .video-info-col {
+          flex: auto;
+          padding: 30px;
+          border-right: none;
+        }
+        .motion-grid {
+          grid-template-columns: repeat(2, 1fr);
+          padding: 0 30px 80px;
+        }
+        .motion-item.large {
+          grid-column: span 2;
+        }
+        .page-title h1 {
+          font-size: 3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 30px 40px;
+        }
+        .page-title {
+          margin-top: 140px;
+          padding: 0 40px;
+        }
+        .filter-container {
+          padding: 0 40px 20px;
+        }
+        .stats-section {
+          padding: 0 40px 40px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .motion-grid {
+          grid-template-columns: 1fr;
+          padding: 0 20px 60px;
+        }
+        .motion-item.large {
+          grid-column: span 1;
+          aspect-ratio: 1/1;
+        }
+        .cursor-dot,
+        .cursor-outline {
+          display: none;
+        }
+        * {
+          cursor: auto;
+        }
+        .page-title h1 {
+          font-size: 2.5rem;
+        }
+        .page-subtitle {
+          font-size: 1rem;
+        }
+        .stats-section {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 0 20px 40px;
+        }
+        .stat-card {
+          padding: 25px;
+        }
+        .video-modal-card {
+          width: 95%;
+          height: 95vh;
+          border-radius: 15px;
+        }
+        .video-modal-title {
+          font-size: 2rem;
+        }
+        .video-meta {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        header {
+          padding: 20px 30px;
+        }
+        .page-title {
+          margin-top: 120px;
+          padding: 0 30px;
+          margin-bottom: 40px;
+        }
+        .filter-container {
+          padding: 0 30px 20px;
+          gap: 10px;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+        }
+        .filter-btn {
+          padding: 8px 20px;
+          font-size: 0.9rem;
+          flex-shrink: 0;
+        }
+        .item-info-preview {
+          padding: 20px;
+          transform: translateY(0);
+          opacity: 1;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+        }
+        .video-modal-card {
+          flex-direction: column;
+          height: 90vh;
+        }
+        .video-info-col {
+          padding: 25px;
+        }
+      }
+
+      /* انیمیشن موج برای موشن‌ها */
+      @keyframes wave {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .motion-item:hover .play-icon {
+        animation: wave 2s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <header>
+      <div class="logo">
+        <h2>یازده</h2>
+      </div>
+      <a href="../index.html" class="back-btn" data-hover>
+        <i class="fas fa-arrow-right"></i> بازگشت به خانه
+      </a>
+    </header>
+
+    <div class="page-title">
+      <h1>تدوین ،کنار هم چیدن حس و معنا</h1>
+      <p class="page-subtitle">در یازده تدوین هر اثر ،به معنی چیدن احساس و معنا کنار هم و ساختن داستانی موثر است.
+      </p>
+    </div>
+
+    <div class="filter-container">
+      <button class="filter-btn active" data-filter="all" data-hover>
+        همه ادیت‌ها
+      </button>
+      <button class="filter-btn" data-filter="commercial" data-hover>
+        تدوین تبلیغاتی
+      </button>
+      <button class="filter-btn" data-filter="music" data-hover>
+        موزیک ویدیو
+      </button>
+      <button class="filter-btn" data-filter="film" data-hover>
+        ویرایش فیلم
+      </button>
+      <button class="filter-btn" data-filter="color" data-hover>
+        رنگ‌پردازی
+      </button>
+      <button class="filter-btn" data-filter="vfx" data-hover>
+        جلوه‌های ویژه
+      </button>
+    </div>
+
+    <div class="motion-grid">
+      <!-- ادیت 1 -->
+      <!-- <div
+        class="motion-item large"
+        data-category="commercial"
+        data-hover
+        data-title="ریلز اینستا آلوارس2"
+        data-client=" آلوارس "
+        data-year="۱۴۰۳"
+        data-duration="۲:۱۰"
+        data-software="Premiere Pro, After Effects, DaVinci Resolve"
+        data-desc="تدوین حرفه‌ای برای یک ریلز با کیفیت."
+        data-video="assets/edith-page/videos/alvares2.mp4"
+        data-poster="assets/images/edit-thumb1.jpg"
+      >
+        <img
+          src="assets/edith-page/videos/alvares2."
+          alt="ریلز آلوارس دو"
+          class="video-thumbnail"
+        />
+        <div class="play-overlay">
+          <div class="play-icon">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="item-info-preview">
+          <span class="preview-cat">تدوین تبلیغاتی</span>
+          <h3 class="preview-title">آلوارس دو</h3>
+          <span class="preview-duration">۲ دقیقه ۱۰ ثانیه</span>
+        </div>
+      </div> -->
+
+      <!-- ادیت 2 -->
+      <div
+        class="motion-item"
+        data-category="music"
+        data-hover
+        data-title="کافه رومی"
+        data-client="رومی"
+        data-year="۱۴۰۳"
+        data-duration="۴:۳۰"
+        data-software="Premiere Pro, After Effects, DaVinci Resolve"
+        data-desc="توضیحات"
+        data-video="assets/edith-page/videos/cafe-romi.mp4"
+        data-poster="assets/edith-page/cover/رومی.jpg"
+      >
+        <img
+          src="assets/edith-page/cover/رومی.jpg"
+          alt="ریلز کافه رومی"
+          class="video-thumbnail"
+        />
+        <div class="play-overlay">
+          <div class="play-icon">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="item-info-preview">
+          <span class="preview-cat">موزیک ویدیو</span>
+          <h3 class="preview-title">کافه رومی</h3>
+          <span class="preview-duration">۴ دقیقه ۳۰ ثانیه</span>
+        </div>
+      </div>
+
+      <!-- ادیت 3 -->
+      <div
+        class="motion-item"
+        data-category="color"
+        data-hover
+        data-title="بنیاد نخبگان"
+        data-client="بنیاد نخبگان"
+        data-year="۱۴۰۲"
+        data-duration="۱۸:۴۵"
+        data-software="DaVinci Resolve, Premiere Pro"
+        data-desc="توضیحات"
+        data-video="assets/edith-page/videos/moshen-bonyadNokhbegan.mp4"
+        data-poster="assets/edith-page/cover/ostadnabyi.png"
+      >
+        <img
+          src="assets/edith-page/cover/ostadnabyi.png"
+          alt="بنیاد نخبگان"
+          class="video-thumbnail"
+        />
+        <div class="play-overlay">
+          <div class="play-icon">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="item-info-preview">
+          <span class="preview-cat">رنگ‌پردازی</span>
+          <h3 class="preview-title">عنوان پروژه</h3>
+          <span class="preview-duration">۱۸ دقیقه ۴۵ ثانیه</span>
+        </div>
+      </div>
+
+      <!-- ادیت 4 -->
+      <div
+        class="motion-item"
+        data-category="vfx"
+        data-hover
+        data-title="تیزر کوتاه به سفارش آستان قدس"
+        data-client="مستند کوتاه آستان قدس و شبکه ی دو"
+        data-year="۱۴۰۳"
+        data-duration="۱:۲۰"
+        data-software="After Effects, Nuke, Cinema 4D"
+        data-desc="افزایش جلوه‌های ویژه بصری به تبلیغات محصول الکترونیکی. شامل ایجاد انفجارهای ذره‌ای، شبیه‌سازی مایع، روتوش حرفه‌ای و ترکیب CGI با فیلم واقعی."
+        data-video="assets/edith-page/videos/mostanad-astanghods-shabake2.mp4"
+        data-poster="assets/images/edit-thumb4.jpg"
+      >
+        <img
+          src="assets/edith-page/cover/astanghods (1).png"
+          alt="جلوه‌های ویژه"
+          class="video-thumbnail"
+        />
+        <div class="play-overlay">
+          <div class="play-icon">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="item-info-preview">
+          <span class="preview-cat">جلوه‌های ویژه</span>
+          <h3 class="preview-title">مستند آستان قدس و شبکه ی دوم</h3>
+          <span class="preview-duration">۱ دقیقه ۲۰ ثانیه</span>
+        </div>
+      </div>
+
+      <!-- ادیت 5 -->
+      <div
+        class="motion-item large"
+        data-category="film"
+        data-hover
+        data-title="پزوژه ی سازمان آتشنشانی "
+        data-client="شبکه مستند ایران"
+        data-year="۱۴۰۳"
+        data-duration="۴۵:۲۰"
+        data-software="Premiere Pro, DaVinci Resolve, Audition"
+        data-desc="تدوین کامل مستند ۴۵ دقیقه‌ای درباره حیات وحش ایران. شامل انتخاب بهترین نماها، ساختاردهی داستان، اصلاح صدا، افزودن گرافیک اطلاعاتی و ساخت تیتراژ اختصاصی."
+        data-video="assets/edith-page/videos/sazman-atashneshani.mp4"
+        data-poster="assets/edith-page/cover/atashneshani.png"
+      >
+        <img
+          src="assets/edith-page/cover/atashneshani.png"
+          alt="مستند"
+          class="video-thumbnail"
+        />
+        <div class="play-overlay">
+          <div class="play-icon">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="item-info-preview">
+          <span class="preview-cat">ویرایش فیلم</span>
+          <h3 class="preview-title">سازمان آتش نشانی</h3>
+          <span class="preview-duration">۴۵ دقیقه ۲۰ ثانیه</span>
+        </div>
+      </div>
+
+      <!-- ادیت 6 -->
+      <!-- <div
+        class="motion-item"
+        data-category="commercial"
+        data-hover
+        data-title="تبلیغات محصول غذایی"
+        data-client="کارخانه مواد غذایی"
+        data-year="۱۴۰۳"
+        data-duration="۱:۴۵"
+        data-software="Premiere Pro, After Effects, Photoshop"
+        data-desc="تدوین تبلیغات ۳۰ ثانیه‌ای برای محصول غذایی جدید. استفاده از کات‌های سریع، انیمیشن متن، افکت‌های اشتهابرانگیز و رنگ‌پردازی گرم. بهینه‌سازی برای پلتفرم‌های اجتماعی."
+        data-video="assets/videos/edit-food.mp4"
+        data-poster="assets/images/edit-thumb6.jpg"
+      >
+        <img src="" alt="تبلیغات غذایی" class="video-thumbnail" />
+        <div class="play-overlay">
+          <div class="play-icon">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="item-info-preview">
+          <span class="preview-cat">تدوین تبلیغاتی</span>
+          <h3 class="preview-title">تبلیغات محصول غذایی</h3>
+          <span class="preview-duration">۱ دقیقه ۴۵ ثانیه</span>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- مودال ویدئو -->
+    <div class="video-modal" id="videoModal">
+      <div class="video-modal-card">
+        <div class="close-video-modal" id="closeVideoModal">&times;</div>
+
+        <div class="video-player-col">
+          <video id="modalVideoPlayer" controls playsinline poster="">
+            <source src="" type="video/mp4" />
+            مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
+          </video>
+        </div>
+
+        <div class="video-info-col">
+          <span class="video-modal-cat" id="videoModalCat">دسته‌بندی</span>
+          <h2 class="video-modal-title" id="videoModalTitle">عنوان ادیت</h2>
+          <p class="video-modal-desc" id="videoModalDesc">
+            توضیحات ادیت اینجا قرار می‌گیرد...
+          </p>
+
+          <div class="video-stats">
+            <div class="stat-item">
+              <i class="far fa-clock"></i>
+              <span id="videoDuration">۰:۰۰</span>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-video"></i>
+              <span id="videoSoftware">Premiere Pro</span>
+            </div>
+          </div>
+
+          <div class="video-meta">
+            <div class="meta-item">
+              <h4>سفارش دهنده</h4>
+              <span id="videoClient">نام مشتری</span>
+            </div>
+            <div class="meta-item">
+              <h4>سال تولید</h4>
+              <span id="videoYear">۱۴۰۳</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // --- 1. تنظیمات موس ---
+      const cursorDot = document.querySelector("[data-cursor-dot]");
+      const cursorOutline = document.querySelector("[data-cursor-outline]");
+      const hoverElements = document.querySelectorAll("[data-hover]");
+
+      window.addEventListener("mousemove", (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+        cursorOutline.animate(
+          { left: `${posX}px`, top: `${posY}px` },
+          { duration: 500, fill: "forwards" }
+        );
+      });
+
+      document.body.addEventListener("mouseover", (e) => {
+        if (
+          e.target.closest("[data-hover]") ||
+          e.target.closest(".motion-item") ||
+          e.target.closest(".close-video-modal")
+        ) {
+          document.body.classList.add("hovering");
+        } else {
+          document.body.classList.remove("hovering");
+        }
+      });
+
+      // --- 2. فیلترینگ ---
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const motionItems = document.querySelectorAll(".motion-item");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelector(".filter-btn.active")
+            .classList.remove("active");
+          btn.classList.add("active");
+          const category = btn.getAttribute("data-filter");
+
+          motionItems.forEach((item) => {
+            item.classList.remove("show");
+            if (
+              category === "all" ||
+              item.getAttribute("data-category") === category
+            ) {
+              item.classList.remove("hide");
+              void item.offsetWidth;
+              item.classList.add("show");
+            } else {
+              item.classList.add("hide");
+            }
+          });
+        });
+      });
+
+      // --- 3. مودال ویدئو ---
+      const videoModal = document.getElementById("videoModal");
+      const closeVideoModalBtn = document.getElementById("closeVideoModal");
+      const videoPlayer = document.getElementById("modalVideoPlayer");
+
+      // المان‌های داخل مودال
+      const vCat = document.getElementById("videoModalCat");
+      const vTitle = document.getElementById("videoModalTitle");
+      const vDesc = document.getElementById("videoModalDesc");
+      const vClient = document.getElementById("videoClient");
+      const vYear = document.getElementById("videoYear");
+      const vDuration = document.getElementById("videoDuration");
+      const vSoftware = document.getElementById("videoSoftware");
+
+      // باز کردن مودال ویدئو
+      motionItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          // گرفتن اطلاعات از ویژگی‌های دیتا
+          const videoSrc = item.getAttribute("data-video");
+          const posterSrc =
+            item.getAttribute("data-poster") || item.querySelector("img").src;
+          const title = item.getAttribute("data-title");
+          const desc = item.getAttribute("data-desc");
+          const category = item.querySelector(".preview-cat").innerText;
+          const client = item.getAttribute("data-client");
+          const year = item.getAttribute("data-year");
+          const duration = item.getAttribute("data-duration");
+          const software = item.getAttribute("data-software");
+
+          // جایگذاری در مودال
+          videoPlayer.src = videoSrc;
+          videoPlayer.poster = posterSrc;
+          vTitle.innerText = title;
+          vDesc.innerText = desc;
+          vCat.innerText = category;
+          vClient.innerText = client;
+          vYear.innerText = year;
+          vDuration.innerText = duration;
+          vSoftware.innerText = software;
+
+          // نمایش مودال
+          videoModal.classList.add("active");
+
+          // پخش خودکار ویدئو
+          setTimeout(() => {
+            videoPlayer
+              .play()
+              .catch((e) => console.log("اتوماتیک پخش نشد:", e));
+          }, 500);
+        });
+      });
+
+      // بستن مودال
+      function closeVideoModal() {
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
+        videoModal.classList.remove("active");
+      }
+
+      closeVideoModalBtn.addEventListener("click", closeVideoModal);
+
+      // بستن با کلیک بیرون از کادر
+      videoModal.addEventListener("click", (e) => {
+        if (e.target === videoModal) {
+          closeVideoModal();
+        }
+      });
+
+      // بستن با دکمه Esc
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && videoModal.classList.contains("active")) {
+          closeVideoModal();
+        }
+      });
+
+      // راه‌اندازی Plyr Player
+      document.addEventListener("DOMContentLoaded", function () {
+        const player = new Plyr("#modalVideoPlayer", {
+          controls: [
+            "play-large",
+            "play",
+            "progress",
+            "current-time",
+            "mute",
+            "volume",
+            "fullscreen",
+          ],
+          settings: ["speed", "quality"],
+          ratio: "16:9",
+          autoplay: false,
+          clickToPlay: true,
+          hideControls: false,
+          resetOnEnd: true,
+        });
+
+        // تنظیم رنگی مطابق با تم
+        document.documentElement.style.setProperty(
+          "--plyr-color-main",
+          "var(--accent-color)"
+        );
+      });
+
+      // ریسپانسیو موبایل
+      function checkMobile() {
+        if (window.innerWidth <= 600) {
+          document.body.classList.add("mobile");
+          cursorDot.style.display = "none";
+          cursorOutline.style.display = "none";
+        } else {
+          document.body.classList.remove("mobile");
+          cursorDot.style.display = "block";
+          cursorOutline.style.display = "block";
+        }
+      }
+
+      window.addEventListener("load", checkMobile);
+      window.addEventListener("resize", checkMobile);
+
+      // انیمیشن‌های اضافی
+      document.querySelectorAll(".motion-item").forEach((item) => {
+        item.addEventListener("mouseenter", () => {
+          const playIcon = item.querySelector(".play-icon");
+          if (playIcon) {
+            playIcon.style.animation = "wave 2s ease-in-out infinite";
+          }
+        });
+
+        item.addEventListener("mouseleave", () => {
+          const playIcon = item.querySelector(".play-icon");
+          if (playIcon) {
+            playIcon.style.animation = "";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

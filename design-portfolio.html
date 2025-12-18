@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <title>تیم خلاقیت یازده</title>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta
+      name="description"
+      content="نمونه کارهای طراحی گرافیک تیم یازده؛ شامل طراحی هویت بصری، بسته‌بندی، پوستر و سوشال مدیا. اثر انگشت ما را روی برندهای معتبر ببینید."
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link
+      rel="canonical"
+      href="https://creativity-eleven.com/design-portfolio.html"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- اضافه کردن viewport meta برای بهتر شدن روی موبایل -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover"
+    />
+
+    <!-- اضافه کردن touch-icon -->
+    <link rel="apple-touch-icon" href="../assets/favicon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- بهبود رنگ نوار وضعیت در iOS -->
+    <meta name="theme-color" content="#050a14" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <title>پروژه های طراحی | یازده</title>
+    <link
+      href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <style>
+      /* --- تنظیمات فونت و متغیرها --- */
+      @font-face {
+        font-family: "pixel_font";
+        src: url("../assets/fonts/unixel-Regular.woff2") format("woff2");
+        font-weight: normal;
+      }
+
+      :root {
+        --bg-color: #050a14;
+        --card-bg: #0f172a;
+        --text-color: #ffffff;
+        --accent-color: #ff3e3e;
+        --secondary-text: #94a3b8;
+        --border-color: rgba(255, 255, 255, 0.08);
+        --modal-bg: #0b1121;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        cursor: none;
+      }
+
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      /* --- موس کاستوم --- */
+      .cursor-dot,
+      .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 9999;
+        pointer-events: none;
+      }
+      .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: white;
+      }
+      .cursor-outline {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transition: 0.15s ease-out;
+      }
+      body.hovering .cursor-outline {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(2px);
+        border-color: transparent;
+      }
+
+      /* --- هدر --- */
+      header {
+        padding: 40px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        background: linear-gradient(
+          to bottom,
+          rgba(5, 10, 20, 0.95),
+          rgba(5, 10, 20, 0)
+        );
+      }
+      .logo h2 {
+        font-family: "pixel_font";
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+      }
+      .back-btn {
+        font-family: "pixel_font";
+        font-size: 0.9rem;
+        color: var(--text-color);
+        text-decoration: none;
+        position: relative;
+        padding-bottom: 5px;
+      }
+      .back-btn::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--text-color);
+        transition: 0.3s;
+      }
+      .back-btn:hover::after {
+        width: 100%;
+      }
+
+      /* --- محتوای اصلی --- */
+      .page-title {
+        margin-top: 160px;
+        padding: 0 60px;
+        margin-bottom: 60px;
+      }
+      .page-title h1 {
+        font-family: "pixel_font";
+        font-size: 4rem;
+        line-height: 1.1;
+        background: linear-gradient(45deg, #fff, #94a3b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .page-subtitle {
+        font-size: 1.2rem;
+        color: var(--secondary-text);
+        max-width: 800px;
+        line-height: 1.6;
+      }
+
+      .filter-container {
+        padding: 0 60px;
+        margin-bottom: 50px;
+        display: flex;
+        gap: 20px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 20px;
+        overflow-x: auto;
+      }
+      .filter-btn {
+        background: transparent;
+        border: 1px solid transparent;
+        color: var(--secondary-text);
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-family: "Vazirmatn";
+        font-size: 1rem;
+        transition: 0.3s;
+        white-space: nowrap;
+      }
+      .filter-btn:hover {
+        color: white;
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .filter-btn.active {
+        color: var(--bg-color);
+        background: white;
+        font-weight: bold;
+      }
+
+      /* --- گرید پورتفولیو --- */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        padding: 0 60px 100px 60px;
+      }
+      .portfolio-item {
+        position: relative;
+        background-color: var(--card-bg);
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+      }
+      .portfolio-item.large {
+        grid-column: span 2;
+        aspect-ratio: 2 / 1;
+      }
+
+      .portfolio-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s cubic-bezier(0.2, 1, 0.3, 1);
+        opacity: 0.8;
+        filter: grayscale(20%);
+      }
+      .portfolio-item:hover img {
+        transform: scale(1.1);
+        opacity: 1;
+        filter: grayscale(0%);
+      }
+
+      .item-info-preview {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 30px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        transform: translateY(20px);
+        opacity: 0;
+        transition: 0.4s ease;
+        z-index: 2;
+        text-align: right;
+        pointer-events: none; /* کلیک روی باکس به دیو اصلی منتقل شود */
+      }
+      .portfolio-item:hover .item-info-preview {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .preview-cat {
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        text-transform: uppercase;
+        display: block;
+      }
+      .preview-title {
+        font-family: "pixel_font";
+        font-size: 1.5rem;
+        color: white;
+      }
+
+      .portfolio-item.hide {
+        display: none;
+      }
+      .portfolio-item.show {
+        animation: fadeIn 0.5s ease forwards;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* --- مودال نمایش جزئیات (MODAL STYLE) --- */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 5, 15, 0.9);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.4s ease;
+      }
+      .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-card {
+        background: var(--modal-bg);
+        width: 85%;
+        max-width: 1000px;
+        height: 80vh;
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        transform: scale(0.9) translateY(30px);
+        transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+      }
+      .modal-overlay.active .modal-card {
+        transform: scale(1) translateY(0);
+      }
+
+      /* بخش عکس در مودال */
+      .modal-image-col {
+        flex: 1.5;
+        background: #000;
+        position: relative;
+        overflow: hidden;
+      }
+      .modal-image-col img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* بخش متن در مودال */
+      .modal-text-col {
+        flex: 1;
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-right: 1px solid var(--border-color);
+        overflow-y: auto;
+      }
+
+      .modal-cat {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+      }
+      .modal-title {
+        font-family: "pixel_font";
+        font-size: 2.5rem;
+        line-height: 1.2;
+        margin-bottom: 30px;
+      }
+      .modal-desc {
+        color: var(--secondary-text);
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 40px;
+        text-align: justify;
+      }
+
+      .modal-meta {
+        display: flex;
+        gap: 40px;
+        border-top: 1px solid var(--border-color);
+        padding-top: 20px;
+      }
+      .meta-item h4 {
+        font-size: 0.8rem;
+        color: #fff;
+        margin-bottom: 5px;
+      }
+      .meta-item span {
+        font-size: 0.9rem;
+        color: var(--secondary-text);
+        font-family: "pixel_font";
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 2rem;
+        color: #fff;
+        cursor: pointer;
+        z-index: 10;
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+      }
+      .close-modal:hover {
+        background: var(--accent-color);
+        transform: rotate(90deg);
+      }
+      /* ====== بهبودهای ریسپانسیو ====== */
+
+      /* تبلت (بین 768px تا 1024px) */
+      @media (max-width: 1024px) and (min-width: 769px) {
+        header {
+          padding: 30px 40px;
+        }
+
+        .page-title {
+          margin-top: 140px;
+          padding: 0 40px;
+        }
+
+        .page-title h1 {
+          font-size: 3.2rem;
+        }
+
+        .filter-container {
+          padding: 0 40px 20px;
+        }
+
+        .portfolio-grid {
+          grid-template-columns: repeat(2, 1fr);
+          padding: 0 40px 80px;
+          gap: 2px;
+        }
+
+        .portfolio-item.large {
+          grid-column: span 2;
+          aspect-ratio: 2/1;
+        }
+
+        .modal-card {
+          width: 90%;
+          height: 85vh;
+        }
+
+        .modal-title {
+          font-size: 2.2rem;
+        }
+      }
+
+      /* موبایل بزرگ (بین 480px تا 768px) */
+      @media (max-width: 768px) and (min-width: 481px) {
+        header {
+          padding: 25px 30px;
+          backdrop-filter: blur(10px);
+          background: rgba(5, 10, 20, 0.95);
+        }
+
+        .logo h2 {
+          font-size: 1.8rem;
+        }
+
+        .page-title {
+          margin-top: 120px;
+          padding: 0 30px;
+          margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+          font-size: 2.8rem;
+          line-height: 1.2;
+        }
+
+        .filter-container {
+          padding: 0 30px 20px;
+          gap: 12px;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+
+        .filter-container::-webkit-scrollbar {
+          display: none;
+        }
+
+        .filter-btn {
+          padding: 10px 20px;
+          font-size: 0.95rem;
+          flex-shrink: 0;
+        }
+
+        .portfolio-grid {
+          grid-template-columns: repeat(2, 1fr);
+          padding: 0 15px 60px;
+          gap: 2px;
+        }
+
+        .portfolio-item {
+          aspect-ratio: 1/1;
+        }
+
+        .portfolio-item.large {
+          grid-column: span 2;
+          aspect-ratio: 2/1;
+        }
+
+        .item-info-preview {
+          padding: 20px;
+        }
+
+        .preview-title {
+          font-size: 1.3rem;
+        }
+
+        .modal-card {
+          width: 95%;
+          height: 90vh;
+          border-radius: 15px;
+        }
+
+        .modal-text-col {
+          padding: 25px;
+        }
+
+        .modal-title {
+          font-size: 2rem;
+          margin-bottom: 20px;
+        }
+
+        .modal-desc {
+          font-size: 0.95rem;
+          margin-bottom: 30px;
+        }
+
+        .modal-meta {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+
+      /* موبایل کوچک (تا 480px) */
+      @media (max-width: 480px) {
+        * {
+          cursor: auto !important;
+        }
+
+        .cursor-dot,
+        .cursor-outline {
+          display: none !important;
+        }
+
+        header {
+          padding: 20px 25px;
+          backdrop-filter: blur(10px);
+          background: rgba(5, 10, 20, 0.98);
+          position: fixed;
+          height: 80px;
+        }
+
+        .logo h2 {
+          font-size: 1.6rem;
+        }
+
+        .back-btn {
+          font-size: 0.85rem;
+          padding-bottom: 3px;
+        }
+
+        .back-btn i {
+          font-size: 0.9rem;
+        }
+
+        .page-title {
+          margin-top: 100px;
+          padding: 0 25px;
+          margin-bottom: 30px;
+        }
+
+        .page-title h1 {
+          font-size: 2.2rem;
+          line-height: 1.3;
+        }
+
+        .filter-container {
+          padding: 0 25px 15px;
+          gap: 10px;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          padding-bottom: 15px;
+          margin-bottom: 30px;
+        }
+
+        .filter-btn {
+          padding: 8px 18px;
+          font-size: 0.9rem;
+          flex-shrink: 0;
+        }
+
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+          padding: 0 15px 50px;
+          gap: 2px;
+        }
+
+        .portfolio-item {
+          aspect-ratio: 1/1;
+          width: 100%;
+        }
+
+        .portfolio-item.large {
+          grid-column: span 1;
+          aspect-ratio: 1/1;
+        }
+
+        .item-info-preview {
+          padding: 20px;
+          transform: translateY(0);
+          opacity: 1;
+          background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+        }
+
+        .preview-cat {
+          font-size: 0.75rem;
+        }
+
+        .preview-title {
+          font-size: 1.2rem;
+        }
+
+        /* مودال موبایل */
+        .modal-overlay {
+          padding: 15px;
+          align-items: flex-end;
+        }
+
+        .modal-card {
+          width: 100%;
+          height: 85vh;
+          border-radius: 15px 15px 0 0;
+          flex-direction: column;
+          transform: translateY(100%);
+          transition: transform 0.4s ease;
+        }
+
+        .modal-overlay.active .modal-card {
+          transform: translateY(0);
+        }
+
+        .close-modal {
+          top: 15px;
+          left: 15px;
+          width: 40px;
+          height: 40px;
+          font-size: 1.5rem;
+          background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-image-col {
+          height: 250px;
+          min-height: 250px;
+          flex: 0 0 auto;
+        }
+
+        .modal-text-col {
+          padding: 20px;
+          flex: 1;
+          overflow-y: auto;
+        }
+
+        .modal-title {
+          font-size: 1.8rem;
+          margin-bottom: 15px;
+        }
+
+        .modal-desc {
+          font-size: 0.9rem;
+          margin-bottom: 25px;
+          line-height: 1.7;
+        }
+
+        .modal-meta {
+          flex-direction: column;
+          gap: 15px;
+          padding-top: 15px;
+        }
+
+        .meta-item h4 {
+          font-size: 0.75rem;
+        }
+
+        .meta-item span {
+          font-size: 0.85rem;
+        }
+      }
+
+      /* موبایل خیلی کوچک (تا 360px) */
+      @media (max-width: 360px) {
+        header {
+          padding: 15px 20px;
+          height: 70px;
+        }
+
+        .logo h2 {
+          font-size: 1.4rem;
+        }
+
+        .page-title {
+          margin-top: 90px;
+          padding: 0 20px;
+        }
+
+        .page-title h1 {
+          font-size: 1.8rem;
+        }
+
+        .filter-container {
+          padding: 0 20px 12px;
+        }
+
+        .filter-btn {
+          padding: 7px 15px;
+          font-size: 0.85rem;
+        }
+
+        .portfolio-grid {
+          padding: 0 10px 40px;
+        }
+
+        .item-info-preview {
+          padding: 15px;
+        }
+
+        .preview-title {
+          font-size: 1.1rem;
+        }
+      }
+
+      /* بهبود عملکرد لمسی */
+      @media (hover: none) and (pointer: coarse) {
+        .portfolio-item {
+          cursor: pointer;
+        }
+
+        .portfolio-item:hover img {
+          transform: none;
+        }
+
+        .filter-btn:active {
+          background: white;
+          color: var(--bg-color);
+        }
+
+        .modal-card {
+          -webkit-overflow-scrolling: touch;
+        }
+      }
+
+      /* برای صفحه‌های لمسی بزرگ (تبلت) */
+      @media (min-width: 769px) and (hover: none) {
+        .cursor-dot,
+        .cursor-outline {
+          display: none;
+        }
+
+        * {
+          cursor: auto;
+        }
+      }
+
+      /* بهبود عملکرد اسکرول در موبایل */
+      body {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .portfolio-item {
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+      }
+
+      /* بهبود نمایش در حالت لنداسکیپ موبایل */
+      @media (max-height: 500px) and (orientation: landscape) {
+        header {
+          padding: 15px 25px;
+          height: 60px;
+        }
+
+        .page-title {
+          margin-top: 80px;
+          margin-bottom: 20px;
+        }
+
+        .page-title h1 {
+          font-size: 2rem;
+        }
+
+        .filter-container {
+          padding: 0 25px 10px;
+          margin-bottom: 20px;
+        }
+
+        .portfolio-grid {
+          padding: 0 25px 30px;
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .portfolio-item {
+          aspect-ratio: 1/1;
+        }
+
+        .portfolio-item.large {
+          grid-column: span 3;
+          aspect-ratio: 3/1;
+        }
+
+        .modal-overlay {
+          padding: 10px;
+        }
+
+        .modal-card {
+          height: 95vh;
+          flex-direction: row;
+        }
+
+        .modal-image-col {
+          height: auto;
+          min-height: auto;
+          flex: 1;
+        }
+
+        .modal-text-col {
+          flex: 1;
+          overflow-y: auto;
+        }
+      }
+
+      /* جلوگیری از زوم هنگام دابل تاپ در iOS */
+      @media (hover: none) and (pointer: coarse) {
+        input,
+        textarea,
+        button,
+        select,
+        .portfolio-item,
+        .filter-btn {
+          touch-action: manipulation;
+        }
+      }
+
+      /* بهبود تایپوگرافی در موبایل */
+      @media (max-width: 480px) {
+        .modal-desc,
+        .modal-title,
+        .preview-title {
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+        }
+      }
+
+      /* جلوگیری از overflow افقی */
+      body {
+        overflow-x: hidden;
+        width: 100%;
+      }
+
+      /* بهبود performance انیمیشن‌ها */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* ریسپانسیو مودال */
+      @media (max-width: 900px) {
+        .modal-card {
+          flex-direction: column;
+          height: 90vh;
+          overflow-y: auto;
+        }
+        .modal-image-col {
+          flex: 1;
+          height: 300px;
+          min-height: 300px;
+        }
+        .modal-text-col {
+          flex: auto;
+          padding: 30px;
+          border-right: none;
+        }
+        .portfolio-grid {
+          grid-template-columns: repeat(2, 1fr);
+          padding: 0 20px 80px;
+        }
+        .portfolio-item.large {
+          grid-column: span 2;
+        }
+      }
+      @media (max-width: 600px) {
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+        .portfolio-item.large {
+          grid-column: span 1;
+          aspect-ratio: 1/1;
+        }
+        .cursor-dot,
+        .cursor-outline {
+          display: none;
+        }
+        * {
+          cursor: auto;
+        }
+        .page-title h1 {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <header>
+      <div class="logo">
+        <h2>یازده</h2>
+      </div>
+      <a href="../index.html" class="back-btn" data-hover>
+        <i class="fas fa-arrow-right"></i> بازگشت به خانه
+      </a>
+    </header>
+
+    <div class="page-title">
+      <h1>طراحی بعنی جسارت خلق هویت</h1>
+      <p class="page-subtitle">
+        در یازده ایده هایی که به تصویر کشیده میشوند، هویت شما را با تمام جزئیات
+        و داستانش به عرصه ی ظهور میگذارد.
+      </p>
+    </div>
+
+    <div class="filter-container">
+      <button class="filter-btn active" data-filter="all" data-hover>
+        همه آثار
+      </button>
+      <button class="filter-btn" data-filter="identity" data-hover>
+        هویت بصری
+      </button>
+      <button class="filter-btn" data-filter="packaging" data-hover>
+        بسته‌بندی
+      </button>
+      <button class="filter-btn" data-filter="social" data-hover>
+        سوشال مدیا
+      </button>
+      <button class="filter-btn" data-filter="poster" data-hover>پوستر</button>
+    </div>
+
+    <div class="portfolio-grid">
+      <div
+        class="portfolio-item large"
+        data-category="identity"
+        data-hover
+        data-title="آرما فوم"
+        data-client="گروه  آرما فوم"
+        data-year="1402"
+        data-desc="در این پروژه، هدف اصلی خلق یک هویت بصری مینیمال اما با ثبات بود. ما با الهام از خطوط معماری فوم ، ساختمان و ترکیب آن با فضای منفی، لوگویی طراحی کردیم که ایستایی را نشان دهد ."
+      >
+        <img src="assets/design-page/cart-vizit-vanafod1.jpg" alt="Arma" />
+        <div class="item-info-preview">
+          <span class="preview-cat">هویت بصری</span>
+          <h3 class="preview-title">آرما فوم</h3>
+        </div>
+      </div>
+
+      <div
+        class="portfolio-item"
+        data-category="packaging"
+        data-hover
+        data-title="مفید یدک"
+        data-client="شرکت بازرگانی مفید یدک"
+        data-year="1403"
+        data-desc=".مفید یدک؛ تأمین مطمئن لوازم یدکی برای فروشگاه‌های حرفه‌ای"
+      >
+        <img src="assets/design-page/Artboard 3.png" alt="" />
+        <div class="item-info-preview">
+          <span class="preview-cat">بسته‌بندی</span>
+          <h3 class="preview-title">مفید یدک</h3>
+        </div>
+      </div>
+      <div
+        class="portfolio-item large"
+        data-category="identity"
+        data-hover
+        data-title="تپسی"
+        data-client="تپسی"
+        data-year="1403"
+        data-desc="بازنگری در هویت بصری سوپر اپلیکیشن تپسی. هدف ما ساده‌سازی رابط بصری و ایجاد آیکون‌هایی بود که در ابعاد کوچک موبایل خوانایی بالایی داشته باشند."
+      >
+        <img src="assets/design-page/cart-vizit-vanafod2.jpg" alt="Tapsi" />
+        <div class="item-info-preview">
+          <span class="preview-cat">هویت بصری</span>
+          <h3 class="preview-title">ری‌برندینگ تپسی</h3>
+        </div>
+      </div>
+
+      <div
+        class="portfolio-item"
+        data-category="poster"
+        data-hover
+        data-title="جشنواره فجر"
+        data-client="سازمان سینمایی"
+        data-year="1401"
+        data-desc="پوستری انتزاعی با محوریت مفهوم سیمرغ. استفاده از تایپوگرافی شکسته و رنگ‌های ملی برای ایجاد حسی حماسی و مدرن در فضای هنری کشور."
+      >
+        <img
+          src="assets/design-page/poster-reels-cafeRomi.jpg"
+          alt="Poster"
+          style="object-position: top"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">طراحی پوستر</span>
+          <h3 class="preview-title">جشنواره فجر</h3>
+        </div>
+      </div>
+
+      <div
+        class="portfolio-item"
+        data-category="social"
+        data-hover
+        data-title=" زرین"
+        data-client="زرین "
+        data-year="1402"
+        data-desc="طراحی قالب‌های اینستاگرام برای کمپین‌های فصلی. تمرکز بر رنگ زرد برند و استفاده از المان‌های سه‌بعدی برای جذب مخاطب نسل Z."
+      >
+        <img src="assets/design-page/cart-vizit-zarin.jpg" alt="Zarin" />
+        <div class="item-info-preview">
+          <span class="preview-cat">سوشال مدیا</span>
+          <h3 class="preview-title">زرین</h3>
+        </div>
+      </div>
+      <div
+        class="portfolio-item"
+        data-category="social"
+        data-hover
+        data-title=" صفحه ی ثبت نام وانا فود"
+        data-client="وانافود "
+        data-year="1402"
+        data-desc="طراحی قالب‌های اینستاگرام برای کمپین‌های فصلی. تمرکز بر رنگ زرد برند و استفاده از المان‌های سه‌بعدی برای جذب مخاطب نسل Z."
+      >
+        <img src="assets/design-page/tarahi-safheye-login.jpg" alt="Zarin" />
+        <div class="item-info-preview">
+          <span class="preview-cat">سوشال مدیا</span>
+          <h3 class="preview-title">وانا فود</h3>
+        </div>
+      </div>
+      <div
+        class="portfolio-item"
+        data-category="social"
+        data-hover
+        data-title=" صفحه ی ثبت نام وانا فود"
+        data-client="وانافود "
+        data-year="1402"
+        data-desc="طراحی قالب‌های اینستاگرام برای کمپین‌های فصلی. تمرکز بر رنگ زرد برند و استفاده از المان‌های سه‌بعدی برای جذب مخاطب نسل Z."
+      >
+        <img src="assets/design-page/Artboard-vanafod.png" alt="Zarin" />
+        <div class="item-info-preview">
+          <span class="preview-cat">سوشال مدیا</span>
+          <h3 class="preview-title">وانا فود</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="projectModal">
+      <div class="modal-card">
+        <div class="close-modal" id="closeModalBtn">&times;</div>
+
+        <div class="modal-image-col">
+          <img id="modalImg" src="" alt="" />
+        </div>
+
+        <div class="modal-text-col">
+          <span class="modal-cat" id="modalCat">دسته‌بندی</span>
+          <h2 class="modal-title" id="modalTitle">عنوان پروژه</h2>
+          <p class="modal-desc" id="modalDesc">
+            توضیحات پروژه اینجا قرار می‌گیرد...
+          </p>
+
+          <div class="modal-meta">
+            <div class="meta-item">
+              <h4>سفارش دهنده</h4>
+              <span id="modalClient">نام مشتری</span>
+            </div>
+            <div class="meta-item">
+              <h4>سال اجرا</h4>
+              <span id="modalYear">1403</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // --- 1. تنظیمات موس ---
+      const cursorDot = document.querySelector("[data-cursor-dot]");
+      const cursorOutline = document.querySelector("[data-cursor-outline]");
+      const hoverElements = document.querySelectorAll("[data-hover]");
+
+      window.addEventListener("mousemove", (e) => {
+        const posX = e.clientX;
+        const posY = e.clientY;
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+        cursorOutline.animate(
+          { left: `${posX}px`, top: `${posY}px` },
+          { duration: 500, fill: "forwards" }
+        );
+      });
+
+      document.body.addEventListener("mouseover", (e) => {
+        if (
+          e.target.closest("[data-hover]") ||
+          e.target.closest(".portfolio-item") ||
+          e.target.closest(".close-modal")
+        ) {
+          document.body.classList.add("hovering");
+        } else {
+          document.body.classList.remove("hovering");
+        }
+      });
+
+      // --- 2. فیلترینگ ---
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const items = document.querySelectorAll(".portfolio-item");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelector(".filter-btn.active")
+            .classList.remove("active");
+          btn.classList.add("active");
+          const category = btn.getAttribute("data-filter");
+
+          items.forEach((item) => {
+            item.classList.remove("show");
+            if (
+              category === "all" ||
+              item.getAttribute("data-category") === category
+            ) {
+              item.classList.remove("hide");
+              void item.offsetWidth;
+              item.classList.add("show");
+            } else {
+              item.classList.add("hide");
+            }
+          });
+        });
+      });
+
+      // --- 3. مودال (نمایش جزئیات) ---
+      const modal = document.getElementById("projectModal");
+      const closeModalBtn = document.getElementById("closeModalBtn");
+
+      // المان‌های داخل مودال
+      const mImg = document.getElementById("modalImg");
+      const mTitle = document.getElementById("modalTitle");
+      const mDesc = document.getElementById("modalDesc");
+      const mCat = document.getElementById("modalCat");
+      const mClient = document.getElementById("modalClient");
+      const mYear = document.getElementById("modalYear");
+
+      // باز کردن مودال
+      items.forEach((item) => {
+        item.addEventListener("click", () => {
+          // گرفتن اطلاعات از ویژگی‌های دیتا
+          const imgSrc = item.querySelector("img").src; // یا item.getAttribute('data-img') اگر عکس با کیفیت دارید
+          const title = item.getAttribute("data-title");
+          const desc = item.getAttribute("data-desc");
+          const category = item.querySelector(".preview-cat").innerText;
+          const client = item.getAttribute("data-client");
+          const year = item.getAttribute("data-year");
+
+          // جایگذاری در مودال
+          mImg.src = imgSrc;
+          mTitle.innerText = title;
+          mDesc.innerText = desc;
+          mCat.innerText = category;
+          mClient.innerText = client;
+          mYear.innerText = year;
+
+          // نمایش
+          modal.classList.add("active");
+        });
+      });
+
+      // بستن مودال
+      function closeModal() {
+        modal.classList.remove("active");
+      }
+
+      closeModalBtn.addEventListener("click", closeModal);
+
+      // بستن با کلیک بیرون از کادر
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // بستن با دکمه Esc
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("active")) {
+          closeModal();
+        }
+      });
+      // اضافه کردن این کد به اسکریپت موجود
+      // بهبود عملکرد لمسی روی موبایل
+      if ("ontouchstart" in window) {
+        // حذف اثر hover روی موبایل
+        document.body.classList.add("touch-device");
+
+        // بهبود کلیک روی کارت‌ها
+        document.querySelectorAll(".portfolio-item").forEach((item) => {
+          let tapTimer;
+
+          item.addEventListener("touchstart", function (e) {
+            tapTimer = setTimeout(() => {
+              // برای جلوگیری از highlight طولانی
+              this.style.opacity = "0.9";
+            }, 100);
+          });
+
+          item.addEventListener("touchend", function (e) {
+            clearTimeout(tapTimer);
+            this.style.opacity = "";
+
+            // جلوگیری از باز شدن مودال اگر اسکرول اتفاق افتاده
+            if (!this.classList.contains("scrolling")) {
+              // کد باز کردن مودال موجود
+              const imgSrc = this.querySelector("img").src;
+              const title = this.getAttribute("data-title");
+              const desc = this.getAttribute("data-desc");
+              const category = this.querySelector(".preview-cat").innerText;
+              const client = this.getAttribute("data-client");
+              const year = this.getAttribute("data-year");
+
+              // جایگذاری در مودال
+              mImg.src = imgSrc;
+              mTitle.innerText = title;
+              mDesc.innerText = desc;
+              mCat.innerText = category;
+              mClient.innerText = client;
+              mYear.innerText = year;
+
+              // نمایش
+              modal.classList.add("active");
+            }
+          });
+
+          // تشخیص اسکرول
+          let startY;
+          item.addEventListener("touchstart", function (e) {
+            startY = e.touches[0].clientY;
+            this.classList.add("scrolling");
+          });
+
+          item.addEventListener("touchmove", function (e) {
+            const currentY = e.touches[0].clientY;
+            if (Math.abs(currentY - startY) > 10) {
+              this.classList.add("scrolling");
+            } else {
+              this.classList.remove("scrolling");
+            }
+          });
+
+          item.addEventListener("touchend", function () {
+            setTimeout(() => {
+              this.classList.remove("scrolling");
+            }, 100);
+          });
+        });
+      }
+
+      // جلوگیری از اسکرول صفحه وقتی مودال باز است
+      function toggleBodyScroll(enable) {
+        if (enable) {
+          document.body.style.overflow = "auto";
+          document.body.style.position = "static";
+          document.body.style.height = "auto";
+        } else {
+          document.body.style.overflow = "hidden";
+          document.body.style.position = "fixed";
+          document.body.style.width = "100%";
+          document.body.style.height = "100%";
+        }
+      }
+
+      // در تابع closeModal:
+      function closeModal() {
+        modal.classList.remove("active");
+        toggleBodyScroll(true); // فعال کردن اسکرول
+      }
+
+      // در تابع باز کردن مودال:
+      items.forEach((item) => {
+        item.addEventListener("click", () => {
+          // ... کد موجود
+          modal.classList.add("active");
+          toggleBodyScroll(false); // غیرفعال کردن اسکرول
+        });
+      });
+
+      // بستن مودال با اسکرول در موبایل (اختیاری)
+      modal.addEventListener(
+        "touchmove",
+        function (e) {
+          if (e.target === this) {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+      // اضافه کردن این کد به اسکریپت موجود
+      // بهبود عملکرد لمسی روی موبایل
+      if ("ontouchstart" in window) {
+        // حذف اثر hover روی موبایل
+        document.body.classList.add("touch-device");
+
+        // بهبود کلیک روی کارت‌ها
+        document.querySelectorAll(".portfolio-item").forEach((item) => {
+          let tapTimer;
+
+          item.addEventListener("touchstart", function (e) {
+            tapTimer = setTimeout(() => {
+              // برای جلوگیری از highlight طولانی
+              this.style.opacity = "0.9";
+            }, 100);
+          });
+
+          item.addEventListener("touchend", function (e) {
+            clearTimeout(tapTimer);
+            this.style.opacity = "";
+
+            // جلوگیری از باز شدن مودال اگر اسکرول اتفاق افتاده
+            if (!this.classList.contains("scrolling")) {
+              // کد باز کردن مودال موجود
+              const imgSrc = this.querySelector("img").src;
+              const title = this.getAttribute("data-title");
+              const desc = this.getAttribute("data-desc");
+              const category = this.querySelector(".preview-cat").innerText;
+              const client = this.getAttribute("data-client");
+              const year = this.getAttribute("data-year");
+
+              // جایگذاری در مودال
+              mImg.src = imgSrc;
+              mTitle.innerText = title;
+              mDesc.innerText = desc;
+              mCat.innerText = category;
+              mClient.innerText = client;
+              mYear.innerText = year;
+
+              // نمایش
+              modal.classList.add("active");
+            }
+          });
+
+          // تشخیص اسکرول
+          let startY;
+          item.addEventListener("touchstart", function (e) {
+            startY = e.touches[0].clientY;
+            this.classList.add("scrolling");
+          });
+
+          item.addEventListener("touchmove", function (e) {
+            const currentY = e.touches[0].clientY;
+            if (Math.abs(currentY - startY) > 10) {
+              this.classList.add("scrolling");
+            } else {
+              this.classList.remove("scrolling");
+            }
+          });
+
+          item.addEventListener("touchend", function () {
+            setTimeout(() => {
+              this.classList.remove("scrolling");
+            }, 100);
+          });
+        });
+      }
+
+      // جلوگیری از اسکرول صفحه وقتی مودال باز است
+      function toggleBodyScroll(enable) {
+        if (enable) {
+          document.body.style.overflow = "auto";
+          document.body.style.position = "static";
+          document.body.style.height = "auto";
+        } else {
+          document.body.style.overflow = "hidden";
+          document.body.style.position = "fixed";
+          document.body.style.width = "100%";
+          document.body.style.height = "100%";
+        }
+      }
+
+      // در تابع closeModal:
+      function closeModal() {
+        modal.classList.remove("active");
+        toggleBodyScroll(true); // فعال کردن اسکرول
+      }
+
+      // در تابع باز کردن مودال:
+      items.forEach((item) => {
+        item.addEventListener("click", () => {
+          // ... کد موجود
+          modal.classList.add("active");
+          toggleBodyScroll(false); // غیرفعال کردن اسکرول
+        });
+      });
+
+      // بستن مودال با اسکرول در موبایل (اختیاری)
+      modal.addEventListener(
+        "touchmove",
+        function (e) {
+          if (e.target === this) {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+    </script>
+  </body>
+</html>
