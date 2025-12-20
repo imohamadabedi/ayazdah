@@ -1,49 +1,47 @@
+/**
+ * Eleven Team Website Scripts
+ * Optimized for Performance and Readability
+ */
 
-// --- ۱. منوی همبرگری شیشه‌ای (Glass Mobile Menu) ---
+document.addEventListener('DOMContentLoaded', () => {
+    setupMobileMenu();
+    setupPortfolioSlider();
+    setupVideoPlayer();
+    setupReadMore();
+    setupReviews();
+    setupContactModal();
+    setupSpecialModal();
+});
+
+// --- ۱. منوی همبرگری شیشه‌ای (Mobile Menu) ---
 function setupMobileMenu() {
-    const menuIcon = document.querySelector('img[alt="menu"]');
+    const menuIcon = document.querySelector('img[alt="منوی اصلی"]'); // Updated selector based on new ALT
     const overlay = document.getElementById('glassOverlay');
     const closeBtn = document.getElementById('closeMenuBtn');
     const menuLinks = document.querySelectorAll('.glass-menu-content a');
 
-    if (!menuIcon || !overlay || !closeBtn) return;
+    // Fallback selector if ALT hasn't updated in cache yet
+    const safeMenuIcon = menuIcon || document.querySelector('img[alt="menu"]');
 
-    // باز کردن منو
-    menuIcon.addEventListener('click', () => {
-        overlay.classList.add('open');
-    });
+    if (!safeMenuIcon || !overlay || !closeBtn) return;
 
-    // بستن منو با دکمه ضربدر
-    closeBtn.addEventListener('click', () => {
-        overlay.classList.remove('open');
-    });
+    safeMenuIcon.addEventListener('click', () => overlay.classList.add('open'));
+    closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
 
-    // بستن منو و اسکرول نرم هنگام کلیک روی لینک‌ها
     menuLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            // 1. همیشه منو را ببند
             overlay.classList.remove('open');
-
-            // 2. اگر لینک به یک ID داخل همین صفحه اشاره می‌کند (مثل #services)
             const href = this.getAttribute('href');
             if (href.startsWith('#')) {
-                e.preventDefault(); // از پرش ناگهانی مرورگر جلوگیری می‌کند
-                const targetId = href.substring(1); // حذف کاراکتر '#'
-                const targetElement = document.getElementById(targetId);
-
-                // 3. اگر المنت مورد نظر وجود داشت، به آن اسکرول نرم کنیم
+                e.preventDefault();
+                const targetElement = document.getElementById(href.substring(1));
                 if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth', // ایجاد اسکرول نرم
-                        block: 'start'      // المنت در بالای صفحه قرار گیرد
-                    });
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }
-            // اگر لینک به صفحه دیگری (مثل AboutUs.html) می‌رود، مرورگر به صورت عادی عمل می‌کند.
         });
     });
 }
-
 
 // --- ۲. اسلایدر لوگوها (Portfolio Slider) ---
 function setupPortfolioSlider() {
@@ -54,125 +52,83 @@ function setupPortfolioSlider() {
     const currentSlideNum = document.getElementById('currentSlideNum');
     const totalSlideNum = document.getElementById('totalSlideNum');
     const progressFill = document.getElementById('progressFill');
-    
-    // اضافه کردن المنت‌های متن
+
+    // Text Elements
     const logoTitle = document.getElementById('logo-title');
     const logoDescription = document.getElementById('logo-description');
     const logoTeam = document.getElementById('logo-team');
     const logoInspiration = document.getElementById('logo-inspiration');
     const logoMessage = document.getElementById('logo-message');
 
-    if (!previewImg || thumbCards.length === 0 || !nextBtn || !prevBtn || !currentSlideNum || !totalSlideNum || !progressFill) return;
+    if (!previewImg || thumbCards.length === 0) return;
 
     let currentIndex = 0;
     const totalSlides = thumbCards.length;
 
-    // Set total slides number
-    totalSlideNum.textContent = String(totalSlides).padStart(2, '0');
+    if (totalSlideNum) totalSlideNum.textContent = String(totalSlides).padStart(2, '0');
 
     function updateSlider(newIndex) {
-        // Update index
-        currentIndex = newIndex;
+        currentIndex = (newIndex + totalSlides) % totalSlides; // Simplified Logic
 
-        // Loop around if necessary
-        if (currentIndex < 0) {
-            currentIndex = totalSlides - 1;
-        } else if (currentIndex >= totalSlides) {
-            currentIndex = 0;
+        // Update Image
+        const imgElement = thumbCards[currentIndex].querySelector('img');
+        if (imgElement) {
+            previewImg.setAttribute('src', imgElement.getAttribute('src'));
+            // SEO: Update Alt text of large image
+            previewImg.setAttribute('alt', imgElement.getAttribute('alt') || 'نمونه کار');
         }
 
-        // Update large image
-        const newSrc = thumbCards[currentIndex].querySelector('img').getAttribute('src');
-        previewImg.setAttribute('src', newSrc);
-
-        // Update active thumbnail
+        // Update Active Class
         thumbCards.forEach((card, index) => {
-            if (index === currentIndex) {
-                card.classList.add('active');
-            } else {
-                card.classList.remove('active');
+            card.classList.toggle('active', index === currentIndex);
+        });
+
+        // Update Numbers & Progress
+        if (currentSlideNum) currentSlideNum.textContent = String(currentIndex + 1).padStart(2, '0');
+        if (progressFill) progressFill.style.width = `${((currentIndex + 1) / totalSlides) * 100}%`;
+
+        // Update Text with Fade Effect
+        const textElements = [logoTitle, logoDescription, logoTeam, logoInspiration, logoMessage];
+        textElements.forEach(el => { if (el) el.style.opacity = '0'; });
+
+        setTimeout(() => {
+            const activeCard = thumbCards[currentIndex];
+            const dataMap = {
+                'data-title': logoTitle,
+                'data-desc': logoDescription,
+                'data-team': logoTeam,
+                'data-inspiration': logoInspiration,
+                'data-message': logoMessage
+            };
+
+            for (const [attr, element] of Object.entries(dataMap)) {
+                if (element && activeCard.hasAttribute(attr)) {
+                    element.textContent = activeCard.getAttribute(attr);
+                }
             }
-        });
+            
+            textElements.forEach(el => { if (el) el.style.opacity = '1'; });
+        }, 200);
+    }
 
-        // Update numbers
-        currentSlideNum.textContent = String(currentIndex + 1).padStart(2, '0');
-
-        // Update progress bar
-    const progressPercentage = ((currentIndex + 1) / totalSlides) * 100;
-    progressFill.style.width = `${progressPercentage}%`;
-
-    // افکت fade برای متن‌ها
-    const textElements = [logoTitle, logoDescription, logoTeam, logoInspiration, logoMessage];
-    window.player = player;
+    if (nextBtn) nextBtn.addEventListener('click', () => updateSlider(currentIndex + 1));
+    if (prevBtn) prevBtn.addEventListener('click', () => updateSlider(currentIndex - 1));
     
-    // محو شدن
-    textElements.forEach(el => {
-        if (el) el.style.opacity = '0';
-    });
-    
-    setTimeout(() => {
-        // به‌روزرسانی متن‌ها
-        const activeCard = thumbCards[currentIndex];
-        
-        if (logoTitle && activeCard.getAttribute('data-title')) {
-            logoTitle.textContent = activeCard.getAttribute('data-title');
-        }
-        
-        if (logoDescription && activeCard.getAttribute('data-desc')) {
-            logoDescription.textContent = activeCard.getAttribute('data-desc');
-        }
-        
-        if (logoTeam && activeCard.getAttribute('data-team')) {
-            logoTeam.textContent = activeCard.getAttribute('data-team');
-        }
-        
-        if (logoInspiration && activeCard.getAttribute('data-inspiration')) {
-            logoInspiration.textContent = activeCard.getAttribute('data-inspiration');
-        }
-        
-        if (logoMessage && activeCard.getAttribute('data-message')) {
-            logoMessage.textContent = activeCard.getAttribute('data-message');
-        }
-        
-        // نمایش مجدد
-        textElements.forEach(el => {
-            if (el) el.style.opacity = '1';
-        });
-    }, 200);
-}
-
-    nextBtn.addEventListener('click', () => {
-        updateSlider(currentIndex + 1);
-    });
-
-    prevBtn.addEventListener('click', () => {
-        updateSlider(currentIndex - 1);
-    });
-
     thumbCards.forEach((card, index) => {
-        card.addEventListener('click', () => {
-            updateSlider(index);
-        });
+        card.addEventListener('click', () => updateSlider(index));
     });
 
-    // Initial update
     updateSlider(0);
 }
 
-
-// --- ۳. پخش کننده ویدیو (Video Player Toggle) ---
+// --- ۳. پخش کننده ویدیو ---
 function setupVideoPlayer() {
-    const player = new Plyr('#player', {
-        
-    });
-
-    // Expose player so it can be used from the console
-    window.player = player;
+    if (document.getElementById('player')) {
+        window.player = new Plyr('#player', { /* Options */ });
+    }
 }
 
-
-
-// --- ۵. دکمه نمایش بیشتر (Read More Toggle) ---
+// --- ۴. دکمه نمایش بیشتر (Read More) ---
 function setupReadMore() {
     const btn = document.getElementById('read-more-btn');
     const moreText = document.getElementById('more-text');
@@ -182,356 +138,160 @@ function setupReadMore() {
     if (!btn || !moreText) return;
 
     btn.addEventListener('click', () => {
-        if (moreText.style.display === "none") {
-            // نمایش متن
-            moreText.style.display = "inline";
-            btnText.textContent = "نمایش کمتر";
-            btnIcon.classList.remove('fa-angle-down');
-            btnIcon.classList.add('fa-angle-up');
-        } else {
-            // مخفی کردن متن
-            moreText.style.display = "none";
-            btnText.textContent = "نمایش بیشتر";
-            btnIcon.classList.remove('fa-angle-up');
-            btnIcon.classList.add('fa-angle-down');
+        const isHidden = moreText.style.display === "none";
+        moreText.style.display = isHidden ? "inline" : "none";
+        btnText.textContent = isHidden ? "نمایش کمتر" : "نمایش بیشتر";
+        
+        if (btnIcon) {
+            btnIcon.className = isHidden ? 'fas fa-angle-up' : 'fas fa-angle-down';
         }
     });
 }
 
-
-// --- ۴. اجرای تمام توابع پس از لود شدن کامل صفحه ---
-document.addEventListener('DOMContentLoaded', () => {
-    setupMobileMenu();
-    setupPortfolioSlider();
-    setupVideoPlayer();
-    setupReadMore();
-    setupReviews();
-    setupContactModal();
-    setupSpecialModal();
-});
-// --- ۶. اسلایدر نظرات مشتریان (Customer Reviews) ---
+// --- ۵. اسلایدر نظرات (Reviews) ---
 function setupReviews() {
-    // 1. لیست نظرات (دیتای خود را اینجا وارد کنید)
     const reviewsData = [
-        {
-            name: "محمد کریم آبادی",
-            text: "افتخار آشنایی با تیم قوی و خلاق رو داشتم که نظم، دیسیپلین و حرفه ای بودن رو برای من دوباره به تصویر کشیدن."
-        },
-        {
-            name: "سارا رادمنش",
-            text: "تجربه‌ای فوق‌العاده با تیم یازده داشتم. سرعت عمل بالا و کیفیت بی‌نظیر تدوین‌ها واقعاً من را شگفت‌زده کرد."
-        },
-        {
-            name: "علی حسینی",
-            text: "خلاقیت در طراحی لوگو دقیقاً همان چیزی بود که برند ما نیاز داشت. ممنون از توجه شما به جزئیات."
-        },
-        {
-            name: "مهدی احمدی",
-            text: "پشتیبانی عالی و برخورد حرفه‌ای. قطعاً برای پروژه‌های بعدی هم با همین تیم کار خواهم کرد."
-        },
-        {
-            name: "محمد عابدی",
-            text: "از همکاری با تیم یازده بسیار راضی هستم. آن‌ها توانستند ایده‌های ما را به بهترین شکل ممکن به تصویر بکشند."
-        }
+        { name: "محمد کریم آبادی", text: "افتخار آشنایی با تیم قوی و خلاق رو داشتم که نظم، دیسیپلین و حرفه ای بودن رو برای من دوباره به تصویر کشیدن." },
+        { name: "سارا رادمنش", text: "تجربه‌ای فوق‌العاده با تیم یازده داشتم. سرعت عمل بالا و کیفیت بی‌نظیر تدوین‌ها واقعاً من را شگفت‌زده کرد." },
+        { name: "علی حسینی", text: "خلاقیت در طراحی لوگو دقیقاً همان چیزی بود که برند ما نیاز داشت. ممنون از توجه شما به جزئیات." },
+        { name: "مهدی احمدی", text: "پشتیبانی عالی و برخورد حرفه‌ای. قطعاً برای پروژه‌های بعدی هم با همین تیم کار خواهم کرد." },
+        { name: "محمد عابدی", text: "از همکاری با تیم یازده بسیار راضی هستم. آن‌ها توانستند ایده‌های ما را به بهترین شکل ممکن به تصویر بکشند." }
     ];
 
-    // 2. انتخاب المنت‌ها از HTML
     const nameEl = document.getElementById('review-name');
     const textEl = document.getElementById('review-text');
     const nextBtn = document.getElementById('review-next');
     const prevBtn = document.getElementById('review-prev');
 
-    // اگر المنت‌ها در صفحه نبودند، کد اجرا نشود (برای جلوگیری از ارور)
     if (!nameEl || !textEl || !nextBtn || !prevBtn) return;
 
     let currentReviewIndex = 0;
-   
-    // 3. تابع آپدیت کردن متن‌ها
+
     function updateReview(index) {
-        // افکت محو شدن کوتاه برای زیبایی (اختیاری)
         textEl.style.opacity = 0;
         nameEl.style.opacity = 0;
-
         setTimeout(() => {
             nameEl.textContent = reviewsData[index].name;
             textEl.textContent = reviewsData[index].text;
-            
             textEl.style.opacity = 1;
             nameEl.style.opacity = 1;
-        }, 200); // بعد از 0.2 ثانیه متن عوض شود
+        }, 200);
     }
 
-    // 4. رویداد کلیک دکمه بعدی (فلش چپ)
     nextBtn.addEventListener('click', () => {
-        currentReviewIndex++;
-        if (currentReviewIndex > reviewsData.length - 1) {
-            currentReviewIndex = 0; // برگشت به اول
-        }
+        currentReviewIndex = (currentReviewIndex + 1) % reviewsData.length;
         updateReview(currentReviewIndex);
     });
 
-    // 5. رویداد کلیک دکمه قبلی (فلش راست)
     prevBtn.addEventListener('click', () => {
-        currentReviewIndex--;
-        if (currentReviewIndex < 0) {
-            currentReviewIndex = reviewsData.length - 1; // رفتن به آخر
-        }
+        currentReviewIndex = (currentReviewIndex - 1 + reviewsData.length) % reviewsData.length;
         updateReview(currentReviewIndex);
     });
 }
- //تابع باز بسته شدن لیست
-    function toggleMenu() {
-      const menu = document.getElementById('mainMenu');
-      menu.classList.toggle('active');
-    }
 
-// اضافه کردن تابع به لیست اجرا
-
-// --- ۷. مودال تماس با ما ---
+// --- ۶. مودال تماس (Contact Modal) ---
 function setupContactModal() {
-    const contactTriggers = document.querySelectorAll('.contact-trigger');
     const contactModal = document.getElementById('contactModal');
-    const closeModalBtn = document.querySelector('.contact-modal-close');
+    const triggers = document.querySelectorAll('.contact-trigger');
+    const closeBtn = document.querySelector('.contact-modal-close');
     const overlay = document.querySelector('.contact-modal-overlay');
 
-    // اگر عناصر وجود ندارند، ادامه نده
-    if (!contactTriggers.length || !contactModal || !closeModalBtn || !overlay) {
-        console.log('عناصر مودال تماس پیدا نشدند');
-        return;
-    }
+    if (!contactModal) return;
 
-    // باز کردن مودال
-    contactTriggers.forEach(trigger => {
-        trigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            openContactModal();
-        });
-    });
-
-    // بستن مودال
-    closeModalBtn.addEventListener('click', closeContactModal);
-    overlay.addEventListener('click', closeContactModal);
-
-    // کلید ESC
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && contactModal.style.display === 'block') {
-            closeContactModal();
-        }
-    });
-
-    // جلوگیری از بستن با کلیک روی مودال
-    contactModal.addEventListener('click', function(e) {
-        if (e.target === contactModal) {
-            closeContactModal();
-        }
-    });
-
-    // توابع
-    function openContactModal() {
+    function openModal() {
         contactModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
-        
-        // بستن منو در موبایل (اگر باز است)
-        const mobileMenu = document.querySelector('.glass-menu-overlay.open');
-        if (mobileMenu) {
-            mobileMenu.classList.remove('open');
-        }
+        document.querySelector('.glass-menu-overlay')?.classList.remove('open');
     }
 
-    function closeContactModal() {
+    function closeModal() {
         contactModal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
 
-    // کپی شماره تلفن
-    document.querySelectorAll('.copy-btn').forEach(btn => {
+    triggers.forEach(t => t.addEventListener('click', (e) => { e.preventDefault(); openModal(); }));
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (overlay) overlay.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && contactModal.style.display === 'block') closeModal();
+    });
+
+    // Copy to Clipboard Functionality
+    document.querySelectorAll('.copy-btn, .copy-link').forEach(btn => {
         btn.addEventListener('click', function() {
-            const number = this.getAttribute('data-number');
-            navigator.clipboard.writeText(number).then(() => {
-                const originalText = this.innerHTML;
-                this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> کپی شد!';
-                this.style.background = 'rgba(76, 175, 80, 0.2)';
-                this.style.borderColor = 'rgba(76, 175, 80, 0.5)';
+            const content = this.dataset.number || window.location.href;
+            const originalHTML = this.innerHTML;
+            
+            navigator.clipboard.writeText(content).then(() => {
+                // UI Feedback (Fake Alert)
+                this.innerHTML = '<span style="font-size:0.9em">کپی شد! ✓</span>';
+                this.classList.add('copied-success'); // Add css class for styling
                 
                 setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.style.background = '';
-                    this.style.borderColor = '';
+                    this.innerHTML = originalHTML;
+                    this.classList.remove('copied-success');
                 }, 2000);
+            }).catch(err => {
+                console.error('Copy failed', err);
             });
         });
     });
 
-    // کپی لینک
-    const copyLinkBtn = document.querySelector('.copy-link');
-    if (copyLinkBtn) {
-        copyLinkBtn.addEventListener('click', function() {
-            const url = window.location.href;
-            navigator.clipboard.writeText(url).then(() => {
-                const originalText = this.innerHTML;
-                this.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> لینک کپی شد';
-                this.style.background = 'rgba(76, 175, 80, 0.2)';
-                this.style.borderColor = 'rgba(76, 175, 80, 0.5)';
-                
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.style.background = '';
-                    this.style.borderColor = '';
-                }, 2000);
-            });
-        });
-    }
-
-    // اشتراک در واتساپ
-    const whatsappShareBtn = document.querySelector('.whatsapp-share');
-    if (whatsappShareBtn) {
-        whatsappShareBtn.addEventListener('click', function() {
-            const url = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent('به سایت ما سر بزنید!');
-            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
-            window.openSpecialModal = openSpecialModal;
-        });
-    }
+    // Whatsapp Share
+    document.querySelector('.whatsapp-share')?.addEventListener('click', () => {
+        const url = encodeURIComponent(window.location.href);
+        const text = encodeURIComponent('به سایت ما سر بزنید!');
+        window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+    });
 }
-// --- مودال خاص ترین ما ---
+
+// --- ۷. مودال تصاویر خاص (Special Modal) ---
 function setupSpecialModal() {
     const specialModal = document.getElementById('specialModal');
-    const closeSpecialModal = document.getElementById('closeSpecialModal');
-    const specialImages = document.querySelectorAll('[data-special-image]');
+    const closeBtn = document.getElementById('closeSpecialModal');
+    const images = document.querySelectorAll('[data-special-image]');
     
-    // المنت‌های مودال
+    // Elements to update
     const modalImg = document.getElementById('specialModalImg');
     const designerName = document.getElementById('designerName');
     const designerRole = document.getElementById('designerRole');
-    const projectDescription = document.getElementById('projectDescription');
+    const projectDesc = document.getElementById('projectDescription');
     const projectStyle = document.getElementById('projectStyle');
     const projectTime = document.getElementById('projectTime');
-    
-    if (!specialModal || !closeSpecialModal || specialImages.length === 0) {
-        console.log('عناصر مودال خاص ترین پیدا نشدند');
-        return;
-    }
-    
-    // باز کردن مودال با کلیک روی عکس
-    specialImages.forEach(img => {
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // دریافت اطلاعات از data attributes
-            const src = this.getAttribute('src');
-            const name = this.getAttribute('data-designer-name');
-            const role = this.getAttribute('data-designer-role');
-            const desc = this.getAttribute('data-project-desc');
-            const style = this.getAttribute('data-project-style');
-            const time = this.getAttribute('data-project-time');
-            
-            // پر کردن اطلاعات مودال
-            modalImg.src = src;
-            designerName.textContent = name || 'طراح';
-            designerRole.textContent = role || 'طراح گرافیک';
-            projectDescription.textContent = desc || 'توضیحات ین طرح با الهام از معماری مدرن و خطوط هندسی طراحی شده است. تمرکز اصلی بر سادگی و خوانایی در عین حفظ هویت بصری قوی بوده است. رنگ‌های استفاده شده بیانگر ثبات و اعتماد هستندطرح';
-            projectStyle.textContent = style || 'مینیمال';
-            projectTime.textContent = time || '۲ هفته';
-            
-            // نمایش مودال
-            openSpecialModal();
-        });
-    });
-    
-    // بستن مودال
-    closeSpecialModal.addEventListener('click', closeSpecialModalFunc);
-    
-    // بستن با کلیک روی overlay
-    specialModal.addEventListener('click', function(e) {
-        if (e.target === specialModal) {
-            closeSpecialModalFunc();
-        }
-    });
-    
-    // بستن با کلید ESC
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && specialModal.style.display === 'flex') {
-            closeSpecialModalFunc();
-        }
-    });
-    
-    // توابع باز و بسته کردن
-    function openSpecialModal() {
-        specialModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-        
-        // انیمیشن ورود
-        setTimeout(() => {
-            specialModal.style.opacity = '1';
-        }, 10);
-    }
-    
-    function closeSpecialModalFunc() {
+
+    if (!specialModal || !images.length) return;
+
+    function closeModal() {
         specialModal.style.opacity = '0';
         setTimeout(() => {
             specialModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }, 300);
     }
-    
-    // برای استفاده در اسکریپت
-    window.openSpecialModal = openSpecialModal;
-    window.closeSpecialModalFunc = closeSpecialModalFunc;
-}
-document.addEventListener('DOMContentLoaded', function () {
-    const thumbnails = document.querySelectorAll('.thumb-card');
 
-    // عناصری که باید به‌روزرسانی شوند (در داخل portfolio-text-content)
-    const largePreview = document.getElementById('largePreview');
-    const designerName = document.getElementById('designerName');
-    const designerRole = document.getElementById('designerRole');
-    const projectDescription = document.getElementById('projectDescription'); // هدف اصلی توضیحات
-    const projectStyle = document.getElementById('projectStyle');
-    const projectTime = document.getElementById('projectTime');
-
-    // تابع اصلی به‌روزرسانی محتوا
-    function updatePortfolio(card) {
-        // ... به‌روزرسانی تصویر بزرگ
-        if (largePreview) {
-            largePreview.src = card.getAttribute('data-img-src');
-        }
-
-        // ... جایگزینی متون در portfolio-text-content
-        if (designerName) {
-            designerName.textContent = card.getAttribute('data-designer');
-        }
-        if (designerRole) {
-            designerRole.textContent = card.getAttribute('data-role');
-        }
-        
-        // **این خط، محتوای متنی تگ P را کاملاً جایگزین می‌کند**
-        if (projectDescription) {
-            projectDescription.textContent = card.getAttribute('data-desc'); 
-        }
-
-        if (projectStyle) {
-            projectStyle.textContent = card.getAttribute('data-style');
-        }
-        if (projectTime) {
-            projectTime.textContent = card.getAttribute('data-time');
-        }
-
-        // ... مدیریت کلاس 'active'
-        thumbnails.forEach(t => t.classList.remove('active'));
-        card.classList.add('active');
-    }
-
-    // افزودن شنونده کلیک به هر کارت کوچک
-    thumbnails.forEach(card => {
-        card.addEventListener('click', function() {
-            updatePortfolio(this);
+    images.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            if (modalImg) modalImg.src = this.src;
+            if (designerName) designerName.textContent = this.dataset.designerName || '-';
+            if (designerRole) designerRole.textContent = this.dataset.designerRole || '-';
+            if (projectDesc) projectDesc.textContent = this.dataset.projectDesc || '-';
+            if (projectStyle) projectStyle.textContent = this.dataset.projectStyle || '-';
+            if (projectTime) projectTime.textContent = this.dataset.projectTime || '-';
+            
+            specialModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            // Small delay to allow display:flex to apply before opacity transition
+            requestAnimationFrame(() => {
+                specialModal.style.opacity = '1';
+            });
         });
     });
 
-    // نمایش محتوای اولین کارت در هنگام بارگذاری صفحه
-    const initialActiveCard = document.querySelector('.thumb-card'); 
-    if (initialActiveCard) {
-        updatePortfolio(initialActiveCard);
-    }
-});
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    specialModal.addEventListener('click', (e) => { if(e.target === specialModal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && specialModal.style.display === 'flex') closeModal(); });
+}
