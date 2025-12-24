@@ -8,10 +8,7 @@
       content="نمونه کارهای طراحی گرافیک تیم یازده؛ شامل طراحی هویت بصری، بسته‌بندی، پوستر و سوشال مدیا. اثر انگشت ما را روی برندهای معتبر ببینید."
     />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <link
-      rel="canonical"
-      href="https://creativity-eleven.com/design-portfolio.html"
-    />
+    <link rel="canonical" href="https://11team.ir/design-portfolio.html" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- اضافه کردن viewport meta برای بهتر شدن روی موبایل -->
@@ -257,7 +254,7 @@
         display: block;
       }
       .preview-title {
-        font-family: "pixel_font";
+        /* font-family: "pixel_font"; */
         font-size: 1.5rem;
         color: white;
       }
@@ -324,11 +321,17 @@
         background: #000;
         position: relative;
         overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
+
       .modal-image-col img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
       }
 
       /* بخش متن در مودال */
@@ -921,13 +924,13 @@
       <div class="logo">
         <h2>یازده</h2>
       </div>
-      <a href="../index.html" class="back-btn" data-hover>
+      <a href="index.html" class="back-btn" data-hover>
         <i class="fas fa-arrow-right"></i> بازگشت به خانه
       </a>
     </header>
 
     <div class="page-title">
-      <h1>طراحی بعنی جسارت خلق هویت</h1>
+      <h1>طراحی یعنی جسارت خلق هویت</h1>
       <p class="page-subtitle">
         در یازده ایده هایی که به تصویر کشیده میشوند، هویت شما را با تمام جزئیات
         و داستانش به عرصه ی ظهور میگذارد.
@@ -955,66 +958,15 @@
         class="portfolio-item large"
         data-category="identity"
         data-hover
-        data-title="آرما فوم"
-        data-client="گروه  آرما فوم"
-        data-year="1402"
-        data-desc="در این پروژه، هدف اصلی خلق یک هویت بصری مینیمال اما با ثبات بود. ما با الهام از خطوط معماری فوم ، ساختمان و ترکیب آن با فضای منفی، لوگویی طراحی کردیم که ایستایی را نشان دهد ."
+        data-title="کارت ویزیت وانافود(صفحه ی اول)"
+        data-client="وانافود"
+        data-year="1404"
+        data-desc="طراحی کارت ویزیت به سفارش اپلیکشن سفارش غذای وانافود"
       >
-        <img src="assets/design-page/cart-vizit-vanafod1.jpg" alt="Arma" />
+        <img src="assets/design-page/cart-vizit-vanafod1.webp" alt="Arma" />
         <div class="item-info-preview">
           <span class="preview-cat">هویت بصری</span>
-          <h3 class="preview-title">آرما فوم</h3>
-        </div>
-      </div>
-
-      <div
-        class="portfolio-item"
-        data-category="packaging"
-        data-hover
-        data-title="مفید یدک"
-        data-client="شرکت بازرگانی مفید یدک"
-        data-year="1403"
-        data-desc=".مفید یدک؛ تأمین مطمئن لوازم یدکی برای فروشگاه‌های حرفه‌ای"
-      >
-        <img src="assets/design-page/Artboard 3.png" alt="" />
-        <div class="item-info-preview">
-          <span class="preview-cat">بسته‌بندی</span>
-          <h3 class="preview-title">مفید یدک</h3>
-        </div>
-      </div>
-      <div
-        class="portfolio-item large"
-        data-category="identity"
-        data-hover
-        data-title="تپسی"
-        data-client="تپسی"
-        data-year="1403"
-        data-desc="بازنگری در هویت بصری سوپر اپلیکیشن تپسی. هدف ما ساده‌سازی رابط بصری و ایجاد آیکون‌هایی بود که در ابعاد کوچک موبایل خوانایی بالایی داشته باشند."
-      >
-        <img src="assets/design-page/cart-vizit-vanafod2.jpg" alt="Tapsi" />
-        <div class="item-info-preview">
-          <span class="preview-cat">هویت بصری</span>
-          <h3 class="preview-title">ری‌برندینگ تپسی</h3>
-        </div>
-      </div>
-
-      <div
-        class="portfolio-item"
-        data-category="poster"
-        data-hover
-        data-title="جشنواره فجر"
-        data-client="سازمان سینمایی"
-        data-year="1401"
-        data-desc="پوستری انتزاعی با محوریت مفهوم سیمرغ. استفاده از تایپوگرافی شکسته و رنگ‌های ملی برای ایجاد حسی حماسی و مدرن در فضای هنری کشور."
-      >
-        <img
-          src="assets/design-page/poster-reels-cafeRomi.jpg"
-          alt="Poster"
-          style="object-position: top"
-        />
-        <div class="item-info-preview">
-          <span class="preview-cat">طراحی پوستر</span>
-          <h3 class="preview-title">جشنواره فجر</h3>
+          <h3 class="preview-title">کارت ویزیت وانافود</h3>
         </div>
       </div>
 
@@ -1022,14 +974,52 @@
         class="portfolio-item"
         data-category="social"
         data-hover
-        data-title=" زرین"
-        data-client="زرین "
-        data-year="1402"
-        data-desc="طراحی قالب‌های اینستاگرام برای کمپین‌های فصلی. تمرکز بر رنگ زرد برند و استفاده از المان‌های سه‌بعدی برای جذب مخاطب نسل Z."
+        data-title="پست اسلایدی وانافود"
+        data-client="وانافود"
+        data-year="1404"
+        data-desc=""
       >
-        <img src="assets/design-page/cart-vizit-zarin.jpg" alt="Zarin" />
+        <img src="assets/design-page/Artboard 3.webp" alt="" />
         <div class="item-info-preview">
           <span class="preview-cat">سوشال مدیا</span>
+          <h3 class="preview-title">پست اسلایدی وانافود</h3>
+        </div>
+      </div>
+      <div
+        class="portfolio-item"
+        data-category="social"
+        data-hover
+        data-title=" کاور پست وانافود"
+        data-client=" وانافود"
+        data-year="1404"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/poster-reels-cafeRomi.webp"
+          alt="کافه رومی و وانافود"
+          style="object-position: top"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">سوشال مدیا</span>
+          <h3 class="preview-title">کاور پست وانافود</h3>
+        </div>
+      </div>
+
+      <div
+        class="portfolio-item"
+        data-category="identity"
+        data-hover
+        data-title=" کارت ویزیت  جواهر فروشی زرین"
+        data-client="زرین "
+        data-year="1402"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/cart-vizit-zarin.webp"
+          alt="کارت ویزت زرین"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">هویت بصری</span>
           <h3 class="preview-title">زرین</h3>
         </div>
       </div>
@@ -1037,30 +1027,64 @@
         class="portfolio-item"
         data-category="social"
         data-hover
-        data-title=" صفحه ی ثبت نام وانا فود"
+        data-title=" صفحه‌ی اول اپ وانافود"
         data-client="وانافود "
-        data-year="1402"
-        data-desc="طراحی قالب‌های اینستاگرام برای کمپین‌های فصلی. تمرکز بر رنگ زرد برند و استفاده از المان‌های سه‌بعدی برای جذب مخاطب نسل Z."
+        data-year="1404"
+        data-desc=""
       >
-        <img src="assets/design-page/tarahi-safheye-login.jpg" alt="Zarin" />
+        <img src="assets/design-page/tarahi-safheye-login.webp" alt="زرین" />
         <div class="item-info-preview">
           <span class="preview-cat">سوشال مدیا</span>
-          <h3 class="preview-title">وانا فود</h3>
+          <h3 class="preview-title">صفحه‌ی اول اپ وانافود</h3>
         </div>
       </div>
       <div
         class="portfolio-item"
+        data-category="identity"
+        data-hover
+        data-title="هویت بصری لوگوی آرما فوم"
+        data-client="شرکت آرما فوم"
+        data-year="1404"
+        data-desc=""
+      >
+        <img src="assets/images/logo/logo-arma.webp" alt="زرین" />
+        <div class="item-info-preview">
+          <span class="preview-cat">هویت بصری</span>
+          <h3 class="preview-title">هویت بصری لوگوی آرما فوم</h3>
+        </div>
+      </div>
+      <div
+        class="portfolio-item large"
+        data-category="poster"
+        data-hover
+        data-title="پوستر موشن لوگوی آرما"
+        data-client="شرکت آرما فوم"
+        data-year="1404"
+        data-desc=""
+      >
+        <img src="assets/videos/arma.webp" alt="پوستر موشن آرما فوم" />
+        <div class="item-info-preview">
+          <span class="preview-cat">پوستر</span>
+          <h3 class="preview-title">پوستر موشن لوگوی آرما</h3>
+        </div>
+      </div>
+
+      <div
+        class="portfolio-item"
         data-category="social"
         data-hover
-        data-title=" صفحه ی ثبت نام وانا فود"
+        data-title="پست اسلایدی وانافود"
         data-client="وانافود "
-        data-year="1402"
-        data-desc="طراحی قالب‌های اینستاگرام برای کمپین‌های فصلی. تمرکز بر رنگ زرد برند و استفاده از المان‌های سه‌بعدی برای جذب مخاطب نسل Z."
+        data-year="1404"
+        data-desc=""
       >
-        <img src="assets/design-page/Artboard-vanafod.png" alt="Zarin" />
+        <img
+          src="assets/design-page/Artboard-vanafod.webp"
+          alt="پست اسلایدی وانا فود"
+        />
         <div class="item-info-preview">
           <span class="preview-cat">سوشال مدیا</span>
-          <h3 class="preview-title">وانا فود</h3>
+          <h3 class="preview-title">پست اسلایدی وانافود</h3>
         </div>
       </div>
     </div>

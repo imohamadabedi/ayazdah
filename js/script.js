@@ -162,32 +162,53 @@ function setupReviews() {
     const textEl = document.getElementById('review-text');
     const nextBtn = document.getElementById('review-next');
     const prevBtn = document.getElementById('review-prev');
+    const dotsContainer = document.getElementById('review-dots');
 
     if (!nameEl || !textEl || !nextBtn || !prevBtn) return;
 
     let currentReviewIndex = 0;
 
+    // ایجاد نقاط (Dots) برای نمایش حالت فعال
+    reviewsData.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => updateReview(index));
+        dotsContainer.appendChild(dot);
+    });
+
     function updateReview(index) {
+        currentReviewIndex = index;
+        
+        // افکت محو شدن
         textEl.style.opacity = 0;
         nameEl.style.opacity = 0;
+        
         setTimeout(() => {
             nameEl.textContent = reviewsData[index].name;
             textEl.textContent = reviewsData[index].text;
+            
+            // بروزرسانی نقطه فعال
+            document.querySelectorAll('.dot').forEach((d, i) => {
+                d.classList.toggle('active', i === index);
+            });
+
             textEl.style.opacity = 1;
             nameEl.style.opacity = 1;
-        }, 200);
+        }, 300);
     }
 
     nextBtn.addEventListener('click', () => {
-        currentReviewIndex = (currentReviewIndex + 1) % reviewsData.length;
-        updateReview(currentReviewIndex);
+        let newIndex = (currentReviewIndex + 1) % reviewsData.length;
+        updateReview(newIndex);
     });
 
     prevBtn.addEventListener('click', () => {
-        currentReviewIndex = (currentReviewIndex - 1 + reviewsData.length) % reviewsData.length;
-        updateReview(currentReviewIndex);
+        let newIndex = (currentReviewIndex - 1 + reviewsData.length) % reviewsData.length;
+        updateReview(newIndex);
     });
 }
+
 
 // --- ۶. مودال تماس (Contact Modal) ---
 function setupContactModal() {

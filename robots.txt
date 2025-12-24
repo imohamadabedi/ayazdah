@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# نقشه سایت برای هدایت بهتر ربات‌های گوگل
+Sitemap: https://11team.ir/sitemap.xml
+
+# جلوگیری از ایندکس شدن فایل‌های سیستمی (اگر وجود داشتند)
+Disallow: /cgi-bin/
