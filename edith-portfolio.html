@@ -8,10 +8,7 @@
       content="خدمات تخصصی تدوین و ویرایش ویدیو در تیم یازده. مشاهده نمونه کارهای تدوین موزیک ویدیو، تیزر تبلیغاتی، اصلاح رنگ و جلوه‌های ویژه سینمایی."
     />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <link
-      rel="canonical"
-      href="https://11team.ir/edith-portfolio.html"
-    />
+    <link rel="canonical" href="https://11team.ir/edith-portfolio.html" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ادیت‌های ویدیویی ما | یازده</title>
@@ -96,7 +93,7 @@
 
       /* --- هدر --- */
       header {
-        padding: 40px 60px;
+        padding: 20px 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -109,8 +106,9 @@
           rgba(5, 10, 20, 0.95),
           rgba(5, 10, 20, 0)
         );
+        backdrop-filter: blur(5px);
       }
-      .logo h2 {
+      /* .logo h2 {
         font-family: "pixel_font";
         font-size: 2.2rem;
         letter-spacing: 1px;
@@ -118,6 +116,13 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+      } */
+      .logo img {
+        width: 80px;
+        height: auto;
+        display: block;
+        filter: invert(1);
+        transition: width 0.3s ease;
       }
       .back-btn {
         font-family: "pixel_font";
@@ -550,7 +555,10 @@
 
       @media (max-width: 768px) {
         header {
-          padding: 30px 40px;
+          padding: 15px 25px;
+        }
+        .logo img {
+          width: 65px; /* اندازه بهینه برای موبایل */
         }
         .page-title {
           margin-top: 140px;
@@ -610,8 +618,12 @@
 
       @media (max-width: 480px) {
         header {
-          padding: 20px 30px;
+          padding: 10px 15px;
         }
+        .logo img {
+          width: 55px; /* اندازه بهینه برای موبایل */
+        }
+
         .page-title {
           margin-top: 120px;
           padding: 0 30px;
@@ -665,7 +677,7 @@
 
     <header>
       <div class="logo">
-        <h2>یازده</h2>
+        <img src="assets/images/logo_yazdah/yazdah.webp" alt="Eleven" />
       </div>
       <a href="index.html" class="back-btn" data-hover>
         <i class="fas fa-arrow-right"></i> بازگشت به خانه
@@ -674,49 +686,46 @@
 
     <div class="page-title">
       <h1>تدوین ،کنار هم چیدن حس و معنا</h1>
-      <p class="page-subtitle">در یازده تدوین هر اثر ،به معنی چیدن احساس و معنا کنار هم و ساختن داستانی موثر است.
+      <p class="page-subtitle">
+        در یازده تدوین هر اثر ،به معنی چیدن احساس و معنا کنار هم و ساختن داستانی
+        موثر است.
       </p>
     </div>
 
     <div class="filter-container">
       <button class="filter-btn active" data-filter="all" data-hover>
-        همه ادیت‌ها
+        همه تدوین ها
       </button>
       <button class="filter-btn" data-filter="commercial" data-hover>
-        تدوین تبلیغاتی
+        شبکه های اجتماعی
       </button>
-      <button class="filter-btn" data-filter="music" data-hover>
-        موزیک ویدیو
-      </button>
-      <button class="filter-btn" data-filter="film" data-hover>
-        ویرایش فیلم
-      </button>
-      <button class="filter-btn" data-filter="color" data-hover>
-        رنگ‌پردازی
-      </button>
+      <button class="filter-btn" data-filter="music" data-hover>هنری</button>
+      <button class="filter-btn" data-filter="film" data-hover>مستند</button>
+      <button class="filter-btn" data-filter="color" data-hover>آموزشی</button>
       <button class="filter-btn" data-filter="vfx" data-hover>
-        جلوه‌های ویژه
+        تجاری وصنعتی
       </button>
     </div>
 
     <div class="motion-grid">
       <!-- ادیت 1 -->
-      <!-- <div
+      <div
         class="motion-item large"
-        data-category="commercial"
+        data-category="film"
         data-hover
-        data-title="ریلز اینستا آلوارس2"
-        data-client=" آلوارس "
+        data-title="مستند به سفارش آستان قدس و شبکه ۲"
+        data-client="آستان قدس /شبکه ی ۲"
         data-year="۱۴۰۳"
-        data-duration="۲:۱۰"
-        data-software="Premiere Pro, After Effects, DaVinci Resolve"
-        data-desc="تدوین حرفه‌ای برای یک ریلز با کیفیت."
-        data-video="assets/edith-page/videos/alvares2.mp4"
-        data-poster="assets/images/edit-thumb1.jpg"
+        data-duration="۰۵:۰۷"
+        data-software="Premiere Pro, DaVinci Resolve, Audition"
+        data-desc=""
+        data-video="assets/edith-page/videos/مستند نمونه کار آستان قدس.webm"
+        data-preload="none"
+        data-poster="assets/edith-page/cover/astanghods (1).webp"
       >
         <img
-          src="assets/edith-page/videos/alvares2."
-          alt="ریلز آلوارس دو"
+          src="assets/edith-page/cover/astanghods (1).webp"
+          alt="آستان قدس"
           class="video-thumbnail"
         />
         <div class="play-overlay">
@@ -725,30 +734,29 @@
           </div>
         </div>
         <div class="item-info-preview">
-          <span class="preview-cat">تدوین تبلیغاتی</span>
-          <h3 class="preview-title">آلوارس دو</h3>
-          <span class="preview-duration">۲ دقیقه ۱۰ ثانیه</span>
+          <span class="preview-cat">مستند</span>
+          <h3 class="preview-title">مستند به سفارش آستان قدس و شبکه ی ۲</h3>
+          <span class="preview-duration">۰۵:۰۷</span>
         </div>
-      </div> -->
-
+      </div>
       <!-- ادیت 2 -->
       <div
         class="motion-item"
-        data-category="music"
+        data-category="film"
         data-hover
-        data-title="کافه رومی و وانافود"
-        data-client="رومی"
+        data-title="مستند مدرسه ی فیلم سازی نور"
+        data-client="مدرسه ی نور"
         data-year="1404"
-        data-duration="00:53"
-        data-software="Premiere Pro, After Effects, DaVinci Resolve"
+        data-duration="۰۰:۴۱"
+        data-software="Premiere Pro, After Effects"
         data-desc=""
-        data-video="assets/edith-page/videos/cafe-romi.mp4"
+        data-video="assets/edith-page/videos/نمونه تدوین مدرسه فیلم سازی نور.webm"
         data-preload="none"
-        data-poster="assets/edith-page/cover/رومی.webp"
+        data-poster="assets/edith-page/cover/نمونه تدوین مدرسه فیلم سازی نور2.webp"
       >
         <img
-          src="assets/edith-page/cover/رومی.webp"
-          alt="ریلز کافه رومی"
+          src="assets/edith-page/cover/نمونه تدوین مدرسه فیلم سازی نور2.webp"
+          alt="مدرسه ی فیلم سازی نور"
           class="video-thumbnail"
         />
         <div class="play-overlay">
@@ -757,62 +765,30 @@
           </div>
         </div>
         <div class="item-info-preview">
-          <span class="preview-cat">موزیک ویدیو</span>
-          <h3 class="preview-title">کافه رومی</h3>
-          <span class="preview-duration">00:53</span>
+          <span class="preview-cat">مستند</span>
+          <h3 class="preview-title">مدرسه ی فیلم سازی نور</h3>
+          <span class="preview-duration">۰۰:۴۱</span>
         </div>
       </div>
 
       <!-- ادیت 3 -->
       <div
         class="motion-item"
-        data-category="color"
-        data-hover
-        data-title="بنیاد نخبگان"
-        data-client="بنیاد نخبگان"
-        data-year="1404"
-        data-duration="02:36"
-        data-software="DaVinci Resolve, Premiere Pro"
-        data-desc=""
-        data-video="assets/edith-page/videos/moshen-bonyadNokhbegan.webm"
-        data-preload="none"
-        data-poster="assets/edith-page/cover/ostadnabyi.webp"
-      >
-        <img
-          src="assets/edith-page/cover/ostadnabyi.webp"
-          alt="بنیاد نخبگان"
-          class="video-thumbnail"
-        />
-        <div class="play-overlay">
-          <div class="play-icon">
-            <i class="fas fa-play"></i>
-          </div>
-        </div>
-        <div class="item-info-preview">
-          <span class="preview-cat">رنگ‌پردازی</span>
-          <h3 class="preview-title">بنیاد نخبگان</h3>
-          <span class="preview-duration">02:36</span>
-        </div>
-      </div>
-
-      <!-- ادیت 4 -->
-      <div
-        class="motion-item"
         data-category="vfx"
         data-hover
-        data-title="تیزر کوتاه به سفارش آستان قدس"
-        data-client="مستند کوتاه آستان قدس و شبکه ی دو"
-        data-year="۱۴۰۳"
-        data-duration="05:07"
-        data-software="After Effects, Nuke, Cinema 4D"
-        data-desc="افزایش جلوه‌های ویژه بصری به تبلیغات محصول الکترونیکی. شامل ایجاد انفجارهای ذره‌ای، شبیه‌سازی مایع، روتوش حرفه‌ای و ترکیب CGI با فیلم واقعی."
-        data-video="assets/edith-page/videos/mostanad-astanghods-shabake2.mp4"
+        data-title="تیزر شرکت صنایع ماشین های الکتریکی جمکو"
+        data-client="جمکو"
+        data-year="1404"
+        data-duration="۰۰:۵۱"
+        data-software=" Premiere Pro"
+        data-desc=""
+        data-video="assets/edith-page/videos/تیزر ساخته شده برای جمکو 1.webm"
         data-preload="none"
-        data-poster="assets/images/edit-thumb4.webp"
+        data-poster="assets/edith-page/cover/تیزر ساخته شده برای جمکو_2.webp"
       >
         <img
-          src="assets/edith-page/cover/astanghods (1).webp"
-          alt="جلوه‌های ویژه"
+          src="assets/edith-page/cover/تیزر ساخته شده برای جمکو_2.webp"
+          alt="تیزر شرکت صنایع ماشین های الکتریکی جمکو"
           class="video-thumbnail"
         />
         <div class="play-overlay">
@@ -821,30 +797,60 @@
           </div>
         </div>
         <div class="item-info-preview">
-          <span class="preview-cat">جلوه‌های ویژه</span>
-          <h3 class="preview-title">مستند آستان قدس و شبکه ی دوم</h3>
-          <span class="preview-duration">05:07</span>
+          <span class="preview-cat">تجاری و صنعتی</span>
+          <h3 class="preview-title">تیزر شرکت صنایع ماشین های الکتریکی جمکو</h3>
+          <span class="preview-duration">۰۰:۵۱</span>
         </div>
       </div>
-
+      <!-- ادیت 4 -->
+      <div
+        class="motion-item large"
+        data-category="commercial"
+        data-hover
+        data-title="پست همکاری اپ وانافود با رستوران گلستان"
+        data-client="وانافود"
+        data-year="۱۴۰۳"
+        data-duration="۰۰:۲۹"
+        data-software="Premiere Pro"
+        data-desc=""
+        data-video="assets/edith-page/videos/پست همکاری وانافود و رستوران گلستان.webm"
+        data-preload="none"
+        data-poster="assets/edith-page/cover/کاور تیزر تبلیغاتی گلستان.webp"
+      >
+        <img
+          src="assets/edith-page/cover/کاور تیزر تبلیغاتی گلستان.webp"
+          alt="پست وانافود و رستوران گلستان"
+          class="video-thumbnail"
+        />
+        <div class="play-overlay">
+          <div class="play-icon">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="item-info-preview">
+          <span class="preview-cat">شبکه های اجتماعی</span>
+          <h3 class="preview-title">پست همکاری اپ وانافود با رستوران گلستان</h3>
+          <span class="preview-duration">۰۰:۲۹</span>
+        </div>
+      </div>
       <!-- ادیت 5 -->
       <div
         class="motion-item large"
-        data-category="film"
+        data-category="vfx"
         data-hover
-        data-title="پروژه ی سازمان آتشنشانی "
-        data-client="آتش نشانی"
+        data-title="شرکت بازرگانی اوج خودرو"
+        data-client="اوج خودرو"
         data-year="۱۴۰۳"
-        data-duration="02:49"
-        data-software="Premiere Pro, DaVinci Resolve, Audition"
+        data-duration="۰۰:۰۹"
+        data-software="Premiere Pro"
         data-desc=""
-        data-video="assets/edith-page/videos/sazman-atashneshani.mp4"
+        data-video="assets/edith-page/videos/شرکت اوج.webm"
         data-preload="none"
-        data-poster="assets/edith-page/cover/atashneshani.webp"
+        data-poster="assets/edith-page/cover/اوج.webp"
       >
         <img
-          src="assets/edith-page/cover/atashneshani.webp"
-          alt="آتش نشانی"
+          src="assets/edith-page/cover/اوج.webp"
+          alt="شرکت بازرگانی اوج خودرو"
           class="video-thumbnail"
         />
         <div class="play-overlay">
@@ -853,40 +859,44 @@
           </div>
         </div>
         <div class="item-info-preview">
-          <span class="preview-cat">ویرایش فیلم</span>
-          <h3 class="preview-title">سازمان آتش نشانی</h3>
-          <span class="preview-duration">02:49</span>
+          <span class="preview-cat">تجاری و صنعتی</span>
+          <h3 class="preview-title">شرکت بازرگانی اوج خودرو</h3>
+          <span class="preview-duration">۰۰:۰۹</span>
         </div>
       </div>
 
       <!-- ادیت 6 -->
-      <!-- <div
+      <div
         class="motion-item"
         data-category="commercial"
         data-hover
-        data-title="تبلیغات محصول غذایی"
-        data-client="کارخانه مواد غذایی"
-        data-year="۱۴۰۳"
-        data-duration="۱:۴۵"
-        data-software="Premiere Pro, After Effects, Photoshop"
-        data-desc="تدوین تبلیغات ۳۰ ثانیه‌ای برای محصول غذایی جدید. استفاده از کات‌های سریع، انیمیشن متن، افکت‌های اشتهابرانگیز و رنگ‌پردازی گرم. بهینه‌سازی برای پلتفرم‌های اجتماعی."
-        data-video="assets/videos/edit-food.mp4"
+        data-title="تیزر معرفی سازه ی آلوارس 2"
+        data-client="شرکت ساختمانی آلوارس"
+        data-year="۱۴۰۴"
+        data-duration="۰۰:۳۱"
+        data-software="After Effects,Premier"
+        data-desc=""
+        data-video="assets/edith-page/videos/پیشروی ساختمان  2آلوارس.webm"
         data-preload="none"
-        data-poster="assets/images/edit-thumb6.jpg"
+        data-poster="assets/edith-page/cover/آلوارس.webp"
       >
-        <img src="" alt="تبلیغات غذایی" class="video-thumbnail" />
+        <img
+          src="assets/edith-page/cover/آلوارس.webp"
+          alt="شرکت ساختمانی آلوارس"
+          class="video-thumbnail"
+        />
         <div class="play-overlay">
           <div class="play-icon">
             <i class="fas fa-play"></i>
           </div>
         </div>
         <div class="item-info-preview">
-          <span class="preview-cat">تدوین تبلیغاتی</span>
-          <h3 class="preview-title">تبلیغات محصول غذایی</h3>
-          <span class="preview-duration">۱ دقیقه ۴۵ ثانیه</span>
+          <span class="preview-cat">شبکه های اجتماعی</span>
+          <h3 class="preview-title">تیزر معرفی سازه ی پروژه ی آلوارس</h3>
+          <span class="preview-duration">۰۰:۳۱</span>
         </div>
       </div>
-    </div> -->
+    </div>
 
     <!-- مودال ویدئو -->
     <div class="video-modal" id="videoModal">

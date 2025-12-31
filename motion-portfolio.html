@@ -96,7 +96,7 @@
 
       /* --- هدر --- */
       header {
-        padding: 40px 60px;
+        padding: 20px 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -109,8 +109,9 @@
           rgba(5, 10, 20, 0.95),
           rgba(5, 10, 20, 0)
         );
+        backdrop-filter: blur(5px);
       }
-      .logo h2 {
+      /* .logo h2 {
         font-family: "pixel_font";
         font-size: 2.2rem;
         letter-spacing: 1px;
@@ -118,7 +119,14 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-      }
+      } */
+       .logo img {
+         width: 80px;
+         height: auto; /* حفظ تناسب ابعاد */
+         display: block;
+         filter: invert(1); /* اگر لوگو مشکی است بماند، اگر سفید است حذف شود */
+         transition: width 0.3s ease;
+        }
       .back-btn {
         font-family: "pixel_font";
         font-size: 0.9rem;
@@ -550,7 +558,10 @@
 
       @media (max-width: 768px) {
         header {
-          padding: 30px 40px;
+          padding: 15px 25px;
+        }
+        .logo img {
+          width: 65px; /* کوچک‌تر شدن لوگو در موبایل */
         }
         .page-title {
           margin-top: 140px;
@@ -612,6 +623,9 @@
         header {
           padding: 20px 30px;
         }
+        .logo img {
+          width: 55px; /* اندازه بهینه برای موبایل */
+        }
         .page-title {
           margin-top: 120px;
           padding: 0 30px;
@@ -665,7 +679,7 @@
 
     <header>
       <div class="logo">
-        <h2>یازده</h2>
+        <img src="assets/images/logo_yazdah/yazdah.webp" alt="Eleven" />
       </div>
       <a href="index.html" class="back-btn" data-hover>
         <i class="fas fa-arrow-right"></i> بازگشت به خانه
@@ -705,21 +719,21 @@
       <!-- موشن 1 -->
       <div
         class="motion-item large"
-        data-category="animation"
+        data-category="logo"
         data-hover
-        data-title="کلاژ موشن وانافود"
-        data-client="وانافود"
-        data-year="1404"
-        data-duration="01:06"
-        data-software="After Effects, Cinema 4D"
+        data-title="لوگو موشن آرما فوم"
+        data-client="شرکت آرما"
+        data-year="۱۴۰۴"
+        data-duration="۰۰:۱۴"
+        data-software="After Effects,Adobe Premiere,Adobe Illustrator"
         data-desc=""
-        data-video="assets/motion-page/videos/k-m-vanafod.webm"
+        data-video="assets/motion-page/videos/Motien-Arma.webm"
         data-preload="none"
         data-poster="assets/images/motion-thumb1.webp"
       >
         <img
-          src="assets/motion-page/cover/vanafod-hitler.webp"
-          alt="کلاژ موشن وانافود"
+          src="assets/motion-page/cover/Motien-Arma1.webp"
+          alt="آرمافوم"
           class="video-thumbnail"
         />
         <div class="play-overlay">
@@ -728,9 +742,9 @@
           </div>
         </div>
         <div class="item-info-preview">
-          <span class="preview-cat">انیمیشن</span>
-          <h3 class="preview-title">کلاژ موشن وانافود</h3>
-          <span class="preview-duration">01:06 </span>
+          <span class="preview-cat">لوگو‌موشن</span>
+          <h3 class="preview-title">آرما فوم</h3>
+          <span class="preview-duration">۰۰:۱۴ </span>
         </div>
       </div>
 
@@ -741,16 +755,16 @@
         data-hover
         data-title="پوستر موشن وانافود"
         data-client="اپلیکیشن وانا فود‌ "
-        data-year="1404"
-        data-duration="00:10"
-        data-software="After Effects, Illustrator"
+        data-year="۱۴۰۴"
+        data-duration="۰۰:۵۱"
+        data-software="After Effects,Premier"
         data-desc=""
         data-preload="none"
-        data-video="assets/motion-page/videos/poster-moshen-vanafod.webm"
-        data-poster="assets/motion-page/cover/تغییر.webp"
+        data-video="assets/motion-page/videos/تیزر موشن تبلیغاتی کافه بازار وانافود.webm"
+        data-poster="assets/motion-page/cover/vanafood1.webp"
       >
         <img
-          src="assets/motion-page/cover/تغییر.webp"
+          src="assets/motion-page/cover/vanafood1.webp"
           alt="وانافود"
           class="video-thumbnail"
         />
@@ -762,26 +776,27 @@
         <div class="item-info-preview">
           <span class="preview-cat">تیزر تبلیغاتی</span>
           <h3 class="preview-title">پوستر موشن وانا فود</h3>
-          <span class="preview-duration">00:10</span>
+          <span class="preview-duration">۰۰:۵۱</span>
         </div>
       </div>
+      <!-- موشن 3 -->
       <div
-        class="motion-item large"
-        data-category="logo"
+        class="motion-item"
+        data-category="explainer"
         data-hover
-        data-title="لوگو موشن آرما فوم"
-        data-client="آرما فوم"
+        data-title="موشن ضمانت مفیدیدک"
+        data-client="مفیدیدک"
         data-year="۱۴۰۳"
-        data-duration="00:30"
-        data-software="After Effects, Premier Pro"
+        data-duration="۰۰:۴۸"
+        data-software="After Effects,Illustrator,Adobe Premier"
         data-desc=""
-        data-video="assets/videos/motien-arma.webm"
+        data-video="assets/motion-page/videos/ضمانت.webm"
         data-preload="none"
-        data-poster="assets/videos/arma.webp"
+        data-poster="assets/motion-page/cover/نوئل.webp"
       >
         <img
-          src="assets/videos/arma.webp"
-          alt="پوستر آرما فوم"
+          src="assets/motion-page/cover/mofid yadak1.webp"
+          alt="مفیدیدک"
           class="video-thumbnail"
         />
         <div class="play-overlay">
@@ -790,30 +805,29 @@
           </div>
         </div>
         <div class="item-info-preview">
-          <span class="preview-cat">لوگو‌موشن</span>
-          <h3 class="preview-title">لوگو موشن آرما فوم</h3>
-          <span class="preview-duration">00:30</span>
+          <span class="preview-cat"> موشن توضیحی</span>
+          <h3 class="preview-title">موشن ضمانت مفیدیدک</h3>
+          <span class="preview-duration">۰۰:۴۸</span>
         </div>
       </div>
-
-      <!-- موشن 3 -->
+      <!-- موشن 4 -->
       <div
-        class="motion-item"
-        data-category="intro"
+        class="motion-item large"
+        data-category="explainer"
         data-hover
-        data-title="رئال موشن وانافود همکاری با علی نوئل"
-        data-client="وانا فود"
-        data-year="1404"
-        data-duration="00:43"
-        data-software="After Effects, Photoshop"
+        data-title="مسنتد بنیاد علمی نخبگان"
+        data-client="بنیاد نخبگان"
+        data-year="۱۴۰۳"
+        data-duration="۰۲:۳۶"
+        data-software="After Effects, Premier Pro"
         data-desc=""
-        data-video="assets/motion-page/videos/real-moshen-vanafod-alinoel.webm"
+        data-video="assets/motion-page/videos/موشن بنیاد علمی نخبگان.webm"
         data-preload="none"
-        data-poster="assets/motion-page/cover/نوئل.webp"
+        data-poster="assets/motion-page/cover/dr nabi2.webp"
       >
         <img
-          src="assets/motion-page/cover/نوئل.webp"
-          alt="وانا فود"
+          src="assets/motion-page/cover/dr nabi2.webp"
+          alt="دکتر نایبی"
           class="video-thumbnail"
         />
         <div class="play-overlay">
@@ -823,61 +837,28 @@
         </div>
         <div class="item-info-preview">
           <span class="preview-cat">تیتراژ و معرفی</span>
-          <h3 class="preview-title">رئال موشن وانافود همکاری با علی نوئل</h3>
-          <span class="preview-duration">00:43</span>
+          <h3 class="preview-title">بنیاد علمی نخبگان</h3>
+          <span class="preview-duration">۰۲:۳۶</span>
         </div>
       </div>
-
-      <!-- موشن 4 -->
-      <div
-        class="motion-item"
-        data-category="explainer"
-        data-hover
-        data-title="تیزر معرفی وانا فود"
-        data-client="وانافود"
-        data-year="1404"
-        data-duration="00:51"
-        data-software="After Effects, Character Animator"
-        data-desc=""
-        data-video="assets/motion-page/videos/tizer-moarefi-vanafod.webm"
-        data-preload="none"
-        data-poster="assets/motion-page/cover/متفاوت.webp"
-      >
-        <img
-          src="assets/motion-page/cover/متفاوت.webp"
-          alt="کاور موشن وانافود"
-          class="video-thumbnail"
-        />
-        <div class="play-overlay">
-          <div class="play-icon">
-            <i class="fas fa-play"></i>
-          </div>
-        </div>
-        <div class="item-info-preview">
-          <span class="preview-cat">موشن توضیحی</span>
-          <h3 class="preview-title">تیزر معرفی وانا فود</h3>
-          <span class="preview-duration">00:51</span>
-        </div>
-      </div>
-
       <!-- موشن 5 -->
       <div
         class="motion-item large"
         data-category="intro"
         data-hover
-        data-title="رئال موشن وانا فود همکاری با پیتزا گلستان"
-        data-client="رستوران گلستان,وانافود"
+        data-title="معرفی فردوس رایانه"
+        data-client="فردوس رایانه"
         data-year="۱۴۰۳"
-        data-duration="00:30"
+        data-duration="۰۰:۴۵"
         data-software="After Effects, Premier Pro"
         data-desc=""
-        data-video="assets/motion-page/videos/vanafod,restoran-golestan.webm"
+        data-video="assets/motion-page/videos/موشن گرافی فردوس نسخه.webm"
         data-preload="none"
         data-poster="assets/images/motion-thumb5.webp"
       >
         <img
-          src="assets/motion-page/cover/گلستان.webp"
-          alt="تبلیغات نوشابه"
+          src="assets/motion-page/cover/ferdos2.webp"
+          alt="فردوس رایانه"
           class="video-thumbnail"
         />
         <div class="play-overlay">
@@ -887,12 +868,48 @@
         </div>
         <div class="item-info-preview">
           <span class="preview-cat">تیتراژ و معرفی</span>
-          <h3 class="preview-title">تیزر تبلیغاتی رستوران گلستان</h3>
-          <span class="preview-duration">00:30</span>
+          <h3 class="preview-title">فردوس رایانه</h3>
+          <span class="preview-duration">۰۰:۴۵</span>
         </div>
       </div>
+
+      <!-- موشن 6 -->
+      <div
+        class="motion-item"
+        data-category="intro"
+        data-hover
+        data-title="معرفی سازه ی آلوارس"
+        data-client="وانافود"
+        data-year="1404"
+        data-duration="۰۱:۰۰"
+        data-software="After Effects"
+        data-desc=""
+        data-video="assets/motion-page/videos/موشن معرفی سازه آلوارس.webm"
+        data-preload="none"
+        data-poster="assets/motion-page/cover/آلوارس2.webp"
+      >
+        <img
+          src="assets/motion-page/cover/آلوارس2.webp"
+          alt="معرفی سازه ی آلوارس"
+          class="video-thumbnail"
+        />
+        <div class="play-overlay">
+          <div class="play-icon">
+            <i class="fas fa-play"></i>
+          </div>
+        </div>
+        <div class="item-info-preview">
+          <span class="preview-cat">تیتراژ و معرفی</span>
+          <h3 class="preview-title">معرفی سازه ی آلوارس</h3>
+          <span class="preview-duration">۰۱:۰۰</span>
+        </div>
+      </div>
+
+      
       </div>
     </div>
+
+    
 
     <!-- مودال ویدئو -->
     <div class="video-modal" id="videoModal">

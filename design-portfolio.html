@@ -104,7 +104,7 @@
 
       /* --- هدر --- */
       header {
-        padding: 40px 60px;
+        padding: 20px 60px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -117,11 +117,14 @@
           rgba(5, 10, 20, 0.95),
           rgba(5, 10, 20, 0)
         );
+        backdrop-filter: blur(5px);
       }
-      .logo h2 {
-        font-family: "pixel_font";
-        font-size: 2.2rem;
-        letter-spacing: 1px;
+      .logo img {
+        width: 80px;
+        height: auto; /* حفظ تناسب ابعاد */
+        display: block;
+        filter: invert(1); /* اگر لوگو مشکی است بماند، اگر سفید است حذف شود */
+        transition: width 0.3s ease;
       }
       .back-btn {
         font-family: "pixel_font";
@@ -448,9 +451,12 @@
       /* موبایل بزرگ (بین 480px تا 768px) */
       @media (max-width: 768px) and (min-width: 481px) {
         header {
-          padding: 25px 30px;
+          padding: 15px 25px;
           backdrop-filter: blur(10px);
           background: rgba(5, 10, 20, 0.95);
+          .logo img {
+            width: 65px; /* کوچک‌تر شدن لوگو در موبایل */
+          }
         }
 
         .logo h2 {
@@ -548,11 +554,15 @@
         }
 
         header {
-          padding: 20px 25px;
+          padding: 10px 15px;
+          height: 70px;
           backdrop-filter: blur(10px);
           background: rgba(5, 10, 20, 0.98);
           position: fixed;
           height: 80px;
+        }
+        .logo img {
+          width: 55px; /* اندازه بهینه برای موبایل */
         }
 
         .logo h2 {
@@ -698,7 +708,13 @@
           padding: 15px 20px;
           height: 70px;
         }
+        .back-btn {
+          font-size: 0.7rem;
+        }
 
+        .logo img {
+          width: 45px;
+        }
         .logo h2 {
           font-size: 1.4rem;
         }
@@ -922,7 +938,7 @@
 
     <header>
       <div class="logo">
-        <h2>یازده</h2>
+        <img src="assets/images/logo_yazdah/yazdah.webp" alt="Eleven" />
       </div>
       <a href="index.html" class="back-btn" data-hover>
         <i class="fas fa-arrow-right"></i> بازگشت به خانه
@@ -944,23 +960,24 @@
       <button class="filter-btn" data-filter="identity" data-hover>
         هویت بصری
       </button>
-      <button class="filter-btn" data-filter="packaging" data-hover>
-        بسته‌بندی
+      <button class="filter-btn" data-filter="etude" data-hover>
+        اتود های طراحی
       </button>
       <button class="filter-btn" data-filter="social" data-hover>
-        سوشال مدیا
+        شبکه های اجتماعی
       </button>
       <button class="filter-btn" data-filter="poster" data-hover>پوستر</button>
     </div>
 
     <div class="portfolio-grid">
+      <!-- دایو 1 -->
       <div
         class="portfolio-item large"
         data-category="identity"
         data-hover
-        data-title="کارت ویزیت وانافود(صفحه ی اول)"
+        data-title="کارت ویزیت وانافود"
         data-client="وانافود"
-        data-year="1404"
+        data-year="۱۴۰۴"
         data-desc="طراحی کارت ویزیت به سفارش اپلیکشن سفارش غذای وانافود"
       >
         <img src="assets/design-page/cart-vizit-vanafod1.webp" alt="Arma" />
@@ -969,113 +986,14 @@
           <h3 class="preview-title">کارت ویزیت وانافود</h3>
         </div>
       </div>
-
-      <div
-        class="portfolio-item"
-        data-category="social"
-        data-hover
-        data-title="پست اسلایدی وانافود"
-        data-client="وانافود"
-        data-year="1404"
-        data-desc=""
-      >
-        <img src="assets/design-page/Artboard 3.webp" alt="" />
-        <div class="item-info-preview">
-          <span class="preview-cat">سوشال مدیا</span>
-          <h3 class="preview-title">پست اسلایدی وانافود</h3>
-        </div>
-      </div>
-      <div
-        class="portfolio-item"
-        data-category="social"
-        data-hover
-        data-title=" کاور پست وانافود"
-        data-client=" وانافود"
-        data-year="1404"
-        data-desc=""
-      >
-        <img
-          src="assets/design-page/poster-reels-cafeRomi.webp"
-          alt="کافه رومی و وانافود"
-          style="object-position: top"
-        />
-        <div class="item-info-preview">
-          <span class="preview-cat">سوشال مدیا</span>
-          <h3 class="preview-title">کاور پست وانافود</h3>
-        </div>
-      </div>
-
-      <div
-        class="portfolio-item"
-        data-category="identity"
-        data-hover
-        data-title=" کارت ویزیت  جواهر فروشی زرین"
-        data-client="زرین "
-        data-year="1402"
-        data-desc=""
-      >
-        <img
-          src="assets/design-page/cart-vizit-zarin.webp"
-          alt="کارت ویزت زرین"
-        />
-        <div class="item-info-preview">
-          <span class="preview-cat">هویت بصری</span>
-          <h3 class="preview-title">زرین</h3>
-        </div>
-      </div>
-      <div
-        class="portfolio-item"
-        data-category="social"
-        data-hover
-        data-title=" صفحه‌ی اول اپ وانافود"
-        data-client="وانافود "
-        data-year="1404"
-        data-desc=""
-      >
-        <img src="assets/design-page/tarahi-safheye-login.webp" alt="زرین" />
-        <div class="item-info-preview">
-          <span class="preview-cat">سوشال مدیا</span>
-          <h3 class="preview-title">صفحه‌ی اول اپ وانافود</h3>
-        </div>
-      </div>
-      <div
-        class="portfolio-item"
-        data-category="identity"
-        data-hover
-        data-title="هویت بصری لوگوی آرما فوم"
-        data-client="شرکت آرما فوم"
-        data-year="1404"
-        data-desc=""
-      >
-        <img src="assets/images/logo/logo-arma.webp" alt="زرین" />
-        <div class="item-info-preview">
-          <span class="preview-cat">هویت بصری</span>
-          <h3 class="preview-title">هویت بصری لوگوی آرما فوم</h3>
-        </div>
-      </div>
-      <div
-        class="portfolio-item large"
-        data-category="poster"
-        data-hover
-        data-title="پوستر موشن لوگوی آرما"
-        data-client="شرکت آرما فوم"
-        data-year="1404"
-        data-desc=""
-      >
-        <img src="assets/videos/arma.webp" alt="پوستر موشن آرما فوم" />
-        <div class="item-info-preview">
-          <span class="preview-cat">پوستر</span>
-          <h3 class="preview-title">پوستر موشن لوگوی آرما</h3>
-        </div>
-      </div>
-
+      <!-- دایو 2 -->
       <div
         class="portfolio-item"
         data-category="social"
         data-hover
         data-title="پست اسلایدی وانافود"
         data-client="وانافود "
-        data-year="1404"
+        data-year="۱۴۰۴"
         data-desc=""
       >
         <img
@@ -1083,8 +1001,267 @@
           alt="پست اسلایدی وانا فود"
         />
         <div class="item-info-preview">
-          <span class="preview-cat">سوشال مدیا</span>
+          <span class="preview-cat">شبکه های اجتماعی</span>
           <h3 class="preview-title">پست اسلایدی وانافود</h3>
+        </div>
+      </div>
+      <!-- دایو 3 -->
+      <div
+        class="portfolio-item"
+        data-category="poster"
+        data-hover
+        data-title="پوستر یازده"
+        data-client=" یازده"
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/poster-motien3.webp"
+          alt="کافه رومی و وانافود"
+          style="object-position: top"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">پوستر</span>
+          <h3 class="preview-title">پوستر یازده</h3>
+        </div>
+      </div>
+      <!-- دایو 4 -->
+
+      <div
+        class="portfolio-item"
+        data-category="poster"
+        data-hover
+        data-title="پوستر مفیدیدک "
+        data-client="مفیدیدک "
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img src="assets/design-page/tab1.webp" alt="پوستر مفیدیدک" />
+        <div class="item-info-preview">
+          <span class="preview-cat">پوستر</span>
+          <h3 class="preview-title">مفیدیدک</h3>
+        </div>
+      </div>
+      <!-- دایو 5 -->
+      <div
+        class="portfolio-item"
+        data-category="poster"
+        data-hover
+        data-title="پوستر معرفی وانافود در کافه بازار"
+        data-client="وانافود "
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/poster-vanafod-kafebazar.webp"
+          alt="وانافود"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">پوستر</span>
+          <h3 class="preview-title">پوستر معرفی وانافود درکافه بازار</h3>
+        </div>
+      </div>
+      <!-- دایو 6 -->
+      <div
+        class="portfolio-item"
+        data-category="identity"
+        data-hover
+        data-title="هویت بصری لوگوی آرما فوم"
+        data-client="شرکت آرما فوم"
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img src="assets/images/logo/logo-arma.webp" alt="آرمافوم" />
+        <div class="item-info-preview">
+          <span class="preview-cat">هویت بصری</span>
+          <h3 class="preview-title">هویت بصری لوگوی آرما فوم</h3>
+        </div>
+      </div>
+      <!-- دایو 7 -->
+      <div
+        class="portfolio-item large"
+        data-category="poster"
+        data-hover
+        data-title="پوستر موشن لوگوی آرما"
+        data-client="شرکت آرما فوم"
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/Motien-Arma1.webp"
+          alt="پوستر موشن آرما فوم"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">پوستر</span>
+          <h3 class="preview-title">پوستر موشن لوگوی آرما</h3>
+        </div>
+      </div>
+      <!-- دایو 8 -->
+      <div
+        class="portfolio-item large"
+        data-category="identity"
+        data-hover
+        data-title="کارت ویزیت تیم خلاقیت یازده"
+        data-client="تیم خلاقیت یازده"
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/yazdah_hoviyat_basari.webp"
+          alt="تیم خلاقیت یازده"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">هویت بصری</span>
+          <h3 class="preview-title">تیم خلاقیت یازده</h3>
+        </div>
+      </div>
+      <!-- دایو 9 -->
+      <div
+        class="portfolio-item"
+        data-category="etude"
+        data-hover
+        data-title="تایپو گرافی آخرین اتوبوس"
+        data-client=""
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/honari/تایپو_آخرین _اتوبوس.webp"
+          alt="تایپو آخرین اتوبوس _محسن چاوشی"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">اتودهای طراحی</span>
+          <h3 class="preview-title">تایپوگرافی آخرین اتوبوس محسن چاوشی</h3>
+        </div>
+      </div>
+      <!-- دایو 10 -->
+      <div
+        class="portfolio-item"
+        data-category="etude"
+        data-hover
+        data-title="کاورآهنگ آخرین اتوبوس"
+        data-client=""
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/honari/چاوشی_آخرین_اتوبوس.webp"
+          alt="کاور آهنگ چاوشی _آخرین اتوبوس"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">اتودهای طراحی</span>
+          <h3 class="preview-title">کاور آهنگ آخرین اتوبوس</h3>
+        </div>
+      </div>
+      <!-- دایو 11 -->
+      <div
+        class="portfolio-item large"
+        data-category="etude"
+        data-hover
+        data-title="تایپوگرافی تئاتر جوجه تیغی"
+        data-client=""
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/honari/تایپو_گرافی_دیالوگ.webp"
+          alt="تایپو برای تئاتر بهرام افشاری"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">اتودهای طراحی</span>
+          <h3 class="preview-title">تایپوگرافی تئاتر جوجه تیغی</h3>
+        </div>
+      </div>
+      <!-- دایو 12 -->
+      <div
+        class="portfolio-item"
+        data-category="etude"
+        data-hover
+        data-title="تایپوگرافی آهنگ چنگیز"
+        data-client=""
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/honari/تایپو_گرافی_چنگیز محسن چاوشی.webp"
+          alt="تایپو آهنگ چنگیز محسن چاوشی"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">اتودهای طراحی</span>
+          <h3 class="preview-title">تایپوگرافی آهنگ چنگیز</h3>
+        </div>
+      </div>
+      <!-- دایو 13 -->
+      <div
+        class="portfolio-item"
+        data-category="etude"
+        data-hover
+        data-title="تایپوگرافی تهران"
+        data-client=""
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/honari/تایپو_گرافی_تهران.webp"
+          alt="تایپو گرافی تهران"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">اتودهای طراحی</span>
+          <h3 class="preview-title">تایپوگرافی تهران</h3>
+        </div>
+      </div>
+      <!-- دایو 14 -->
+      <div
+        class="portfolio-item"
+        data-category="etude"
+        data-hover
+        data-title="کاورآهنگ چنگیز"
+        data-client=""
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/honari/کاور_آهنگ_چنگیز_محسن چاوشی.webp"
+          alt="کاورآهنگ چنگیز محسن چاوشی"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">اتودهای طراحی</span>
+          <h3 class="preview-title">کاورآهنگ چنگیز</h3>
+        </div>
+      </div>
+      <!-- دایو 15 -->
+      <div
+        class="portfolio-item large"
+        data-category="etude"
+        data-hover
+        data-title="کلاژ شب های روشن"
+        data-client=""
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img
+          src="assets/design-page/honari/شب_های_روشن.webp"
+          alt="کلاژ شب های روشن"
+        />
+        <div class="item-info-preview">
+          <span class="preview-cat">اتود های طراحی</span>
+          <h3 class="preview-title">کلاژ شب های روشن</h3>
+        </div>
+      </div>
+      <!-- دایو 16 -->
+      <div
+        class="portfolio-item"
+        data-category="etude"
+        data-hover
+        data-title="طراحی کلاژ"
+        data-client=""
+        data-year="۱۴۰۴"
+        data-desc=""
+      >
+        <img src="assets/design-page/honari/کلاژ.webp" alt="کلاژ" />
+        <div class="item-info-preview">
+          <span class="preview-cat">اتودهای هنری</span>
+          <h3 class="preview-title">طراحی کلاژ</h3>
         </div>
       </div>
     </div>
